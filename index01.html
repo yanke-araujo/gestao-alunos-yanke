@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yanke — Gestão</title>
+<title>Yanke â GestÃ£o</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#f6f6f7;--bg2:#fff;--bg3:#f1f2f4;--bg4:#e8e9ec;--bg5:#dfe0e4;
-  --border:#e0e1e5;--border2:#c8c9ce;
-  --text:#1a1a2e;--t2:#5c5c7a;--t3:#9a9ab0;--t4:#c0c0d0;
-  --gold:#7c3aed;--gold2:#6d28d9;--gold-bg:rgba(124,58,237,.08);
+  --bg:#f0e6d0;--bg2:#faf3e0;--bg3:#ecddc0;--bg4:#e4d0a8;--bg5:#d8c49a;
+  --border:#d4b88a;--border2:#c0a070;
+  --text:#2a1a08;--t2:#6b4a22;--t3:#a07840;--t4:#c0a060;
+  --gold:#8a5a00;--gold2:#7a4a00;--gold-bg:rgba(180,120,0,.1);
   --green:#059669;--green-bg:rgba(5,150,105,.1);--green-t:#d1fae5;
   --red:#dc2626;--red-bg:rgba(220,38,38,.08);
   --yellow:#d97706;--yellow-bg:rgba(217,119,6,.1);
   --blue:#2563eb;--blue-bg:rgba(37,99,235,.08);
-  --purple:#7c3aed;--purple-bg:rgba(124,58,237,.08);
+  --purple:#8a5a00;--purple-bg:rgba(180,120,0,.1);
   --cyan:#0891b2;--cyan-bg:rgba(8,145,178,.08);
   --orange:#ea580c;--orange-bg:rgba(234,88,12,.08);
   --r:8px;--rs:5px;--sw:220px;
@@ -74,7 +74,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .tag-gray{background:var(--bg3);color:var(--t2);border:1px solid var(--border);}
 .tag-orange{background:var(--orange-bg);color:var(--orange);}
 
-/* ═══ PIPELINE / LISTA ═══ */
+/* âââ PIPELINE / LISTA âââ */
 .cl-toolbar{display:flex;align-items:center;gap:6px;padding:9px 14px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:46px;z-index:90;}
 .cl-vbtn{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:4px;font-size:11.5px;font-weight:500;cursor:pointer;border:none;font-family:'Inter',sans-serif;color:var(--t2);background:transparent;transition:.1s;}
 .cl-vbtn:hover{background:var(--bg3);color:var(--text);}
@@ -119,7 +119,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .cl-resp{display:flex;align-items:center;gap:5px;}
 .cl-resp-av{width:20px;height:20px;border-radius:50%;background:var(--purple-bg);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--purple);flex-shrink:0;}
 
-/* ═══ FICHA ESTILO CLICKUP ═══ */
+/* âââ FICHA ESTILO CLICKUP âââ */
 .ficha-wrap{background:var(--bg2);min-height:calc(100vh - 46px);padding:32px 40px;max-width:900px;margin:0 auto;}
 .ficha-status-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;}
 .status-pill{display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:5px;font-size:11.5px;font-weight:700;cursor:pointer;}
@@ -143,7 +143,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .rel-badge:hover{border-color:var(--purple);color:var(--purple);}
 .rel-badge .rel-icon{font-size:10px;}
 
-/* DESCRIÇÃO */
+/* DESCRIÃÃO */
 .ficha-desc{border:1.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:24px;min-height:80px;background:var(--bg);}
 .ficha-desc-placeholder{color:var(--t3);font-size:13px;display:flex;align-items:center;gap:8px;}
 
@@ -291,21 +291,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- SIDEBAR -->
 <aside class="sb">
   <div class="sb-brand">
-    <div class="sb-logo">Yanke Gestão</div>
+    <div class="sb-logo">Yanke GestÃ£o</div>
     <div class="sb-sub">Consultoria</div>
   </div>
   <nav class="sb-nav">
-    <div class="sb-sec">Visões</div>
-    <div class="ni on" onclick="gp('pipeline',this)"><span class="ni-ic">≡</span>Lista</div>
-    <div class="ni" onclick="gp('lista',this)"><span class="ni-ic">📋</span>Tabela<span class="ni-badge" id="nb-venc" style="display:none"></span></div>
-    <div class="sb-sec">Análise</div>
-    <div class="ni" onclick="gp('dashboard',this)"><span class="ni-ic">📊</span>Dashboard</div>
-    <div class="ni" onclick="gp('financeiro',this)"><span class="ni-ic">💰</span>Financeiro</div>
-    <div class="sb-sec">Gestão</div>
-    <div class="ni" onclick="gp('agenda',this)"><span class="ni-ic">📅</span>Agenda</div>
+    <div class="ni on" onclick="gp('home',this)" style="margin-bottom:2px;"><span class="ni-ic">â¡</span>InÃ­cio</div>
+    <div class="sb-sec">VisÃµes</div>
+    <div class="ni" onclick="gp('pipeline',this)"><span class="ni-ic">â¡</span>Lista</div>
+    <div class="ni" onclick="gp('lista',this)"><span class="ni-ic">ð</span>Tabela<span class="ni-badge" id="nb-venc" style="display:none"></span></div>
+    <div class="sb-sec">AnÃ¡lise</div>
+    <div class="ni" onclick="gp('dashboard',this)"><span class="ni-ic">ð</span>Dashboard</div>
+    <div class="ni" onclick="gp('financeiro',this)"><span class="ni-ic">ð°</span>Financeiro</div>
+    <div class="sb-sec">GestÃ£o</div>
+    <div class="ni" onclick="gp('agenda',this)"><span class="ni-ic">ð</span>Agenda</div>
     <div class="sb-sec">Sistema</div>
-    <div class="ni" onclick="gp('fases',this)"><span class="ni-ic">🏷</span>Fases</div>
-    <div class="ni" onclick="gp('config',this)"><span class="ni-ic">⚙️</span>Config</div>
+    <div class="ni" onclick="gp('fases',this)"><span class="ni-ic">ð·</span>Fases</div>
+    <div class="ni" onclick="gp('config',this)"><span class="ni-ic">âï¸</span>Config</div>
   </nav>
   <div class="sb-foot">
     <div style="display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--t3);">
@@ -325,31 +326,361 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   </div>
   <div style="flex:1;"></div>
   <div style="display:flex;gap:6px;align-items:center;">
-    <button class="btn btn-ghost btn-sm" onclick="exp()">⬆ Exportar</button>
-    <label class="btn btn-ghost btn-sm" style="cursor:pointer">⬇ Importar<input type="file" accept=".json" onchange="imp(event)" style="display:none"></label>
+    <button class="btn btn-ghost btn-sm" onclick="exp()">â¬ Exportar</button>
+    <label class="btn btn-ghost btn-sm" style="cursor:pointer">â¬ Importar<input type="file" accept=".json" onchange="imp(event)" style="display:none"></label>
     <button class="btn btn-purple btn-sm" onclick="openModalAluno()">+ Adicionar Tarefa</button>
   </div>
 </div>
 
-<!-- ═══ PIPELINE / LISTA CLICKUP ═══ -->
-<div class="page on" id="page-pipeline" style="padding:0;background:var(--bg);">
+<!-- âââ HOME DASHBOARD PREMIUM âââ -->
+<div class="page on" id="page-home" style="padding:0;position:fixed;inset:0;z-index:500;background:#e8d5b0;">
+<style>
+#page-home.on ~ *{pointer-events:none;}
+/* SKILLSET LAYOUT */
+.sk-wrap{display:flex;height:100vh;font-family:'Inter',-apple-system,sans-serif;background:#e8d5b0;overflow:hidden;}
+
+/* SIDEBAR */
+.sk-sb{width:220px;background:#f2e4c8;border-right:1px solid #d4b888;display:flex;flex-direction:column;padding:24px 0;flex-shrink:0;}
+.sk-logo{padding:0 20px 24px;font-size:20px;font-weight:800;color:#3a2000;letter-spacing:-.5px;}
+.sk-logo span{color:#b8860b;}
+.sk-nav{flex:1;padding:0 10px;}
+.sk-ni{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#8a6030;font-size:13.5px;font-weight:500;transition:.12s;margin-bottom:2px;}
+.sk-ni:hover{background:#e8d5a0;color:#3a2000;}
+.sk-ni.on{background:#3a2000;color:#f2e4c8;}
+.sk-ni svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0;}
+.sk-ni.on svg{stroke:#f2e4c8;}
+.sk-ni-arr{margin-left:auto;font-size:10px;color:#c0a060;}
+.sk-sb-foot{padding:16px 14px 0;}
+.sk-promo{background:#3a2000;border-radius:14px;padding:16px;color:#f2e4c8;}
+.sk-promo-title{font-size:13px;font-weight:700;margin-bottom:4px;color:#f2e4c8;}
+.sk-promo-sub{font-size:11px;color:#c0a060;margin-bottom:12px;line-height:1.4;}
+.sk-promo-btn{display:block;background:#6a4010;color:#f2e4c8;border:none;border-radius:8px;padding:8px;font-size:12px;font-weight:600;cursor:pointer;text-align:center;width:100%;font-family:inherit;transition:.12s;}
+.sk-promo-btn:hover{background:#8a5820;}
+.sk-sb-div{height:1px;background:#d4b888;margin:16px 0;}
+.sk-sb-item2{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;color:#8a6030;font-size:13px;margin:1px 0;transition:.12s;}
+.sk-sb-item2:hover{background:#e8d5a0;color:#3a2000;}
+.sk-sb-item2 svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;}
+
+/* MAIN */
+.sk-main{flex:1;overflow-y:auto;display:flex;flex-direction:column;background:#e8d5b0;}
+.sk-main::-webkit-scrollbar{width:4px;}
+.sk-main::-webkit-scrollbar-thumb{background:#c8a870;border-radius:2px;}
+
+/* TOPBAR */
+.sk-top{display:flex;align-items:center;padding:20px 28px 0;gap:12px;}
+.sk-top-title{font-size:24px;font-weight:700;color:#2a1500;letter-spacing:-.4px;flex:1;}
+.sk-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.5);border:1px solid #d4b888;border-radius:20px;padding:8px 16px;width:220px;}
+.sk-search svg{width:14px;height:14px;stroke:#a08050;fill:none;stroke-width:2;flex-shrink:0;}
+.sk-search input{background:none;border:none;outline:none;font-size:13px;color:#5a3a10;width:100%;font-family:inherit;}
+.sk-search input::placeholder{color:#c0a060;}
+.sk-bell{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.5);border:1px solid #d4b888;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.sk-bell svg{width:15px;height:15px;stroke:#8a6030;fill:none;stroke-width:2;}
+.sk-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#d4af37,#8a6a10);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#000;cursor:pointer;}
+
+/* PERIOD FILTER */
+.sk-period{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 28px;}
+.sk-period-btns{display:flex;background:rgba(255,255,255,.4);border:1px solid #d4b888;border-radius:10px;padding:3px;gap:2px;}
+.sk-pbtn{padding:6px 16px;border-radius:7px;font-size:13px;font-weight:500;color:#8a6030;cursor:pointer;transition:.1s;border:none;background:none;font-family:inherit;}
+.sk-pbtn.on{background:#3a2000;color:#f2e4c8;}
+.sk-pbtn:hover:not(.on){background:rgba(0,0,0,.08);color:#3a2000;}
+.sk-date-range{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.4);border:1px solid #d4b888;border-radius:10px;padding:7px 14px;font-size:12.5px;color:#5a3a10;cursor:pointer;margin-left:auto;}
+.sk-date-range svg{width:14px;height:14px;stroke:#8a6030;fill:none;stroke-width:2;}
+
+/* KPI CARDS */
+.sk-kpis{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:14px;padding:0 28px 20px;}
+.sk-kpi{background:rgba(255,255,255,.45);border:1px solid #d4b888;border-radius:16px;padding:18px 20px;backdrop-filter:blur(4px);}
+.sk-kpi.dark{background:#3a2000;border-color:#3a2000;}
+.sk-kpi-lbl{font-size:12px;color:#a08050;margin-bottom:10px;}
+.sk-kpi.dark .sk-kpi-lbl{color:#c0905a;}
+.sk-kpi-val{font-size:28px;font-weight:700;color:#2a1500;letter-spacing:-.5px;margin-bottom:6px;}
+.sk-kpi.dark .sk-kpi-val{color:#f2e4c8;}
+.sk-kpi-trend{font-size:11.5px;color:#a08050;display:flex;align-items:center;gap:4px;}
+.sk-kpi-trend.up{color:#16a34a;}
+.sk-kpi-trend.down{color:#dc2626;}
+.sk-trend-ico{font-size:11px;}
+
+/* MIDDLE ROW */
+.sk-mid{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;padding:0 28px 20px;}
+.sk-chart-card{background:rgba(255,255,255,.45);border:1px solid #d4b888;border-radius:16px;padding:20px;}
+.sk-chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.sk-chart-title{font-size:15px;font-weight:600;color:#2a1500;}
+.sk-chart-ico{width:32px;height:32px;border-radius:8px;background:rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.sk-chart-ico svg{width:14px;height:14px;stroke:#8a6030;fill:none;stroke-width:2;}
+.sk-chart-wrap{height:180px;position:relative;}
+.sk-right-col{display:flex;flex-direction:column;gap:14px;}
+
+/* CALENDAR */
+.sk-cal-card{background:rgba(255,255,255,.45);border:1px solid #d4b888;border-radius:16px;padding:18px;}
+.sk-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sk-cal-month{font-size:14px;font-weight:600;color:#2a1500;}
+.sk-cal-nav{display:flex;gap:6px;}
+.sk-cal-btn{width:26px;height:26px;border-radius:7px;background:rgba(0,0,0,.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#8a6030;font-size:12px;}
+.sk-cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;}
+.sk-cal-dow{font-size:10.5px;color:#a08050;padding:3px 0;font-weight:500;}
+.sk-cal-d{font-size:12px;color:#5a3a10;padding:5px 4px;border-radius:8px;cursor:pointer;transition:.1s;}
+.sk-cal-d:hover{background:rgba(0,0,0,.08);}
+.sk-cal-d.today{background:#3a2000;color:#f2e4c8;font-weight:600;}
+.sk-cal-d.other{color:#c8a870;}
+
+/* COMMUNITY GROWTH */
+.sk-growth-card{background:rgba(255,255,255,.45);border:1px solid #d4b888;border-radius:16px;padding:18px;display:flex;align-items:center;justify-content:space-between;}
+.sk-growth-left{}
+.sk-growth-title{font-size:14px;font-weight:600;color:#2a1500;margin-bottom:4px;}
+.sk-growth-trend{font-size:11.5px;color:#16a34a;display:flex;align-items:center;gap:4px;}
+.sk-donut-wrap{position:relative;width:60px;height:60px;}
+.sk-donut-val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2a1500;}
+
+/* TABELA */
+.sk-table-card{background:rgba(255,255,255,.45);border:1px solid #d4b888;border-radius:16px;padding:20px;margin:0 28px 14px;}
+.sk-table-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.sk-table-title{font-size:15px;font-weight:600;color:#2a1500;}
+.sk-table-icons{display:flex;gap:6px;}
+.sk-t-ico{width:30px;height:30px;border-radius:8px;background:rgba(0,0,0,.08);border:1px solid #d4b888;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.sk-t-ico svg{width:13px;height:13px;stroke:#8a6030;fill:none;stroke-width:2;}
+.sk-thead{display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr 0.8fr;padding:8px 12px;font-size:11px;font-weight:600;color:#a08050;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #d4b888;}
+.sk-trow{display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr 0.8fr;padding:12px;border-bottom:1px solid #e8d5b0;align-items:center;cursor:pointer;transition:.08s;}
+.sk-trow:hover{background:rgba(255,255,255,.3);}
+.sk-trow:last-child{border-bottom:none;}
+.sk-trow-name{display:flex;align-items:center;gap:10px;}
+.sk-trow-av{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#d4af37,#8a6a10);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#000;flex-shrink:0;}
+.sk-trow-nm{font-size:13px;font-weight:500;color:#2a1500;}
+.sk-trow-cell{font-size:13px;color:#5a3a10;}
+.sk-trow-id{font-size:12px;color:#a08050;}
+.sk-badge{display:inline-flex;padding:4px 12px;border-radius:7px;font-size:11.5px;font-weight:600;}
+.sk-badge.paid{background:#3a2000;color:#f2e4c8;}
+.sk-badge.pend{background:rgba(0,0,0,.08);color:#8a6030;border:1px solid #d4b888;}
+.sk-badge.pix{background:#d1fae5;color:#065f46;}
+</style>
+
+<div class="sk-wrap">
+  <!-- SIDEBAR -->
+  <div class="sk-sb">
+    <div class="sk-logo">A<span>&H</span></div>
+    <nav class="sk-nav">
+      <div class="sk-ni on">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="sk-ni" onclick="gp('pipeline')">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Alunos
+      </div>
+      <div class="sk-ni" onclick="gp('pipeline')">
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Pipeline
+        <span class="sk-ni-arr">âº</span>
+      </div>
+      <div class="sk-ni" onclick="gp('financeiro')">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Financeiro
+        <span class="sk-ni-arr">âº</span>
+      </div>
+      <div class="sk-ni" onclick="gp('agenda')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agenda
+      </div>
+      <div class="sk-ni" onclick="gp('fases')">
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        Fases
+      </div>
+    </nav>
+    <div class="sk-sb-foot">
+      <div class="sk-promo">
+        <div class="sk-promo-title">Ciclo de 8 semanas</div>
+        <div class="sk-promo-sub">ReavaliaÃ§Ãµes automÃ¡ticas ativadas para todos os alunos</div>
+        <button class="sk-promo-btn" onclick="gp('pipeline')">Ver alunos â</button>
+      </div>
+      <div class="sk-sb-div"></div>
+      <div class="sk-sb-item2" onclick="gp('config')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4z"/></svg>
+        ConfiguraÃ§Ãµes
+      </div>
+      <div class="sk-sb-item2">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Central de ajuda
+      </div>
+      <div class="sk-sb-item2" onclick="gp('pipeline')">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Ir para lista
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="sk-main">
+    <!-- TOPBAR -->
+    <div class="sk-top">
+      <div class="sk-top-title">Dashboard</div>
+      <div class="sk-search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input placeholder="Buscar..." id="sk-search-in">
+      </div>
+      <div class="sk-bell">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+      </div>
+      <div class="sk-avatar">Y</div>
+    </div>
+
+    <!-- PERIOD FILTER -->
+    <div class="sk-period">
+      <div class="sk-period-btns">
+        <button class="sk-pbtn" onclick="skPeriod(this,'dia')">Dia</button>
+        <button class="sk-pbtn" onclick="skPeriod(this,'semana')">Semana</button>
+        <button class="sk-pbtn on" onclick="skPeriod(this,'mes')">MÃªs</button>
+        <button class="sk-pbtn" onclick="skPeriod(this,'ano')">Ano</button>
+      </div>
+      <div class="sk-date-range">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span id="sk-date-lbl">1 Mar 2026 â 29 Mar 2026</span>
+      </div>
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="sk-kpis">
+      <div class="sk-kpi dark">
+        <div class="sk-kpi-lbl">Receita Total</div>
+        <div class="sk-kpi-val" id="sk-kpi-rec">R$ 42.318</div>
+        <div class="sk-kpi-trend up"><span class="sk-trend-ico">â</span> acumulada histÃ³rica</div>
+      </div>
+      <div class="sk-kpi">
+        <div class="sk-kpi-lbl">Alunos Ativos</div>
+        <div class="sk-kpi-val" id="sk-kpi-total">66</div>
+        <div class="sk-kpi-trend up" id="sk-kpi-trend-total"><span class="sk-trend-ico">â</span> na consultoria</div>
+      </div>
+      <div class="sk-kpi">
+        <div class="sk-kpi-lbl">ReavaliaÃ§Ãµes</div>
+        <div class="sk-kpi-val" id="sk-kpi-reav">0</div>
+        <div class="sk-kpi-trend" id="sk-kpi-trend-reav"><span class="sk-trend-ico">â</span> pendentes</div>
+      </div>
+      <div class="sk-kpi">
+        <div class="sk-kpi-lbl">Plano Top</div>
+        <div class="sk-kpi-val" id="sk-kpi-plano" style="font-size:18px;margin-top:4px;">Anual</div>
+        <div class="sk-kpi-trend up" id="sk-kpi-trend-plano"><span class="sk-trend-ico">â</span> <span id="sk-plano-cnt">28</span> alunos</div>
+      </div>
+    </div>
+
+    <!-- MIDDLE ROW -->
+    <div class="sk-mid">
+      <!-- GRÃFICO -->
+      <div class="sk-chart-card">
+        <div class="sk-chart-head">
+          <div class="sk-chart-title">Receita Mensal</div>
+          <div class="sk-chart-ico">
+            <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          </div>
+        </div>
+        <div class="sk-chart-wrap"><canvas id="sk-chart"></canvas></div>
+      </div>
+
+      <!-- COLUNA DIREITA -->
+      <div class="sk-right-col">
+        <!-- CALENDÃRIO -->
+        <div class="sk-cal-card">
+          <div class="sk-cal-head">
+            <button class="sk-cal-btn">â¹</button>
+            <div class="sk-cal-month" id="sk-cal-month">MarÃ§o 2026</div>
+            <button class="sk-cal-btn">âº</button>
+          </div>
+          <div class="sk-cal-days" id="sk-cal"></div>
+        </div>
+        <!-- COMMUNITY GROWTH / PIPELINE -->
+        <div class="sk-growth-card">
+          <div class="sk-growth-left">
+            <div class="sk-growth-title">Plano Anual</div>
+            <div class="sk-growth-trend"><span>â</span> plano mais popular</div>
+          </div>
+          <div class="sk-donut-wrap">
+            <canvas id="sk-donut" width="60" height="60"></canvas>
+            <div class="sk-donut-val">42%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABELA PAGAMENTOS -->
+    <div class="sk-table-card">
+      <div class="sk-table-head">
+        <div class="sk-table-title">Pagamentos Recentes</div>
+        <div class="sk-table-icons">
+          <div class="sk-t-ico">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          </div>
+          <div class="sk-t-ico">
+            <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="sk-thead">
+        <div>Nome do Aluno</div>
+        <div>Plano</div>
+        <div>Data</div>
+        <div>Valor</div>
+        <div>Status</div>
+      </div>
+      <div id="sk-table"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+    <!-- ââ VENCIMENTOS MAIS PRÃXIMOS ââ -->
+    <div class="sk-table-card" style="margin-top:14px;">
+      <div class="sk-table-head">
+        <div class="sk-table-title">â³ Vencimentos mais prÃ³ximos</div>
+        <div style="font-size:12px;color:#aaa;">do mais urgente ao mais distante</div>
+      </div>
+      <div class="sk-thead" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;">
+        <div>Aluno</div><div>Plano</div><div>InÃ­cio</div><div>Vencimento</div><div>Status</div>
+      </div>
+      <div id="sk-venc-list"></div>
+    </div>
+
+    <!-- ââ REAVALIAÃÃES MAIS PRÃXIMAS ââ -->
+    <div class="sk-table-card" style="margin-top:14px;">
+      <div class="sk-table-head">
+        <div class="sk-table-title">ð ReavaliaÃ§Ãµes mais prÃ³ximas</div>
+        <div style="font-size:12px;color:#aaa;">do mais urgente ao mais distante</div>
+      </div>
+      <div class="sk-thead" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;">
+        <div>Aluno</div><div>Plano</div><div>Treino entregue</div><div>PrÃ³x. reavaliaÃ§Ã£o</div><div>Dias</div>
+      </div>
+      <div id="sk-reav-list"></div>
+    </div>
+
+    <!-- ââ TREINOS PENDENTES ââ -->
+    <div class="sk-table-card" style="margin-top:14px;margin-bottom:28px;">
+      <div class="sk-table-head">
+        <div class="sk-table-title">ðª Treinos pendentes para montar</div>
+        <div style="font-size:12px;color:#aaa;">alunos que completaram anamnese/fotos e aguardam treino</div>
+      </div>
+      <div class="sk-thead" style="grid-template-columns:2fr 1fr 1.5fr 1.5fr 0.8fr;">
+        <div>Aluno</div><div>Plano</div><div>Fase atual</div><div>SituaÃ§Ã£o</div><div>AÃ§Ã£o</div>
+      </div>
+      <div id="sk-montar-list"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- âââ PIPELINE / LISTA CLICKUP âââ -->
+<div class="page" id="page-pipeline" style="padding:0;background:var(--bg);">
   <div class="cl-toolbar">
-    <button class="cl-vbtn on" id="btn-lista" onclick="setView('lista')">≡ Lista</button>
-    <button class="cl-vbtn" id="btn-quadro" onclick="setView('quadro')">⬜ Quadro</button>
+    <button class="cl-vbtn on" id="btn-lista" onclick="setView('lista')">â¡ Lista</button>
+    <button class="cl-vbtn" id="btn-quadro" onclick="setView('quadro')">â¬ Quadro</button>
     <div class="cl-sep"></div>
-    <button class="cl-vbtn">🔍 Filtros</button>
-    <button class="cl-vbtn">👤 Modo eu</button>
-    <button class="cl-vbtn">⬛ Colunas</button>
+    <button class="cl-vbtn">ð Filtros</button>
+    <button class="cl-vbtn">ð¤ Modo eu</button>
+    <button class="cl-vbtn">â¬ Colunas</button>
     <div style="flex:1;"></div>
   </div>
   <div id="listaView" style="background:var(--bg2);"></div>
   <div id="quadroView" style="display:none;padding:14px;display:none;flex-wrap:nowrap;gap:10px;overflow-x:auto;"></div>
 </div>
 
-<!-- ═══ TABELA ═══ -->
+<!-- âââ TABELA âââ -->
 <div class="page" id="page-lista" style="padding:16px;">
   <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;">
-    <div class="sw" style="flex:1;max-width:260px;"><span class="si">🔍</span><input type="text" id="searchL" placeholder="Buscar aluno..." oninput="renderTabela()"></div>
+    <div class="sw" style="flex:1;max-width:260px;"><span class="si">ð</span><input type="text" id="searchL" placeholder="Buscar aluno..." oninput="renderTabela()"></div>
     <div style="display:flex;gap:4px;" id="filtro-btns">
       <button class="btn btn-ghost btn-sm on-f" onclick="setFiltro('todos',this)">Todos</button>
       <button class="btn btn-ghost btn-sm" onclick="setFiltro('ativos',this)">Ativos</button>
@@ -362,24 +693,24 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   </div>
 </div>
 
-<!-- ═══ FICHA DO ALUNO (estilo ClickUp) ═══ -->
+<!-- âââ FICHA DO ALUNO (estilo ClickUp) âââ -->
 <div class="page" id="page-ficha" style="padding:0;background:var(--bg);">
   <div class="ficha-wrap">
 
     <!-- STATUS BAR -->
     <div class="ficha-status-bar" id="fichaStatusBar"></div>
 
-    <!-- TÍTULO -->
+    <!-- TÃTULO -->
     <div class="ficha-titulo" id="fichaTitulo"></div>
 
     <!-- CAMPOS PRINCIPAIS - 2 colunas como ClickUp -->
     <div class="ficha-fields-top" id="fichaFieldsTop"></div>
 
-    <!-- DESCRIÇÃO -->
+    <!-- DESCRIÃÃO -->
     <div class="ficha-desc" id="fichaDesc">
       <div class="ficha-desc-placeholder">
-        <span>📄</span>
-        <span>Adicionar descrição</span>
+        <span>ð</span>
+        <span>Adicionar descriÃ§Ã£o</span>
       </div>
     </div>
 
@@ -387,8 +718,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="campos-title">
       Campos personalizados
       <div style="display:flex;gap:6px;">
-        <button class="btn btn-ghost btn-sm" onclick="openModalAluno(currentA.id)">✏️ Editar</button>
-        <button class="btn btn-red btn-sm" onclick="delAluno()">🗑️ Excluir</button>
+        <button class="btn btn-ghost btn-sm" onclick="openModalAluno(currentA.id)">âï¸ Editar</button>
+        <button class="btn btn-red btn-sm" onclick="delAluno()">ðï¸ Excluir</button>
       </div>
     </div>
     <div class="campos-table" id="camposPersonalizados"></div>
@@ -396,14 +727,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <!-- ABAS -->
     <div style="margin-top:24px;">
       <div class="ficha-tabs">
-        <button class="ftab on" onclick="sFTab('pagamentos',this)">💰 Pagamentos</button>
-        <button class="ftab" onclick="sFTab('treinos',this)">💪 Treinos</button>
-        <button class="ftab" onclick="sFTab('avaliacao',this)">📏 Avaliação</button>
-        <button class="ftab" onclick="sFTab('nutricao',this)">🥗 Nutrição</button>
-        <button class="ftab" onclick="sFTab('metas',this)">🎯 Metas</button>
-        <button class="ftab" onclick="sFTab('fotos',this)">📸 Fotos</button>
-        <button class="ftab" onclick="sFTab('notas',this)">📝 Notas</button>
-        <button class="ftab" onclick="sFTab('atividade',this)">🕐 Atividade</button>
+        <button class="ftab on" onclick="sFTab('pagamentos',this)">ð° Pagamentos</button>
+        <button class="ftab" onclick="sFTab('treinos',this)">ðª Treinos</button>
+        <button class="ftab" onclick="sFTab('avaliacao',this)">ð AvaliaÃ§Ã£o</button>
+        <button class="ftab" onclick="sFTab('nutricao',this)">ð¥ NutriÃ§Ã£o</button>
+        <button class="ftab" onclick="sFTab('metas',this)">ð¯ Metas</button>
+        <button class="ftab" onclick="sFTab('fotos',this)">ð¸ Fotos</button>
+        <button class="ftab" onclick="sFTab('notas',this)">ð Notas</button>
+        <button class="ftab" onclick="sFTab('atividade',this)">ð Atividade</button>
       </div>
       <div class="ftabp on" id="ftp-pagamentos"></div>
       <div class="ftabp" id="ftp-treinos"></div>
@@ -417,7 +748,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   </div>
 </div>
 
-<!-- ═══ DASHBOARD ═══ -->
+<!-- âââ DASHBOARD âââ -->
 <div class="page" id="page-dashboard">
   <div class="stats" id="dashStats"></div>
   <div class="g2" style="gap:10px;padding:0 16px 16px;">
@@ -425,41 +756,41 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="sec" style="margin-bottom:0;"><div class="sec-h">Alunos por fase</div><div class="chart-box"><canvas id="cFase"></canvas></div></div>
   </div>
   <div class="g2" style="gap:10px;padding:0 16px 16px;">
-    <div class="sec" style="margin-bottom:0;"><div class="sec-h">⚠️ Vencimentos próximos</div><div id="dashVenc"></div></div>
-    <div class="sec" style="margin-bottom:0;"><div class="sec-h">📅 Agenda de hoje</div><div id="dashAg"></div></div>
+    <div class="sec" style="margin-bottom:0;"><div class="sec-h">â ï¸ Vencimentos prÃ³ximos</div><div id="dashVenc"></div></div>
+    <div class="sec" style="margin-bottom:0;"><div class="sec-h">ð Agenda de hoje</div><div id="dashAg"></div></div>
   </div>
 </div>
 
-<!-- ═══ FINANCEIRO ═══ -->
+<!-- âââ FINANCEIRO âââ -->
 <div class="page" id="page-financeiro">
   <div class="stats" id="finStats"></div>
   <div class="g2" style="gap:10px;padding:0 16px 16px;">
-    <div class="sec" style="margin-bottom:0;"><div class="sec-h">Receita por mês</div><div class="chart-box"><canvas id="cFinM"></canvas></div></div>
+    <div class="sec" style="margin-bottom:0;"><div class="sec-h">Receita por mÃªs</div><div class="chart-box"><canvas id="cFinM"></canvas></div></div>
     <div class="sec" style="margin-bottom:0;"><div class="sec-h">Por forma de pagamento</div><div class="chart-box"><canvas id="cFinF"></canvas></div></div>
   </div>
   <div class="sec" style="margin:0 16px 16px;"><div class="sec-h">Todos os pagamentos</div><div id="finLista"></div></div>
 </div>
 
-<!-- ═══ AGENDA ═══ -->
+<!-- âââ AGENDA âââ -->
 <div class="page" id="page-agenda" style="padding:16px;">
   <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
     <button class="btn btn-purple btn-sm" onclick="openModalAg()">+ Novo agendamento</button>
   </div>
   <div class="g2" style="gap:10px;">
     <div class="sec" style="margin-bottom:0;"><div class="sec-h">Hoje</div><div id="agHoje"></div></div>
-    <div class="sec" style="margin-bottom:0;"><div class="sec-h">Próximos</div><div id="agProx"></div></div>
+    <div class="sec" style="margin-bottom:0;"><div class="sec-h">PrÃ³ximos</div><div id="agProx"></div></div>
   </div>
   <div class="sec" style="margin-top:10px;margin-bottom:0;"><div class="sec-h">Todos</div><div id="agTodos"></div></div>
 </div>
 
-<!-- ═══ FASES ═══ -->
+<!-- âââ FASES âââ -->
 <div class="page" id="page-fases" style="padding:16px;">
   <div style="max-width:500px;">
     <div class="sec"><div class="sec-h">Fases do pipeline <button class="btn btn-purple btn-sm" onclick="addFase()">+ Nova fase</button></div><div id="fasesEditor"></div></div>
   </div>
 </div>
 
-<!-- ═══ CONFIG ═══ -->
+<!-- âââ CONFIG âââ -->
 <div class="page" id="page-config" style="padding:16px;">
   <div style="max-width:460px;">
     <div class="sec">
@@ -468,15 +799,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="fl" style="margin-bottom:13px;"><label>API Key</label><input type="text" class="fi" id="cfg-ak" placeholder="AIza..."></div>
       <div style="display:flex;gap:7px;">
         <button class="btn btn-purple btn-sm" onclick="saveConfig()">Salvar</button>
-        <button class="btn btn-ghost btn-sm" onclick="saveToDrive()">↑ Drive</button>
-        <button class="btn btn-ghost btn-sm" onclick="loadFromDrive()">↓ Drive</button>
+        <button class="btn btn-ghost btn-sm" onclick="saveToDrive()">â Drive</button>
+        <button class="btn btn-ghost btn-sm" onclick="loadFromDrive()">â Drive</button>
       </div>
     </div>
     <div class="sec">
       <div class="sec-h">Dados</div>
       <div style="display:flex;gap:7px;">
-        <button class="btn btn-ghost btn-sm" onclick="exp()">⬆ Exportar JSON</button>
-        <label class="btn btn-ghost btn-sm" style="cursor:pointer">⬇ Importar JSON<input type="file" accept=".json" onchange="imp(event)" style="display:none"></label>
+        <button class="btn btn-ghost btn-sm" onclick="exp()">â¬ Exportar JSON</button>
+        <label class="btn btn-ghost btn-sm" style="cursor:pointer">â¬ Importar JSON<input type="file" accept=".json" onchange="imp(event)" style="display:none"></label>
       </div>
     </div>
   </div>
@@ -485,12 +816,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 </div><!-- /main -->
 <div class="toast" id="toast"></div>
 
-<!-- ═══════════ MODAIS ═══════════ -->
+<!-- âââââââââââ MODAIS âââââââââââ -->
 
 <!-- ALUNO -->
 <div class="ov hidden" id="m-aluno">
  <div class="modal modal-lg">
-  <div class="mh"><div class="mt" id="mAlunoTit">Novo aluno</div><button class="mc" onclick="cm('m-aluno')">✕</button></div>
+  <div class="mh"><div class="mt" id="mAlunoTit">Novo aluno</div><button class="mc" onclick="cm('m-aluno')">â</button></div>
   <div class="g2">
     <div class="fl gfull"><label>Nome completo *</label><input type="text" class="fi" id="a-nome" placeholder="Nome do aluno"></div>
     <div class="fl"><label>WhatsApp</label><input type="text" class="fi" id="a-tel" placeholder="+55 (99) 99999-9999"></div>
@@ -498,10 +829,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="fl"><label>Fase *</label><select class="fs" id="a-fase"></select></div>
     <div class="fl"><label>Status</label>
       <select class="fs" id="a-status">
-        <option value="ativo">✅ ATIVO</option>
-        <option value="inativo">⛔ INATIVO</option>
-        <option value="pendente">⏳ PENDENTE</option>
-        <option value="novo">🆕 NOVO</option>
+        <option value="ativo">â ATIVO</option>
+        <option value="inativo">â INATIVO</option>
+        <option value="pendente">â³ PENDENTE</option>
+        <option value="novo">ð NOVO</option>
       </select>
     </div>
     <div class="fl"><label>Tipo de plano</label>
@@ -513,26 +844,26 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="fl"><label>Data da compra</label><input type="date" class="fi" id="a-inicio"></div>
     <div class="fl"><label>Valor mensal (R$)</label><input type="number" class="fi" id="a-valor" placeholder="0,00" step="0.01"></div>
     <div class="fl"><label>Forma de pagamento</label>
-      <select class="fs" id="a-forma"><option>PIX</option><option>Cartão</option><option>Dinheiro</option><option>Transferência</option></select>
+      <select class="fs" id="a-forma"><option>PIX</option><option>CartÃ£o</option><option>Dinheiro</option><option>TransferÃªncia</option></select>
     </div>
     <div class="fl"><label>Dia de suporte</label>
       <select class="fs" id="a-suporte">
-        <option value="">Nenhum</option><option>Segunda-feira</option><option>Terça-feira</option>
+        <option value="">Nenhum</option><option>Segunda-feira</option><option>TerÃ§a-feira</option>
         <option>Quarta-feira</option><option>Quinta-feira</option><option>Sexta-feira</option>
-        <option>Sábado</option><option>Domingo</option>
+        <option>SÃ¡bado</option><option>Domingo</option>
       </select>
     </div>
     <div class="fl"><label>Prioridade</label>
       <select class="fs" id="a-prio"><option value="normal">Normal</option><option value="alta">Alta</option><option value="urgente">Urgente</option><option value="baixa">Baixa</option></select>
     </div>
-    <div class="fl"><label>Responsável</label><input type="text" class="fi" id="a-resp" placeholder="Nome do personal"></div>
-    <div class="fl"><label>Horário de treino</label><input type="text" class="fi" id="a-horario" placeholder="Seg/Qua/Sex 07h"></div>
+    <div class="fl"><label>ResponsÃ¡vel</label><input type="text" class="fi" id="a-resp" placeholder="Nome do personal"></div>
+    <div class="fl"><label>HorÃ¡rio de treino</label><input type="text" class="fi" id="a-horario" placeholder="Seg/Qua/Sex 07h"></div>
     <div class="fl"><label>Objetivo principal</label><input type="text" class="fi" id="a-objetivo" placeholder="Emagrecimento, hipertrofia..."></div>
     <div class="fl"><label>Indicado por</label><input type="text" class="fi" id="a-indicado"></div>
-    <div class="fl"><label>Data de avaliação agendada</label><input type="date" class="fi" id="a-dtav"></div>
+    <div class="fl"><label>Data de avaliaÃ§Ã£o agendada</label><input type="date" class="fi" id="a-dtav"></div>
     <div class="fl"><label>Link WhatsApp</label><input type="text" class="fi" id="a-wlink" placeholder="wa.me/..."></div>
-    <div class="fl gfull"><label>Etiquetas extras (vírgula)</label><input type="text" class="fi" id="a-etq" placeholder="VIP, Online, Reabilitação..."></div>
-    <div class="fl gfull"><label>Observações / Descrição</label><textarea class="ft" id="a-obs" placeholder="Observações gerais sobre o aluno..."></textarea></div>
+    <div class="fl gfull"><label>Etiquetas extras (vÃ­rgula)</label><input type="text" class="fi" id="a-etq" placeholder="VIP, Online, ReabilitaÃ§Ã£o..."></div>
+    <div class="fl gfull"><label>ObservaÃ§Ãµes / DescriÃ§Ã£o</label><textarea class="ft" id="a-obs" placeholder="ObservaÃ§Ãµes gerais sobre o aluno..."></textarea></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-aluno')">Cancelar</button><button class="btn btn-purple" onclick="saveAluno()">Salvar aluno</button></div>
  </div>
@@ -541,7 +872,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- MOVER FASE -->
 <div class="ov hidden" id="m-fase">
  <div class="modal">
-  <div class="mh"><div class="mt">Mover de fase</div><button class="mc" onclick="cm('m-fase')">✕</button></div>
+  <div class="mh"><div class="mt">Mover de fase</div><button class="mc" onclick="cm('m-fase')">â</button></div>
   <div class="fl"><label>Nova fase</label><select class="fs" id="mf-fase"></select></div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-fase')">Cancelar</button><button class="btn btn-purple" onclick="saveMoverFase()">Mover</button></div>
  </div>
@@ -550,12 +881,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- PAGAMENTO -->
 <div class="ov hidden" id="m-pag">
  <div class="modal">
-  <div class="mh"><div class="mt">Registrar pagamento</div><button class="mc" onclick="cm('m-pag')">✕</button></div>
+  <div class="mh"><div class="mt">Registrar pagamento</div><button class="mc" onclick="cm('m-pag')">â</button></div>
   <div class="g2">
     <div class="fl"><label>Data</label><input type="date" class="fi" id="p-data"></div>
     <div class="fl"><label>Valor (R$)</label><input type="number" class="fi" id="p-val" placeholder="0,00" step="0.01" min="0"></div>
-    <div class="fl"><label>Forma</label><select class="fs" id="p-forma"><option>PIX</option><option>Cartão</option><option>Dinheiro</option><option>Transferência</option></select></div>
-    <div class="fl"><label>Referência</label><input type="text" class="fi" id="p-ref" placeholder="Mês, período..."></div>
+    <div class="fl"><label>Forma</label><select class="fs" id="p-forma"><option>PIX</option><option>CartÃ£o</option><option>Dinheiro</option><option>TransferÃªncia</option></select></div>
+    <div class="fl"><label>ReferÃªncia</label><input type="text" class="fi" id="p-ref" placeholder="MÃªs, perÃ­odo..."></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-pag')">Cancelar</button><button class="btn btn-purple" onclick="savePag()">Registrar</button></div>
  </div>
@@ -564,10 +895,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- RENOVAR -->
 <div class="ov hidden" id="m-ren">
  <div class="modal">
-  <div class="mh"><div class="mt">Renovar plano</div><button class="mc" onclick="cm('m-ren')">✕</button></div>
+  <div class="mh"><div class="mt">Renovar plano</div><button class="mc" onclick="cm('m-ren')">â</button></div>
   <div class="g2">
     <div class="fl"><label>Novo plano</label><select class="fs" id="rn-p"><option>Mensal</option><option>Bimestral</option><option>Trimestral</option><option>Quadrimestral</option><option>Semestral</option><option>Anual</option></select></div>
-    <div class="fl"><label>Nova data de início</label><input type="date" class="fi" id="rn-i"></div>
+    <div class="fl"><label>Nova data de inÃ­cio</label><input type="date" class="fi" id="rn-i"></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-ren')">Cancelar</button><button class="btn btn-purple" onclick="saveRen()">Renovar</button></div>
  </div>
@@ -576,23 +907,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- TREINO -->
 <div class="ov hidden" id="m-treino">
  <div class="modal modal-lg">
-  <div class="mh"><div class="mt">Plano de treino</div><button class="mc" onclick="cm('m-treino')">✕</button></div>
+  <div class="mh"><div class="mt">Plano de treino</div><button class="mc" onclick="cm('m-treino')">â</button></div>
   <div class="g2" style="margin-bottom:11px;">
-    <div class="fl"><label>Nome do treino *</label><input type="text" class="fi" id="tr-n" placeholder="Treino A — Peito/Tríceps"></div>
+    <div class="fl"><label>Nome do treino *</label><input type="text" class="fi" id="tr-n" placeholder="Treino A â Peito/TrÃ­ceps"></div>
     <div class="fl"><label>Dias</label><input type="text" class="fi" id="tr-d" placeholder="Seg, Qua, Sex"></div>
-    <div class="fl gfull"><label>Objetivo</label><input type="text" class="fi" id="tr-o" placeholder="Hipertrofia, resistência..."></div>
+    <div class="fl gfull"><label>Objetivo</label><input type="text" class="fi" id="tr-o" placeholder="Hipertrofia, resistÃªncia..."></div>
   </div>
-  <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:7px;">Exercícios</div>
+  <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:7px;">ExercÃ­cios</div>
   <div id="exForm"></div>
-  <button class="btn btn-ghost btn-sm" onclick="addEx()" style="margin-bottom:5px;">+ Exercício</button>
+  <button class="btn btn-ghost btn-sm" onclick="addEx()" style="margin-bottom:5px;">+ ExercÃ­cio</button>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-treino')">Cancelar</button><button class="btn btn-purple" onclick="saveTreino()">Salvar treino</button></div>
  </div>
 </div>
 
-<!-- AVALIAÇÃO -->
+<!-- AVALIAÃÃO -->
 <div class="ov hidden" id="m-av">
  <div class="modal modal-xl">
-  <div class="mh"><div class="mt">Nova avaliação física</div><button class="mc" onclick="cm('m-av')">✕</button></div>
+  <div class="mh"><div class="mt">Nova avaliaÃ§Ã£o fÃ­sica</div><button class="mc" onclick="cm('m-av')">â</button></div>
   <div class="g3" style="margin-bottom:13px;">
     <div class="fl"><label>Data</label><input type="date" class="fi" id="av-dt"></div>
     <div class="fl"><label>Peso (kg)</label><input type="number" class="fi" id="av-p" placeholder="75.0" step="0.1" oninput="calcIMC()"></div>
@@ -600,36 +931,36 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="fl"><label>% Gordura</label><input type="number" class="fi" id="av-g" placeholder="18.0" step="0.1"></div>
     <div class="fl"><label>Massa muscular (kg)</label><input type="number" class="fi" id="av-m" placeholder="35.0" step="0.1"></div>
     <div style="background:var(--bg3);border-radius:var(--rs);padding:9px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-      <div style="font-size:20px;font-weight:700;" id="imcV">—</div>
+      <div style="font-size:20px;font-weight:700;" id="imcV">â</div>
       <div style="font-size:9.5px;color:var(--t3);" id="imcC">IMC</div>
     </div>
   </div>
-  <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:7px;">Circunferências (cm)</div>
+  <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:7px;">CircunferÃªncias (cm)</div>
   <div class="g4" style="margin-bottom:13px;">
     <div class="fl"><label>Cintura</label><input type="number" class="fi" id="av-ci"></div>
     <div class="fl"><label>Quadril</label><input type="number" class="fi" id="av-qu"></div>
-    <div class="fl"><label>Braço D.</label><input type="number" class="fi" id="av-bd"></div>
-    <div class="fl"><label>Braço E.</label><input type="number" class="fi" id="av-be"></div>
+    <div class="fl"><label>BraÃ§o D.</label><input type="number" class="fi" id="av-bd"></div>
+    <div class="fl"><label>BraÃ§o E.</label><input type="number" class="fi" id="av-be"></div>
     <div class="fl"><label>Coxa D.</label><input type="number" class="fi" id="av-cd"></div>
     <div class="fl"><label>Coxa E.</label><input type="number" class="fi" id="av-ce"></div>
     <div class="fl"><label>Pant. D.</label><input type="number" class="fi" id="av-pd"></div>
     <div class="fl"><label>Pant. E.</label><input type="number" class="fi" id="av-pe"></div>
   </div>
-  <div class="fl"><label>Observações</label><textarea class="ft" id="av-ob"></textarea></div>
-  <div class="mf"><button class="btn btn-ghost" onclick="cm('m-av')">Cancelar</button><button class="btn btn-purple" onclick="saveAv()">Salvar avaliação</button></div>
+  <div class="fl"><label>ObservaÃ§Ãµes</label><textarea class="ft" id="av-ob"></textarea></div>
+  <div class="mf"><button class="btn btn-ghost" onclick="cm('m-av')">Cancelar</button><button class="btn btn-purple" onclick="saveAv()">Salvar avaliaÃ§Ã£o</button></div>
  </div>
 </div>
 
 <!-- META -->
 <div class="ov hidden" id="m-meta">
  <div class="modal">
-  <div class="mh"><div class="mt">Nova meta</div><button class="mc" onclick="cm('m-meta')">✕</button></div>
+  <div class="mh"><div class="mt">Nova meta</div><button class="mc" onclick="cm('m-meta')">â</button></div>
   <div class="g2">
     <div class="fl gfull"><label>Meta *</label><input type="text" class="fi" id="mt-n" placeholder="Ex: Perder 5kg, Agachar 100kg..."></div>
-    <div class="fl"><label>Categoria</label><select class="fs" id="mt-c"><option>Peso</option><option>Força</option><option>Resistência</option><option>Medidas</option><option>Outros</option></select></div>
+    <div class="fl"><label>Categoria</label><select class="fs" id="mt-c"><option>Peso</option><option>ForÃ§a</option><option>ResistÃªncia</option><option>Medidas</option><option>Outros</option></select></div>
     <div class="fl"><label>Prazo</label><input type="date" class="fi" id="mt-pr"></div>
     <div class="fl"><label>Progresso (%)</label><input type="number" class="fi" id="mt-pc" placeholder="0" min="0" max="100"></div>
-    <div class="fl"><label>Status</label><select class="fs" id="mt-st"><option>Em andamento</option><option>Concluída</option><option>Abandonada</option></select></div>
+    <div class="fl"><label>Status</label><select class="fs" id="mt-st"><option>Em andamento</option><option>ConcluÃ­da</option><option>Abandonada</option></select></div>
     <div class="fl gfull"><label>Obs.</label><textarea class="ft" id="mt-ob"></textarea></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-meta')">Cancelar</button><button class="btn btn-purple" onclick="saveMeta()">Salvar</button></div>
@@ -639,21 +970,21 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- NOTA -->
 <div class="ov hidden" id="m-nota">
  <div class="modal">
-  <div class="mh"><div class="mt">Nova anotação</div><button class="mc" onclick="cm('m-nota')">✕</button></div>
+  <div class="mh"><div class="mt">Nova anotaÃ§Ã£o</div><button class="mc" onclick="cm('m-nota')">â</button></div>
   <div class="fl" style="margin-bottom:9px;"><label>Prioridade</label><select class="fs" id="nt-p"><option value="normal">Normal</option><option value="imp">Importante</option><option value="urg">Urgente</option></select></div>
-  <div class="fl"><label>Texto</label><textarea class="ft" id="nt-t" placeholder="Anotação..." style="min-height:80px;"></textarea></div>
+  <div class="fl"><label>Texto</label><textarea class="ft" id="nt-t" placeholder="AnotaÃ§Ã£o..." style="min-height:80px;"></textarea></div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-nota')">Cancelar</button><button class="btn btn-purple" onclick="saveNota()">Salvar</button></div>
  </div>
 </div>
 
-<!-- NUTRIÇÃO -->
+<!-- NUTRIÃÃO -->
 <div class="ov hidden" id="m-nut">
  <div class="modal">
-  <div class="mh"><div class="mt">Adicionar refeição</div><button class="mc" onclick="cm('m-nut')">✕</button></div>
+  <div class="mh"><div class="mt">Adicionar refeiÃ§Ã£o</div><button class="mc" onclick="cm('m-nut')">â</button></div>
   <div class="g2">
-    <div class="fl"><label>Refeição *</label><input type="text" class="fi" id="nu-n" placeholder="Café da manhã..."></div>
-    <div class="fl"><label>Horário</label><input type="time" class="fi" id="nu-h"></div>
-    <div class="fl gfull"><label>Alimentos</label><textarea class="ft" id="nu-a" placeholder="3 ovos mexidos&#10;1 fatia de pão integral..."></textarea></div>
+    <div class="fl"><label>RefeiÃ§Ã£o *</label><input type="text" class="fi" id="nu-n" placeholder="CafÃ© da manhÃ£..."></div>
+    <div class="fl"><label>HorÃ¡rio</label><input type="time" class="fi" id="nu-h"></div>
+    <div class="fl gfull"><label>Alimentos</label><textarea class="ft" id="nu-a" placeholder="3 ovos mexidos&#10;1 fatia de pÃ£o integral..."></textarea></div>
     <div class="fl"><label>Calorias (kcal)</label><input type="number" class="fi" id="nu-k"></div>
     <div class="fl"><label>Obs.</label><input type="text" class="fi" id="nu-o"></div>
   </div>
@@ -664,10 +995,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- FOTO -->
 <div class="ov hidden" id="m-foto">
  <div class="modal">
-  <div class="mh"><div class="mt">Adicionar foto</div><button class="mc" onclick="cm('m-foto')">✕</button></div>
+  <div class="mh"><div class="mt">Adicionar foto</div><button class="mc" onclick="cm('m-foto')">â</button></div>
   <div id="fotoPreview"></div>
   <div class="drop" onclick="document.getElementById('fotoInput').click()" style="margin-bottom:12px;">
-    <div style="font-size:24px;margin-bottom:6px;">📷</div>
+    <div style="font-size:24px;margin-bottom:6px;">ð·</div>
     <div style="font-size:12px;">Clique para selecionar</div>
     <input type="file" id="fotoInput" accept="image/*" onchange="onFoto(event)" style="display:none;">
   </div>
@@ -682,11 +1013,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- VER FOTO -->
 <div class="ov hidden" id="m-foto-v">
  <div class="modal" style="max-width:760px;background:#000;border-color:rgba(255,255,255,.1);">
-  <div class="mh"><div style="color:#fff;font-weight:600;" id="fvTit"></div><button class="mc" onclick="cm('m-foto-v')" style="color:#666;">✕</button></div>
+  <div class="mh"><div style="color:#fff;font-weight:600;" id="fvTit"></div><button class="mc" onclick="cm('m-foto-v')" style="color:#666;">â</button></div>
   <img id="fvImg" style="width:100%;max-height:68vh;object-fit:contain;border-radius:5px;">
   <div style="display:flex;justify-content:space-between;margin-top:10px;">
     <span id="fvObs" style="font-size:12px;color:#666;"></span>
-    <button class="btn btn-red btn-sm" onclick="delFoto()">🗑️ Excluir</button>
+    <button class="btn btn-red btn-sm" onclick="delFoto()">ðï¸ Excluir</button>
   </div>
  </div>
 </div>
@@ -694,12 +1025,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <!-- AGENDAMENTO -->
 <div class="ov hidden" id="m-ag">
  <div class="modal">
-  <div class="mh"><div class="mt">Novo agendamento</div><button class="mc" onclick="cm('m-ag')">✕</button></div>
+  <div class="mh"><div class="mt">Novo agendamento</div><button class="mc" onclick="cm('m-ag')">â</button></div>
   <div class="g2">
     <div class="fl"><label>Aluno</label><select class="fs" id="ag-al"></select></div>
-    <div class="fl"><label>Tipo</label><select class="fs" id="ag-tp"><option>Treino</option><option>Avaliação</option><option>Anamnese</option><option>Consulta</option><option>Outro</option></select></div>
+    <div class="fl"><label>Tipo</label><select class="fs" id="ag-tp"><option>Treino</option><option>AvaliaÃ§Ã£o</option><option>Anamnese</option><option>Consulta</option><option>Outro</option></select></div>
     <div class="fl"><label>Data</label><input type="date" class="fi" id="ag-dt"></div>
-    <div class="fl"><label>Horário</label><input type="time" class="fi" id="ag-hr"></div>
+    <div class="fl"><label>HorÃ¡rio</label><input type="time" class="fi" id="ag-hr"></div>
     <div class="fl gfull"><label>Obs.</label><input type="text" class="fi" id="ag-ob"></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('m-ag')">Cancelar</button><button class="btn btn-purple" onclick="saveAg()">Salvar</button></div>
@@ -707,9 +1038,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 </div>
 
 <script>
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // STATE
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 let alunos=[], agendamentos=[], fases=[];
 let currentA=null, filtroAtual='todos', fotoB64=null, viewFotoIdx=-1, exCount=0;
 let charts={}, currentView='lista';
@@ -717,7 +1048,7 @@ let charts={}, currentView='lista';
 const PLANO_MESES={Mensal:1,Bimestral:2,Trimestral:3,Quadrimestral:4,Semestral:6,Anual:12,Pendente:0};
 
 const FASES_DEFAULT=[
-  {id:'f1',nome:'Não iniciado',cor:'#94a3b8'},
+  {id:'f1',nome:'NÃ£o iniciado',cor:'#94a3b8'},
   {id:'f2',nome:'Aguardando shapeback',cor:'#f59e0b'},
   {id:'f3',nome:'Aguardando anamnese',cor:'#3b82f6'},
   {id:'f4',nome:'Montar treino',cor:'#a855f7'},
@@ -727,18 +1058,18 @@ const FASES_DEFAULT=[
 ];
 
 const STATUS_CFG={
-  ativo:{label:'ATIVO',bg:'#059669',txt:'#fff',icon:'✅'},
-  inativo:{label:'INATIVO',bg:'#64748b',txt:'#fff',icon:'⛔'},
-  pendente:{label:'PENDENTE',bg:'#d97706',txt:'#fff',icon:'⏳'},
-  novo:{label:'NOVO',bg:'#7c3aed',txt:'#fff',icon:'🆕'},
+  ativo:{label:'ATIVO',bg:'#059669',txt:'#fff',icon:'â'},
+  inativo:{label:'INATIVO',bg:'#64748b',txt:'#fff',icon:'â'},
+  pendente:{label:'PENDENTE',bg:'#d97706',txt:'#fff',icon:'â³'},
+  novo:{label:'NOVO',bg:'#7c3aed',txt:'#fff',icon:'ð'},
 };
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // UTILS
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).substr(2,5);
 const today=()=>new Date().toISOString().slice(0,10);
-const fmt=(d)=>d?new Date(d+'T12:00:00').toLocaleDateString('pt-BR'):'—';
+const fmt=(d)=>d?new Date(d+'T12:00:00').toLocaleDateString('pt-BR'):'â';
 const fmtM=(v)=>'R$ '+parseFloat(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const addM=(ds,m)=>{const d=new Date(ds+'T12:00:00');d.setMonth(d.getMonth()+m);return d.toISOString().slice(0,10);};
 const venc=(a)=>(!a.inicio||a.plano==='Pendente')?null:addM(a.inicio,PLANO_MESES[a.plano]||0);
@@ -768,9 +1099,9 @@ function logAtividade(a,texto){
   if(a.atividade.length>50)a.atividade=a.atividade.slice(0,50);
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // STORAGE
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function save(){
   localStorage.setItem('yk4_alunos',JSON.stringify(alunos));
   localStorage.setItem('yk4_ag',JSON.stringify(agendamentos));
@@ -789,17 +1120,18 @@ function load(){
   });
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // NAVIGATION
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function gp(page,navEl){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
-  const titles={pipeline:'Lista',lista:'Tabela',ficha:currentA?.nome||'Aluno',dashboard:'Dashboard',financeiro:'Financeiro',agenda:'Agenda',fases:'Fases',config:'Config'};
+  const titles={home:'InÃ­cio',pipeline:'Lista',lista:'Tabela',ficha:currentA?.nome||'Aluno',dashboard:'Dashboard',financeiro:'Financeiro',agenda:'Agenda',fases:'Fases',config:'Config'};
   $('bread-current').textContent=titles[page]||page;
   $('page-'+page)?.classList.add('on');
   if(navEl) navEl.classList.add('on');
 
+  if(page==='home') renderHome();
   if(page==='pipeline') renderLista();
   if(page==='lista') renderTabela();
   if(page==='dashboard') renderDashboard();
@@ -809,14 +1141,251 @@ function gp(page,navEl){
   updateBadge();
 }
 
+// âââââââââââââââââââââââââââââââââââ
+// HOME DASHBOARD PREMIUM
+// âââââââââââââââââââââââââââââââââââ
+function renderHome(){
+  const meses=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const mesesFull=['Janeiro','Fevereiro','MarÃ§o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const now=new Date();
+
+  // KPIs
+  const total=alunos.length;
+  const rec=alunos.reduce((s,a)=>(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),s),0);
+  const porPlano={};
+  alunos.forEach(a=>{const p=a.plano||'Mensal';porPlano[p]=(porPlano[p]||0)+1;});
+  const topPlano=Object.entries(porPlano).sort((a,b)=>b[1]-a[1])[0]||['â',0];
+  const reav=alunos.filter(a=>(a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o')).length;
+  const montar=alunos.filter(a=>(a.etiquetasExtras||[]).includes('ðª Montar treino')).length;
+
+  const el=id=>document.getElementById(id);
+  if(el('sk-kpi-rec')) el('sk-kpi-rec').textContent=fmtM(Math.round(rec));
+  if(el('sk-kpi-total')) el('sk-kpi-total').textContent=total;
+  if(el('sk-kpi-reav')) el('sk-kpi-reav').textContent=reav;
+  if(el('sk-kpi-plano')) el('sk-kpi-plano').textContent=topPlano[0];
+  if(el('sk-plano-cnt')) el('sk-plano-cnt').textContent=topPlano[1];
+  if(el('sk-kpi-trend-reav')){
+    el('sk-kpi-trend-reav').className='sk-kpi-trend'+(reav>0?' down':'');
+    el('sk-kpi-trend-reav').innerHTML=(reav>0?'<span>â</span> pendentes':'<span>â</span> nenhuma pendente');
+  }
+
+  // Data label
+  const m=now.getMonth(),y=now.getFullYear();
+  if(el('sk-date-lbl')) el('sk-date-lbl').textContent=`1 ${mesesFull[m].slice(0,3)} ${y} â ${now.getDate()} ${mesesFull[m].slice(0,3)} ${y}`;
+
+  // GRÃFICO BARRAS
+  const recMeses={};
+  alunos.forEach(a=>(a.pagamentos||[]).forEach(p=>{const m=p.data?.slice(0,7);if(m)recMeses[m]=(recMeses[m]||0)+parseFloat(p.valor||0);}));
+  const sortedM=Object.keys(recMeses).sort().slice(-8);
+  const vals=sortedM.map(m=>Math.round(recMeses[m]));
+  const lbls=sortedM.map(m=>{const[y,mo]=m.split('-');return meses[parseInt(mo)-1].charAt(0).toUpperCase()+meses[parseInt(mo)-1].slice(1);});
+  const mesAtual=today().slice(0,7);
+  const canvas=el('sk-chart');
+  if(canvas){
+    if(window._skChart) window._skChart.destroy();
+    window._skChart=new Chart(canvas,{
+      type:'bar',
+      data:{labels:lbls,datasets:[{data:vals,backgroundColor:sortedM.map(m=>m===mesAtual?'#8a6030':'#3a2000'),borderRadius:8,borderSkipped:false,barPercentage:.6}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'R$ '+c.parsed.y.toLocaleString('pt-BR')}}},scales:{x:{grid:{display:false},ticks:{color:'#a08050',font:{size:11}}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{color:'#a08050',font:{size:11},callback:v=>v>=1000?'R$'+Math.round(v/1000)+'K':'R$'+v}}}}
+    });
+  }
+
+  // DONUT
+  const donutCanvas=el('sk-donut');
+  if(donutCanvas){
+    if(window._skDonut) window._skDonut.destroy();
+    const pct=Math.round(topPlano[1]/Math.max(total,1)*100);
+    donutCanvas.parentElement.querySelector('.sk-donut-val').textContent=pct+'%';
+    window._skDonut=new Chart(donutCanvas,{
+      type:'doughnut',
+      data:{datasets:[{data:[pct,100-pct],backgroundColor:['#3a2000','#e8d5b0'],borderWidth:0,borderRadius:4}]},
+      options:{responsive:false,cutout:'75%',plugins:{legend:{display:false},tooltip:{enabled:false}}}
+    });
+  }
+
+  // CALENDÃRIO
+  const calEl=el('sk-cal');
+  if(calEl){
+    const mo=now.getMonth(),yr=now.getFullYear(),today_d=now.getDate();
+    if(el('sk-cal-month')) el('sk-cal-month').textContent=mesesFull[mo]+' '+yr;
+    const firstDay=new Date(yr,mo,1).getDay()||7;
+    const daysInMonth=new Date(yr,mo+1,0).getDate();
+    const dows=['Seg','Ter','Qua','Qui','Sex','SÃ¡b','Dom'];
+    let html=dows.map(d=>`<div class="sk-cal-dow">${d}</div>`).join('');
+    for(let i=1;i<firstDay;i++) html+=`<div class="sk-cal-d other"></div>`;
+    for(let d=1;d<=daysInMonth;d++) html+=`<div class="sk-cal-d${d===today_d?' today':''}">${d}</div>`;
+    calEl.innerHTML=html;
+  }
+
+  // TABELA
+  const tbl=el('sk-table');
+  if(tbl){
+    const pags=alunos.flatMap(a=>(a.pagamentos||[]).map(p=>({...p,nome:a.nome,plano:a.plano||'â'}))).sort((a,b)=>(b.data||'').localeCompare(a.data||'')).slice(0,8);
+    if(!pags.length){tbl.innerHTML='<div style="padding:20px;text-align:center;color:#aaa;font-size:13px;">Nenhum pagamento registrado</div>';return;}
+    tbl.innerHTML=pags.map(p=>{
+      const ini=(p.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+      const dt=p.data?new Date(p.data+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}):'â';
+      const badge=p.forma==='PIX'?'pix':'paid';
+      const badgeTxt=p.forma==='PIX'?'Pix':'CartÃ£o';
+      return `<div class="sk-trow">
+        <div class="sk-trow-name"><div class="sk-trow-av">${ini}</div><div class="sk-trow-nm">${p.nome}</div></div>
+        <div class="sk-trow-cell">${p.plano}</div>
+        <div class="sk-trow-id">${dt}</div>
+        <div class="sk-trow-cell" style="font-weight:600;color:#111;">${fmtM(parseFloat(p.valor||0))}</div>
+        <div><span class="sk-badge ${badge}">${badgeTxt}</span></div>
+      </div>`;
+    }).join('');
+  }
+
+  // BUSCA
+  const si=el('sk-search-in');
+  if(si) si.oninput=function(){
+    const q=this.value.toLowerCase();
+    if(!q){renderHome();return;}
+    const f=alunos.filter(a=>(a.nome||'').toLowerCase().includes(q));
+    const tbl=el('sk-table');
+    if(tbl) tbl.innerHTML=f.slice(0,8).map(a=>{
+      const ini=(a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+      const rec=(a.pagamentos||[]).reduce((s,p)=>s+parseFloat(p.valor||0),0);
+      return `<div class="sk-trow" onclick="openFicha('${a.id}')">
+        <div class="sk-trow-name"><div class="sk-trow-av">${ini}</div><div class="sk-trow-nm">${a.nome}</div></div>
+        <div class="sk-trow-cell">${a.plano||'â'}</div>
+        <div class="sk-trow-id">${a.inicio?new Date(a.inicio+'T12:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}):'â'}</div>
+        <div class="sk-trow-cell" style="font-weight:600;color:#111;">${fmtM(rec)}</div>
+        <div><span class="sk-badge paid">Ativo</span></div>
+      </div>`;
+    }).join('');
+  };
+
+  // ââ GRÃFICO 1: VENCIMENTOS MAIS PRÃXIMOS ââ
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const comVenc = alunos
+    .filter(a=>a.inicio && a.plano && a.plano!=='Pendente')
+    .map(a=>{
+      const vc = venc(a);
+      const dt = vc ? new Date(vc+'T12:00:00') : null;
+      const dias = dt ? Math.round((dt - hoje) / 86400000) : 9999;
+      return {...a, _vc:vc, _dias:dias};
+    })
+    .sort((a,b)=>a._dias - b._dias)
+    .slice(0,10);
+
+  const vencEl = el('sk-venc-list');
+  if(vencEl){
+    if(!comVenc.length){
+      vencEl.innerHTML='<div style="padding:20px;text-align:center;color:#aaa;font-size:13px;">Nenhum aluno com plano ativo</div>';
+    } else {
+      vencEl.innerHTML = comVenc.map(a=>{
+        const ini = a.inicio ? new Date(a.inicio+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : 'â';
+        const vcFmt = a._vc ? new Date(a._vc+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : 'â';
+        const dias = a._dias;
+        let badge, cor;
+        if(dias < 0){ badge='Vencido'; cor='#ef4444'; }
+        else if(dias <= 7){ badge=dias+'d'; cor='#f97316'; }
+        else if(dias <= 30){ badge=dias+'d'; cor='#eab308'; }
+        else { badge=dias+'d'; cor='#22c55e'; }
+        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;" onclick="openFicha('${a.id}')">
+          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
+          <div class="sk-trow-cell">${a.plano||'â'}</div>
+          <div class="sk-trow-id">${ini}</div>
+          <div class="sk-trow-cell" style="font-weight:600;">${vcFmt}</div>
+          <div><span class="sk-badge" style="background:${cor}20;color:${cor};border:1px solid ${cor}40;">${badge}</span></div>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // ââ GRÃFICO 2: REAVALIAÃÃES MAIS PRÃXIMAS ââ
+  // Busca em agendamentos (tipo ReavaliaÃ§Ã£o) OU etiqueta 'ð ReavaliaÃ§Ã£o'
+  const agend = JSON.parse(localStorage.getItem('yk4_agendamentos')||'[]');
+  const comReav = alunos.map(a=>{
+    // Procurar agendamento de reavaliaÃ§Ã£o para esse aluno
+    const ag = agend.filter(g=>g.aluno===a.id && g.tipo==='ReavaliaÃ§Ã£o' && g.data)
+      .sort((x,y)=>x.data.localeCompare(y.data))[0];
+    const temEtiq = (a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o');
+    if(!ag && !temEtiq) return null;
+    const dtReav = ag ? new Date(ag.data+'T12:00:00') : null;
+    const dias = dtReav ? Math.round((dtReav - hoje) / 86400000) : (temEtiq ? 0 : 9999);
+    return {...a, _dtReav: ag?.data||null, _diasReav: dias};
+  }).filter(Boolean).sort((a,b)=>a._diasReav - b._diasReav).slice(0,10);
+
+  const reavEl = el('sk-reav-list');
+  if(reavEl){
+    if(!comReav.length){
+      reavEl.innerHTML='<div style="padding:20px;text-align:center;color:#22c55e;font-size:13px;">â Nenhuma reavaliaÃ§Ã£o pendente</div>';
+    } else {
+      reavEl.innerHTML = comReav.map(a=>{
+        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+        const dtFmt = a._dtReav ? new Date(a._dtReav+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : 'Pendente';
+        const dias = a._diasReav;
+        let badge, cor;
+        if(dias <= 0){ badge='Hoje/Atrasada'; cor='#ef4444'; }
+        else if(dias <= 7){ badge=dias+'d'; cor='#f97316'; }
+        else if(dias <= 30){ badge=dias+'d'; cor='#eab308'; }
+        else { badge=dias+'d'; cor='#22c55e'; }
+        const ult = a.atividades?.filter(v=>v.msg?.includes('Treino entregue')).slice(-1)[0];
+        const ultDt = ult?.data ? new Date(ult.data).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}) : 'â';
+        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;" onclick="openFicha('${a.id}')">
+          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
+          <div class="sk-trow-cell">${a.plano||'â'}</div>
+          <div class="sk-trow-id">${ultDt}</div>
+          <div class="sk-trow-cell" style="font-weight:600;">${dtFmt}</div>
+          <div><span class="sk-badge" style="background:${cor}20;color:${cor};border:1px solid ${cor}40;">${badge}</span></div>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // ââ GRÃFICO 3: TREINOS PENDENTES PARA MONTAR ââ
+  // Alunos com etiqueta 'ðª Montar treino' OU em fase "Montar Treino"
+  const fasesMontar = fases.filter(f=>f.nome.toLowerCase().includes('montar')).map(f=>f.id);
+  const pendMontar = alunos.filter(a=>
+    (a.etiquetasExtras||[]).includes('ðª Montar treino') ||
+    fasesMontar.includes(a.faseId)
+  );
+  // TambÃ©m: alunos que jÃ¡ passaram por TODAS as fases de anamnese/fotos
+  // Identificar fases de anamnese e foto/shapeback
+  const fasesAnamnese = fases.filter(f=>f.nome.toLowerCase().includes('anamnese')).map(f=>f.id);
+  const fasesShapeback = fases.filter(f=>f.nome.toLowerCase().includes('shapeback')||f.nome.toLowerCase().includes('foto')).map(f=>f.id);
+
+  const montarEl = el('sk-montar-list');
+  if(montarEl){
+    if(!pendMontar.length){
+      montarEl.innerHTML='<div style="padding:20px;text-align:center;color:#22c55e;font-size:13px;">â Nenhum treino pendente</div>';
+    } else {
+      montarEl.innerHTML = pendMontar.map(a=>{
+        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+        const fase = getFase(a.faseId);
+        const situacao = (a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o')
+          ? 'ð¸ Aguardando fotos'
+          : 'ðª Montar treino';
+        const sitCor = situacao.includes('Aguardando') ? '#f97316' : '#8b5cf6';
+        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1.5fr 1.5fr 0.8fr;" onclick="openFicha('${a.id}')">
+          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
+          <div class="sk-trow-cell">${a.plano||'â'}</div>
+          <div class="sk-trow-cell"><span style="background:${fase.cor}20;color:${fase.cor};padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;">${fase.nome}</span></div>
+          <div class="sk-trow-cell"><span style="background:${sitCor}15;color:${sitCor};padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;">${situacao}</span></div>
+          <div><button class="sk-badge paid" onclick="event.stopPropagation();openFicha('${a.id}')" style="cursor:pointer;border:none;">Ver</button></div>
+        </div>`;
+      }).join('');
+    }
+  }
+}
+
+function skPeriod(btn,p){
+  document.querySelectorAll('.sk-pbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
 function updateBadge(){
   const n=alunos.filter(a=>statusPag(a)==='vencido').length;
   $('nb-venc').textContent=n||''; $('nb-venc').style.display=n?'':'none';
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // LISTA CLICKUP
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function setView(v){
   currentView=v;
   $('btn-lista').classList.toggle('on',v==='lista');
@@ -828,7 +1397,7 @@ function setView(v){
 function renderLista(){
   const thead=`<div class="cl-thead">
     <div class="cl-th">Nome</div>
-    <div class="cl-th">Responsável</div>
+    <div class="cl-th">ResponsÃ¡vel</div>
     <div class="cl-th">Prioridade</div>
     <div class="cl-th">Data de vencimento</div>
     <div class="cl-th">Status pag.</div>
@@ -839,39 +1408,39 @@ function renderLista(){
 
     const rows=lista.map(a=>{
       const s=statusPag(a), vc=venc(a);
-      const PRIO={'urgente':['#dc2626','🔴 Urgente'],'alta':['#ea580c','🟠 Alta'],'normal':['#94a3b8','Normal'],'baixa':['#cbd5e1','Baixa']}[a.prioridade||'normal'];
+      const PRIO={'urgente':['#dc2626','ð´ Urgente'],'alta':['#ea580c','ð  Alta'],'normal':['#94a3b8','Normal'],'baixa':['#cbd5e1','Baixa']}[a.prioridade||'normal'];
 
       // Date chip
       let dateChip='<span style="color:var(--t4);font-size:11px;">Vazio</span>';
       if(vc){
         const diff=(new Date(vc+'T12:00:00')-new Date())/86400000;
-        if(diff<-1) dateChip=`<span class="cl-date atrasado">⚠ ${fmt(vc)}</span>`;
+        if(diff<-1) dateChip=`<span class="cl-date atrasado">â  ${fmt(vc)}</span>`;
         else if(Math.abs(diff)<1) dateChip=`<span class="cl-date hoje">Hoje</span>`;
-        else if(diff<2) dateChip=`<span class="cl-date amanha">Amanhã</span>`;
+        else if(diff<2) dateChip=`<span class="cl-date amanha">AmanhÃ£</span>`;
         else if(diff<7) dateChip=`<span class="cl-date amanha">${fmt(vc)}</span>`;
         else dateChip=`<span class="cl-date ok">${fmt(vc)}</span>`;
       }
 
-      const pagChip={'ativo':'<span class="tag tag-green" style="font-size:10px;">✓ Em dia</span>','vencido':'<span class="tag tag-red" style="font-size:10px;">✗ Vencido</span>','vencendo':'<span class="tag tag-yellow" style="font-size:10px;">⏳ Vencendo</span>','pendente':'<span class="tag tag-gray" style="font-size:10px;">Pendente</span>'}[s];
+      const pagChip={'ativo':'<span class="tag tag-green" style="font-size:10px;">â Em dia</span>','vencido':'<span class="tag tag-red" style="font-size:10px;">â Vencido</span>','vencendo':'<span class="tag tag-yellow" style="font-size:10px;">â³ Vencendo</span>','pendente':'<span class="tag tag-gray" style="font-size:10px;">Pendente</span>'}[s];
 
-      const temReav=(a.etiquetasExtras||[]).includes('🔄 Reavaliação');
-      const temMontar=(a.etiquetasExtras||[]).includes('💪 Montar treino');
+      const temReav=(a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o');
+      const temMontar=(a.etiquetasExtras||[]).includes('ðª Montar treino');
       const isNovoAluno=(!a.pagamentos?.length&&!a.avaliacoes?.length)||a.etiquetasExtras?.includes('aluno novo');
 
       return `<div class="cl-row" onclick="openFicha('${a.id}')">
         <div class="cl-row-name">
-          <div class="cl-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:10px;':''}">${s==='ativo'?'✓':''}</div>
+          <div class="cl-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:10px;':''}">${s==='ativo'?'â':''}</div>
           <div class="cl-av">${initials(a.nome)}</div>
           <div class="cl-name-txt">${a.nome}</div>
           <div class="cl-etq">
-            ${temReav?'<span class="tag tag-yellow" style="font-size:9.5px;padding:1px 6px;animation:pulse 2s infinite;">🔄 Reavaliação</span>':''}
-            ${temMontar?'<span class="tag tag-purple" style="font-size:9.5px;padding:1px 6px;">💪 Montar treino</span>':''}
+            ${temReav?'<span class="tag tag-yellow" style="font-size:9.5px;padding:1px 6px;animation:pulse 2s infinite;">ð ReavaliaÃ§Ã£o</span>':''}
+            ${temMontar?'<span class="tag tag-purple" style="font-size:9.5px;padding:1px 6px;">ðª Montar treino</span>':''}
             ${isNovoAluno&&!temReav&&!temMontar?'<span class="tag tag-purple" style="font-size:9.5px;padding:1px 6px;">aluno novo</span>':''}
-            ${(a.etiquetasExtras||[]).filter(e=>!['aluno novo','🔄 Reavaliação','💪 Montar treino'].includes(e)).slice(0,2).map(e=>`<span class="tag tag-gray" style="font-size:9.5px;">${e}</span>`).join('')}
+            ${(a.etiquetasExtras||[]).filter(e=>!['aluno novo','ð ReavaliaÃ§Ã£o','ðª Montar treino'].includes(e)).slice(0,2).map(e=>`<span class="tag tag-gray" style="font-size:9.5px;">${e}</span>`).join('')}
           </div>
           <div class="cl-acts">
-            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openMoverFase('${a.id}')">Mover →</button>
-            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openModalAluno('${a.id}')">✏️</button>
+            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openMoverFase('${a.id}')">Mover â</button>
+            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openModalAluno('${a.id}')">âï¸</button>
           </div>
         </div>
         <div class="cl-cell">
@@ -893,7 +1462,7 @@ function renderLista(){
 
     return `<div class="cl-group">
       <div class="cl-group-head" onclick="toggleGrp('${f.id}')">
-        <span class="cl-arrow open" id="arr-${f.id}">▶</span>
+        <span class="cl-arrow open" id="arr-${f.id}">â¶</span>
         <span class="cl-phase-pill" style="background:${f.cor}22;color:${f.cor};">${f.nome}</span>
         <span class="cl-phase-count">${lista.length}</span>
         <span style="flex:1"></span>
@@ -935,9 +1504,9 @@ function renderQuadro(){
   }).join('');
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // FICHA ESTILO CLICKUP
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function openFicha(id){
   currentA=alunos.find(a=>a.id===id);
   if(!currentA) return;
@@ -953,57 +1522,57 @@ function renderFicha(){
   const s=statusPag(a), vc=venc(a);
   const rec=(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),0);
 
-  // Botões de ciclo automático
+  // BotÃµes de ciclo automÃ¡tico
   const nomeF = f.nome.toLowerCase();
-  const temReav = (a.etiquetasExtras||[]).includes('🔄 Reavaliação');
-  const temMontar = (a.etiquetasExtras||[]).includes('💪 Montar treino');
+  const temReav = (a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o');
+  const temMontar = (a.etiquetasExtras||[]).includes('ðª Montar treino');
   let btnCiclo = '';
   if(temReav){
-    btnCiclo = `<button class="btn btn-sm" style="background:#f59e0b;color:#fff;margin-left:8px;" onclick="cicloReceberFotos()">📸 Fotos recebidas → Montar treino</button>`;
+    btnCiclo = `<button class="btn btn-sm" style="background:#f59e0b;color:#fff;margin-left:8px;" onclick="cicloReceberFotos()">ð¸ Fotos recebidas â Montar treino</button>`;
   } else if(temMontar){
-    btnCiclo = `<button class="btn btn-sm" style="background:#7c3aed;color:#fff;margin-left:8px;" onclick="cicloTreinoNovoPronto()">💪 Treino pronto → Entregar</button>`;
+    btnCiclo = `<button class="btn btn-sm" style="background:#7c3aed;color:#fff;margin-left:8px;" onclick="cicloTreinoNovoPronto()">ðª Treino pronto â Entregar</button>`;
   } else if(a.dtReavaliacao && a.dtReavaliacao > today()){
-    btnCiclo = `<span style="font-size:11px;color:var(--t3);background:var(--bg3);padding:3px 9px;border-radius:4px;margin-left:8px;">⏳ Reavaliação em ${fmt(a.dtReavaliacao)}</span>`;
+    btnCiclo = `<span style="font-size:11px;color:var(--t3);background:var(--bg3);padding:3px 9px;border-radius:4px;margin-left:8px;">â³ ReavaliaÃ§Ã£o em ${fmt(a.dtReavaliacao)}</span>`;
   }
 
   // STATUS BAR
   $('fichaStatusBar').innerHTML=`
     <div class="status-pill" style="background:${st.bg};color:${st.txt};" onclick="openModalAluno('${a.id}')">
       ${st.icon} ${st.label}
-      <span style="font-size:10px;opacity:.8;">✓</span>
+      <span style="font-size:10px;opacity:.8;">â</span>
     </div>
-    <span style="font-size:10px;color:var(--t3);padding:0 4px;">▶</span>
+    <span style="font-size:10px;color:var(--t3);padding:0 4px;">â¶</span>
     <button class="btn btn-ghost btn-sm" onclick="openMoverFase('${a.id}')">
       <span style="width:8px;height:8px;border-radius:50%;background:${f.cor};display:inline-block;"></span>
       ${f.nome}
     </button>
     ${btnCiclo}`;
 
-  // TÍTULO
+  // TÃTULO
   $('fichaTitulo').innerHTML=`
-    <div class="ficha-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:13px;':''}">${s==='ativo'?'✓':''}</div>
+    <div class="ficha-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:13px;':''}">${s==='ativo'?'â':''}</div>
     ${a.nome}`;
 
-  // CAMPOS PRINCIPAIS — 2 colunas
+  // CAMPOS PRINCIPAIS â 2 colunas
   $('fichaFieldsTop').innerHTML=`
     <div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⊙</span>Status</div>
+        <div class="ff-key"><span class="ff-key-icon">â</span>Status</div>
         <div class="ff-val">
           <span class="status-pill" style="background:${st.bg};color:${st.txt};font-size:11px;padding:3px 10px;cursor:pointer;" onclick="openModalAluno('${a.id}')">${st.icon} ${st.label}</span>
-          <span style="font-size:12px;color:var(--t3);">▶</span>
+          <span style="font-size:12px;color:var(--t3);">â¶</span>
         </div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">📅</span>Datas</div>
-        <div class="ff-val">Data Inicial – <span style="color:var(--purple);font-weight:600;">${a.inicio?fmt(a.inicio):'—'}</span></div>
+        <div class="ff-key"><span class="ff-key-icon">ð</span>Datas</div>
+        <div class="ff-val">Data Inicial â <span style="color:var(--purple);font-weight:600;">${a.inicio?fmt(a.inicio):'â'}</span></div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⏱</span>Tempo estimado</div>
+        <div class="ff-key"><span class="ff-key-icon">â±</span>Tempo estimado</div>
         <div class="ff-val"><span style="color:var(--t3);">Vazio</span></div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🏷</span>Etiquetas</div>
+        <div class="ff-key"><span class="ff-key-icon">ð·</span>Etiquetas</div>
         <div class="ff-val">
           ${(a.etiquetasExtras||[]).map(e=>`<span class="tag tag-gray">${e}</span>`).join('')}
           ${!(a.etiquetasExtras||[]).length?'<span style="color:var(--t3);">Vazio</span>':''}
@@ -1012,47 +1581,47 @@ function renderFicha(){
     </div>
     <div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">👤</span>Responsáveis</div>
+        <div class="ff-key"><span class="ff-key-icon">ð¤</span>ResponsÃ¡veis</div>
         <div class="ff-val">${a.responsavel?`<div class="cl-resp-av" style="width:22px;height:22px;font-size:9px;">${initials(a.responsavel)}</div> ${a.responsavel}`:'<span style="color:var(--t3);">Vazio</span>'}</div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🚩</span>Prioridade</div>
+        <div class="ff-key"><span class="ff-key-icon">ð©</span>Prioridade</div>
         <div class="ff-val">
-          ${{urgente:`<span style="color:var(--red);">🔴 Urgente</span>`,alta:`<span style="color:var(--orange);">🟠 Alta</span>`,normal:`<span style="color:var(--t3);">Vazio</span>`,baixa:`<span style="color:var(--t3);">🔵 Baixa</span>`}[a.prioridade||'normal']}
+          ${{urgente:`<span style="color:var(--red);">ð´ Urgente</span>`,alta:`<span style="color:var(--orange);">ð  Alta</span>`,normal:`<span style="color:var(--t3);">Vazio</span>`,baixa:`<span style="color:var(--t3);">ðµ Baixa</span>`}[a.prioridade||'normal']}
         </div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⏳</span>Tempo rastreado</div>
-        <div class="ff-val"><span style="color:var(--purple);cursor:pointer;">▶ Adicionar hora</span></div>
+        <div class="ff-key"><span class="ff-key-icon">â³</span>Tempo rastreado</div>
+        <div class="ff-val"><span style="color:var(--purple);cursor:pointer;">â¶ Adicionar hora</span></div>
       </div>
       <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🔗</span>Relacionamentos</div>
+        <div class="ff-key"><span class="ff-key-icon">ð</span>Relacionamentos</div>
         <div class="ff-val">
-          ${(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<span class="rel-badge"><span class="rel-icon">🔗</span>1 Anamnese</span>':''}
-          ${(a.nutricao||[]).length?`<span class="rel-badge"><span class="rel-icon">🔗</span>1 Dieta</span>`:''}
-          <span class="rel-badge" onclick="sFTab('notas',document.querySelectorAll('.ftab')[5])"><span class="rel-icon">🔗</span>1 Suporte</span>
-          ${(a.treinos||[]).length?`<span class="rel-badge" onclick="sFTab('treinos',document.querySelectorAll('.ftab')[1])"><span class="rel-icon">🔗</span>${(a.treinos||[]).length} Treino</span>`:''}
+          ${(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<span class="rel-badge"><span class="rel-icon">ð</span>1 Anamnese</span>':''}
+          ${(a.nutricao||[]).length?`<span class="rel-badge"><span class="rel-icon">ð</span>1 Dieta</span>`:''}
+          <span class="rel-badge" onclick="sFTab('notas',document.querySelectorAll('.ftab')[5])"><span class="rel-icon">ð</span>1 Suporte</span>
+          ${(a.treinos||[]).length?`<span class="rel-badge" onclick="sFTab('treinos',document.querySelectorAll('.ftab')[1])"><span class="rel-icon">ð</span>${(a.treinos||[]).length} Treino</span>`:''}
         </div>
       </div>
     </div>`;
 
   // CAMPOS PERSONALIZADOS
   $('camposPersonalizados').innerHTML=[
-    {icon:'☑',key:'Ação',val:`<span class="campo-select">Selecione uma ação! 👋</span>`},
-    {icon:'☑',key:'Anamnese',val:(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<div class="campo-check on">✓</div>':'<div class="campo-check off"></div>'},
+    {icon:'â',key:'AÃ§Ã£o',val:`<span class="campo-select">Selecione uma aÃ§Ã£o! ð</span>`},
+    {icon:'â',key:'Anamnese',val:(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<div class="campo-check on">â</div>':'<div class="campo-check off"></div>'},
     {icon:'#',key:'Cobrar shapecheck',val:`<span style="font-size:12.5px;">0</span>`},
-    {icon:'📅',key:'Data da compra',val:`<span>${a.inicio?fmt(a.inicio):'—'}</span>`},
-    {icon:'☑',key:'Dia de suporte',val:a.diaSuporteAluno?`<span class="campo-select">${a.diaSuporteAluno}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'✉',key:'E-mail',val:`<span>${a.email||'—'}</span>`},
-    {icon:'🌐',key:'Link WhatsApp',val:a.wlink?`<a href="${a.wlink}" target="_blank" style="color:var(--green);display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">🟢</span> wa.me</a>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'☑',key:'Tem dieta?',val:(a.nutricao||[]).length?'<div class="campo-check on">✓</div>':'<div class="campo-check off"></div>'},
-    {icon:'☑',key:'Tipo de plano',val:a.plano?`<span class="campo-select">${a.plano}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'🔗',key:'WhatsApp',val:`<span>${a.tel||'—'}</span>`},
-    {icon:'🎯',key:'Objetivo',val:`<span>${a.objetivo||'—'}</span>`},
-    {icon:'🕐',key:'Horário de treino',val:`<span>${a.horario||'—'}</span>`},
-    {icon:'👥',key:'Indicado por',val:`<span>${a.indicado||'—'}</span>`},
-    {icon:'💰',key:'Valor mensal',val:`<span>${a.valorMensal?fmtM(a.valorMensal):'—'}</span>`},
-    {icon:'💵',key:'Total pago',val:`<span style="color:var(--green);font-weight:600;">${fmtM(rec)}</span>`},
+    {icon:'ð',key:'Data da compra',val:`<span>${a.inicio?fmt(a.inicio):'â'}</span>`},
+    {icon:'â',key:'Dia de suporte',val:a.diaSuporteAluno?`<span class="campo-select">${a.diaSuporteAluno}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
+    {icon:'â',key:'E-mail',val:`<span>${a.email||'â'}</span>`},
+    {icon:'ð',key:'Link WhatsApp',val:a.wlink?`<a href="${a.wlink}" target="_blank" style="color:var(--green);display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">ð¢</span> wa.me</a>`:'<span style="color:var(--t3);">Vazio</span>'},
+    {icon:'â',key:'Tem dieta?',val:(a.nutricao||[]).length?'<div class="campo-check on">â</div>':'<div class="campo-check off"></div>'},
+    {icon:'â',key:'Tipo de plano',val:a.plano?`<span class="campo-select">${a.plano}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
+    {icon:'ð',key:'WhatsApp',val:`<span>${a.tel||'â'}</span>`},
+    {icon:'ð¯',key:'Objetivo',val:`<span>${a.objetivo||'â'}</span>`},
+    {icon:'ð',key:'HorÃ¡rio de treino',val:`<span>${a.horario||'â'}</span>`},
+    {icon:'ð¥',key:'Indicado por',val:`<span>${a.indicado||'â'}</span>`},
+    {icon:'ð°',key:'Valor mensal',val:`<span>${a.valorMensal?fmtM(a.valorMensal):'â'}</span>`},
+    {icon:'ðµ',key:'Total pago',val:`<span style="color:var(--green);font-weight:600;">${fmtM(rec)}</span>`},
   ].map(c=>`<div class="campo-row">
     <div class="campo-key"><span class="campo-key-icon">${c.icon}</span>${c.key}</div>
     <div class="campo-val edit">${c.val}</div>
@@ -1081,7 +1650,7 @@ function renderFTPag(){
   const rec=pags.reduce((x,p)=>x+parseFloat(p.valor||0),0);
   $('ftp-pagamentos').innerHTML=`
     <div style="display:flex;justify-content:flex-end;gap:6px;margin-bottom:12px;">
-      <button class="btn btn-ghost btn-sm" onclick="openMRen()">↻ Renovar plano</button>
+      <button class="btn btn-ghost btn-sm" onclick="openMRen()">â» Renovar plano</button>
       <button class="btn btn-purple btn-sm" onclick="openMPag()">+ Registrar pagamento</button>
     </div>
     <div class="sec">
@@ -1089,13 +1658,13 @@ function renderFTPag(){
       <div class="g2">
         <div><div class="ik">Total recebido</div><div class="iv big" style="color:var(--green)">${fmtM(rec)}</div></div>
         <div><div class="ik">Pagamentos</div><div class="iv big">${pags.length}</div></div>
-        <div><div class="ik">Último pagamento</div><div class="iv">${pags.length?fmt(pags[0].data):'—'}</div></div>
-        <div><div class="ik">Forma usual</div><div class="iv">${currentA.forma||'—'}</div></div>
+        <div><div class="ik">Ãltimo pagamento</div><div class="iv">${pags.length?fmt(pags[0].data):'â'}</div></div>
+        <div><div class="ik">Forma usual</div><div class="iv">${currentA.forma||'â'}</div></div>
       </div>
     </div>
     <div class="sec">
-      <div class="sec-h">Histórico</div>
-      ${pags.length?pags.map((p,i)=>{const ri=currentA.pagamentos.length-1-i;return `<div class="pr"><div><div style="font-weight:500;font-size:12.5px;">${fmt(p.data)}</div>${p.ref?`<div style="font-size:10.5px;color:var(--t3);">${p.ref}</div>`:''}</div><div style="display:flex;align-items:center;gap:9px;"><span class="pf">${p.forma}</span><span class="pv">${fmtM(p.valor)}</span><button class="btn btn-red btn-xs" onclick="delPag(${ri})">✕</button></div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">💰</div><h3>Nenhum pagamento</h3></div>`}
+      <div class="sec-h">HistÃ³rico</div>
+      ${pags.length?pags.map((p,i)=>{const ri=currentA.pagamentos.length-1-i;return `<div class="pr"><div><div style="font-weight:500;font-size:12.5px;">${fmt(p.data)}</div>${p.ref?`<div style="font-size:10.5px;color:var(--t3);">${p.ref}</div>`:''}</div><div style="display:flex;align-items:center;gap:9px;"><span class="pf">${p.forma}</span><span class="pv">${fmtM(p.valor)}</span><button class="btn btn-red btn-xs" onclick="delPag(${ri})">â</button></div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">ð°</div><h3>Nenhum pagamento</h3></div>`}
     </div>`;
 }
 
@@ -1105,77 +1674,77 @@ function renderFTTreinos(){
   $('ftp-treinos').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMTreino()">+ Novo treino</button></div>`+
     (treinos.length?treinos.map((t,i)=>`<div class="tcard">
       <div class="tcard-h" onclick="toggleTreino(this)">
-        <div><div style="font-weight:600;">💪 ${t.nome}</div><div style="font-size:10.5px;color:var(--t3);">${t.dias||''} · ${(t.exercicios||[]).length} exercícios</div></div>
-        <div style="display:flex;gap:5px;"><button class="btn btn-red btn-xs" onclick="event.stopPropagation();delTreino(${i})">🗑️</button><span style="color:var(--t3);">▾</span></div>
+        <div><div style="font-weight:600;">ðª ${t.nome}</div><div style="font-size:10.5px;color:var(--t3);">${t.dias||''} Â· ${(t.exercicios||[]).length} exercÃ­cios</div></div>
+        <div style="display:flex;gap:5px;"><button class="btn btn-red btn-xs" onclick="event.stopPropagation();delTreino(${i})">ðï¸</button><span style="color:var(--t3);">â¾</span></div>
       </div>
-      <div class="tcard-b">${(t.exercicios||[]).map((e,j)=>`<div class="exrow"><div class="exnum">${j+1}</div><div style="flex:1;font-weight:500;">${e.nome}</div><div style="font-size:10.5px;color:var(--t3);">${[e.series&&e.series+'x',e.reps,e.carga&&e.carga+'kg',e.desc].filter(Boolean).join(' · ')}</div></div>`).join('')}</div>
-    </div>`).join(''):`<div class="empty"><div class="empty-ico">💪</div><h3>Nenhum treino</h3></div>`);
+      <div class="tcard-b">${(t.exercicios||[]).map((e,j)=>`<div class="exrow"><div class="exnum">${j+1}</div><div style="flex:1;font-weight:500;">${e.nome}</div><div style="font-size:10.5px;color:var(--t3);">${[e.series&&e.series+'x',e.reps,e.carga&&e.carga+'kg',e.desc].filter(Boolean).join(' Â· ')}</div></div>`).join('')}</div>
+    </div>`).join(''):`<div class="empty"><div class="empty-ico">ðª</div><h3>Nenhum treino</h3></div>`);
 }
-function toggleTreino(el){const b=el.nextElementSibling;b.classList.toggle('open');el.querySelector('span:last-child').textContent=b.classList.contains('open')?'▴':'▾';}
+function toggleTreino(el){const b=el.nextElementSibling;b.classList.toggle('open');el.querySelector('span:last-child').textContent=b.classList.contains('open')?'â´':'â¾';}
 
-// TAB AVALIAÇÃO
+// TAB AVALIAÃÃO
 function renderFTAv(){
   const avs=(currentA.avaliacoes||[]).slice().reverse();
   const all=currentA.avaliacoes||[];
   if(charts.av){charts.av.destroy();charts.av=null;}
-  $('ftp-avaliacao').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMAv()">+ Nova avaliação</button></div>`+
-    (all.length?`<div class="sec" style="margin-bottom:10px;"><div class="sec-h">Evolução</div><div class="chart-box"><canvas id="cAv"></canvas></div></div>`:'') +
-    (avs.length?avs.map((av,i)=>{const ri=currentA.avaliacoes.length-1-i;const imc=(av.peso&&av.altura)?(av.peso/Math.pow(av.altura/100,2)).toFixed(1):null;return `<div class="sec" style="margin-bottom:9px;"><div class="sec-h">${fmt(av.data)}<button class="btn btn-red btn-xs" onclick="delAv(${ri},event)">🗑️</button></div><div class="g4">${av.peso?`<div><div class="ik">Peso</div><div class="iv big" style="color:var(--purple)">${av.peso}kg</div></div>`:''} ${av.gordura?`<div><div class="ik">Gordura</div><div class="iv big">${av.gordura}%</div></div>`:''} ${av.muscular?`<div><div class="ik">Músculo</div><div class="iv big">${av.muscular}kg</div></div>`:''} ${imc?`<div><div class="ik">IMC</div><div class="iv big">${imc}</div></div>`:''}</div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">📏</div><h3>Nenhuma avaliação</h3></div>`);
+  $('ftp-avaliacao').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMAv()">+ Nova avaliaÃ§Ã£o</button></div>`+
+    (all.length?`<div class="sec" style="margin-bottom:10px;"><div class="sec-h">EvoluÃ§Ã£o</div><div class="chart-box"><canvas id="cAv"></canvas></div></div>`:'') +
+    (avs.length?avs.map((av,i)=>{const ri=currentA.avaliacoes.length-1-i;const imc=(av.peso&&av.altura)?(av.peso/Math.pow(av.altura/100,2)).toFixed(1):null;return `<div class="sec" style="margin-bottom:9px;"><div class="sec-h">${fmt(av.data)}<button class="btn btn-red btn-xs" onclick="delAv(${ri},event)">ðï¸</button></div><div class="g4">${av.peso?`<div><div class="ik">Peso</div><div class="iv big" style="color:var(--purple)">${av.peso}kg</div></div>`:''} ${av.gordura?`<div><div class="ik">Gordura</div><div class="iv big">${av.gordura}%</div></div>`:''} ${av.muscular?`<div><div class="ik">MÃºsculo</div><div class="iv big">${av.muscular}kg</div></div>`:''} ${imc?`<div><div class="ik">IMC</div><div class="iv big">${imc}</div></div>`:''}</div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">ð</div><h3>Nenhuma avaliaÃ§Ã£o</h3></div>`);
   if(all.length&&$('cAv')) charts.av=new Chart($('cAv'),{type:'line',data:{labels:all.map(a=>fmt(a.data)),datasets:[{label:'Peso',data:all.map(a=>a.peso||null),borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.1)',tension:.3},{label:'% Gordura',data:all.map(a=>a.gordura||null),borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.1)',tension:.3,yAxisID:'y1'}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}}},scales:{x:{ticks:{color:'#94a3b8'},grid:{color:'rgba(0,0,0,.06)'}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(0,0,0,.06)'},position:'left'},y1:{ticks:{color:'#94a3b8'},grid:{drawOnChartArea:false},position:'right'}}}});
 }
 
-// TAB NUTRIÇÃO
+// TAB NUTRIÃÃO
 function renderFTNut(){
   const nut=currentA.nutricao||[];
   const total=nut.reduce((s,r)=>s+(parseInt(r.kcal)||0),0);
-  $('ftp-nutricao').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMNut()">+ Refeição</button></div>`+
-    (nut.length?`<div style="font-size:12px;color:var(--t2);margin-bottom:10px;">Total: <b style="color:var(--purple)">${total} kcal/dia</b></div>`+nut.map((r,i)=>`<div class="sec" style="margin-bottom:8px;"><div class="sec-h">${r.hora?`<span style="color:var(--purple);font-family:monospace;">${r.hora}</span> `:''}${r.nome}${r.kcal?` <span class="tag tag-purple">${r.kcal} kcal</span>`:''}<button class="btn btn-red btn-xs" onclick="delNut(${i})">✕</button></div>${r.alimentos?`<div style="font-size:12px;color:var(--t2);white-space:pre-line;">${r.alimentos}</div>`:''}</div>`).join(''):`<div class="empty"><div class="empty-ico">🥗</div><h3>Nenhum plano alimentar</h3></div>`);
+  $('ftp-nutricao').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMNut()">+ RefeiÃ§Ã£o</button></div>`+
+    (nut.length?`<div style="font-size:12px;color:var(--t2);margin-bottom:10px;">Total: <b style="color:var(--purple)">${total} kcal/dia</b></div>`+nut.map((r,i)=>`<div class="sec" style="margin-bottom:8px;"><div class="sec-h">${r.hora?`<span style="color:var(--purple);font-family:monospace;">${r.hora}</span> `:''}${r.nome}${r.kcal?` <span class="tag tag-purple">${r.kcal} kcal</span>`:''}<button class="btn btn-red btn-xs" onclick="delNut(${i})">â</button></div>${r.alimentos?`<div style="font-size:12px;color:var(--t2);white-space:pre-line;">${r.alimentos}</div>`:''}</div>`).join(''):`<div class="empty"><div class="empty-ico">ð¥</div><h3>Nenhum plano alimentar</h3></div>`);
 }
 
 // TAB METAS
 function renderFTMetas(){
   const metas=currentA.metas||[];
   $('ftp-metas').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMMeta()">+ Nova meta</button></div>`+
-    (metas.length?metas.map((m,i)=>`<div class="meta-c"><div style="display:flex;justify-content:space-between;margin-bottom:7px;"><div><div style="font-weight:600;">${m.nome}</div><div style="display:flex;gap:5px;margin-top:4px;"><span class="tag tag-blue" style="font-size:10px;">${m.cat}</span><span class="tag ${m.status==='Concluída'?'tag-green':m.status==='Abandonada'?'tag-red':'tag-yellow'}" style="font-size:10px;">${m.status}</span></div></div><div style="text-align:right;"><div style="font-weight:700;color:var(--purple);">${m.pct||0}%</div><button class="btn btn-red btn-xs" onclick="delMeta(${i})">✕</button></div></div><div class="pg-w"><div class="pg-f" style="width:${m.pct||0}%"></div></div></div>`).join(''):`<div class="empty"><div class="empty-ico">🎯</div><h3>Nenhuma meta</h3></div>`);
+    (metas.length?metas.map((m,i)=>`<div class="meta-c"><div style="display:flex;justify-content:space-between;margin-bottom:7px;"><div><div style="font-weight:600;">${m.nome}</div><div style="display:flex;gap:5px;margin-top:4px;"><span class="tag tag-blue" style="font-size:10px;">${m.cat}</span><span class="tag ${m.status==='ConcluÃ­da'?'tag-green':m.status==='Abandonada'?'tag-red':'tag-yellow'}" style="font-size:10px;">${m.status}</span></div></div><div style="text-align:right;"><div style="font-weight:700;color:var(--purple);">${m.pct||0}%</div><button class="btn btn-red btn-xs" onclick="delMeta(${i})">â</button></div></div><div class="pg-w"><div class="pg-f" style="width:${m.pct||0}%"></div></div></div>`).join(''):`<div class="empty"><div class="empty-ico">ð¯</div><h3>Nenhuma meta</h3></div>`);
 }
 
 // TAB FOTOS
 function renderFTFotos(){
   const fotos=currentA.fotos||[];
   $('ftp-fotos').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMFoto()">+ Foto</button></div>`+
-    (fotos.length?`<div class="fgrid">${fotos.map((f,i)=>`<div class="fcard" onclick="viewFoto(${i})">${f.dados?`<img src="${f.dados}" style="width:100%;aspect-ratio:3/4;object-fit:cover;">`:`<div style="aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:24px;">📷</div>`}<div style="padding:6px 8px;"><div style="font-size:10px;color:var(--t3);">${fmt(f.data)}</div>${f.obs?`<div style="font-size:11px;">${f.obs}</div>`:''}</div></div>`).join('')}</div>`:
-    `<div class="empty"><div class="empty-ico">📸</div><h3>Nenhuma foto</h3></div>`);
+    (fotos.length?`<div class="fgrid">${fotos.map((f,i)=>`<div class="fcard" onclick="viewFoto(${i})">${f.dados?`<img src="${f.dados}" style="width:100%;aspect-ratio:3/4;object-fit:cover;">`:`<div style="aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:24px;">ð·</div>`}<div style="padding:6px 8px;"><div style="font-size:10px;color:var(--t3);">${fmt(f.data)}</div>${f.obs?`<div style="font-size:11px;">${f.obs}</div>`:''}</div></div>`).join('')}</div>`:
+    `<div class="empty"><div class="empty-ico">ð¸</div><h3>Nenhuma foto</h3></div>`);
 }
 
 // TAB NOTAS
 function renderFTNotas(){
   const notas=(currentA.notas||[]).slice().reverse();
   $('ftp-notas').innerHTML=`<div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-purple btn-sm" onclick="openMNota()">+ Nova nota</button></div>`+
-    (notas.length?notas.map((n,i)=>{const ri=currentA.notas.length-1-i;return `<div class="nota ${n.prio==='imp'?'imp':n.prio==='urg'?'urg':''}"><div style="font-size:12.5px;margin-bottom:4px;">${n.texto}</div><div style="display:flex;align-items:center;gap:7px;font-size:10px;color:var(--t3);"><span>${new Date(n.data).toLocaleDateString('pt-BR')}</span>${n.prio!=='normal'?`<span class="tag ${n.prio==='urg'?'tag-red':'tag-yellow'}" style="font-size:9.5px;">${n.prio==='urg'?'Urgente':'Importante'}</span>`:''}<button class="btn btn-red btn-xs" style="margin-left:auto;" onclick="delNota(${ri})">✕</button></div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">📝</div><h3>Nenhuma anotação</h3></div>`);
+    (notas.length?notas.map((n,i)=>{const ri=currentA.notas.length-1-i;return `<div class="nota ${n.prio==='imp'?'imp':n.prio==='urg'?'urg':''}"><div style="font-size:12.5px;margin-bottom:4px;">${n.texto}</div><div style="display:flex;align-items:center;gap:7px;font-size:10px;color:var(--t3);"><span>${new Date(n.data).toLocaleDateString('pt-BR')}</span>${n.prio!=='normal'?`<span class="tag ${n.prio==='urg'?'tag-red':'tag-yellow'}" style="font-size:9.5px;">${n.prio==='urg'?'Urgente':'Importante'}</span>`:''}<button class="btn btn-red btn-xs" style="margin-left:auto;" onclick="delNota(${ri})">â</button></div></div>`;}).join(''):`<div class="empty"><div class="empty-ico">ð</div><h3>Nenhuma anotaÃ§Ã£o</h3></div>`);
 }
 
 // TAB ATIVIDADE
 function renderFTAtividade(){
   const ativ=currentA.atividade||[];
-  $('ftp-atividade').innerHTML=ativ.length?`<div class="sec"><div class="sec-h">Histórico de ações</div>${ativ.map(a=>`<div class="act-item"><div class="act-dot"></div><div class="act-txt">${a.texto}</div><div class="act-time">${new Date(a.data).toLocaleDateString('pt-BR')} ${new Date(a.data).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div></div>`).join('')}</div>`:
-    `<div class="empty"><div class="empty-ico">🕐</div><h3>Sem atividade</h3></div>`;
+  $('ftp-atividade').innerHTML=ativ.length?`<div class="sec"><div class="sec-h">HistÃ³rico de aÃ§Ãµes</div>${ativ.map(a=>`<div class="act-item"><div class="act-dot"></div><div class="act-txt">${a.texto}</div><div class="act-time">${new Date(a.data).toLocaleDateString('pt-BR')} ${new Date(a.data).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div></div>`).join('')}</div>`:
+    `<div class="empty"><div class="empty-ico">ð</div><h3>Sem atividade</h3></div>`;
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // TABELA
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function setFiltro(f,btn){filtroAtual=f;document.querySelectorAll('#filtro-btns .btn').forEach(b=>b.classList.remove('on-f'));btn.classList.add('on-f');renderTabela();}
 function renderTabela(){
   const busca=($('searchL')?.value||'').toLowerCase();
   let lista=alunos.filter(a=>{if(busca&&!a.nome.toLowerCase().includes(busca))return false;const s=statusPag(a);if(filtroAtual==='ativos')return s==='ativo';if(filtroAtual==='vencidos')return s==='vencido';return true;}).sort((a,b)=>a.nome.localeCompare(b.nome));
   const el=$('tabelaBody');
-  if(!lista.length){el.innerHTML=`<div class="empty"><div class="empty-ico">👥</div><h3>Nenhum aluno</h3></div>`;return;}
-  el.innerHTML=lista.map(a=>{const s=statusPag(a),vc=venc(a),rec=(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),0),f=getFase(a.faseId);return `<div class="tr tcols" onclick="openFicha('${a.id}')"><div style="display:flex;align-items:center;gap:9px;"><div class="cl-av">${initials(a.nome)}</div><div><div style="font-weight:500;">${a.nome}</div><div style="font-size:10px;color:var(--t3);">${a.objetivo||'—'}</div></div></div><div><span class="tag" style="background:${f.cor}22;color:${f.cor};font-size:10px;">${f.nome}</span></div><div>${{ativo:'<span class="tag tag-green">✓ Ativo</span>',vencido:'<span class="tag tag-red">✗ Vencido</span>',vencendo:'<span class="tag tag-yellow">⏳ Vencendo</span>',pendente:'<span class="tag tag-gray">Pendente</span>'}[s]}</div><div style="font-size:12px;color:var(--t2);">${a.plano||'—'}</div><div style="font-size:12px;color:var(--t2);">${vc?fmt(vc):'—'}</div><div style="font-size:12px;color:var(--t2);">${fmtM(rec)}</div><div onclick="event.stopPropagation()" style="display:flex;gap:3px;"><button class="btn btn-ghost btn-xs" onclick="openFicha('${a.id}')">Ver</button><button class="btn btn-ghost btn-xs" onclick="openModalAluno('${a.id}')">✏️</button></div></div>`;}).join('');
+  if(!lista.length){el.innerHTML=`<div class="empty"><div class="empty-ico">ð¥</div><h3>Nenhum aluno</h3></div>`;return;}
+  el.innerHTML=lista.map(a=>{const s=statusPag(a),vc=venc(a),rec=(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),0),f=getFase(a.faseId);return `<div class="tr tcols" onclick="openFicha('${a.id}')"><div style="display:flex;align-items:center;gap:9px;"><div class="cl-av">${initials(a.nome)}</div><div><div style="font-weight:500;">${a.nome}</div><div style="font-size:10px;color:var(--t3);">${a.objetivo||'â'}</div></div></div><div><span class="tag" style="background:${f.cor}22;color:${f.cor};font-size:10px;">${f.nome}</span></div><div>${{ativo:'<span class="tag tag-green">â Ativo</span>',vencido:'<span class="tag tag-red">â Vencido</span>',vencendo:'<span class="tag tag-yellow">â³ Vencendo</span>',pendente:'<span class="tag tag-gray">Pendente</span>'}[s]}</div><div style="font-size:12px;color:var(--t2);">${a.plano||'â'}</div><div style="font-size:12px;color:var(--t2);">${vc?fmt(vc):'â'}</div><div style="font-size:12px;color:var(--t2);">${fmtM(rec)}</div><div onclick="event.stopPropagation()" style="display:flex;gap:3px;"><button class="btn btn-ghost btn-xs" onclick="openFicha('${a.id}')">Ver</button><button class="btn btn-ghost btn-xs" onclick="openModalAluno('${a.id}')">âï¸</button></div></div>`;}).join('');
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // DASHBOARD
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function renderDashboard(){
   const tot=alunos.length,at=alunos.filter(a=>statusPag(a)==='ativo').length,vn=alunos.filter(a=>statusPag(a)==='vencido').length;
   const rec=alunos.reduce((s,a)=>s+(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),0),0);
@@ -1188,20 +1757,20 @@ function renderDashboard(){
   if(charts.fase){charts.fase.destroy();}
   if($('cFase')&&Object.keys(byF).length)charts.fase=new Chart($('cFase'),{type:'doughnut',data:{labels:Object.keys(byF),datasets:[{data:Object.values(byF),backgroundColor:fases.map(f=>f.cor+'99'),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}}}});
   const proxV=alunos.filter(a=>{const v=venc(a);if(!v)return false;const d=(new Date(v+'T12:00:00')-new Date())/86400000;return d>=-1&&d<=14;}).sort((a,b)=>(venc(a)||'').localeCompare(venc(b)||''));
-  $('dashVenc').innerHTML=proxV.length?proxV.map(a=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);"><div class="cl-av">${initials(a.nome)}</div><div style="flex:1;"><div style="font-weight:500;">${a.nome}</div><div style="font-size:10px;color:var(--t3);">${a.plano}</div></div><div style="text-align:right;font-size:10px;color:var(--t3);">${fmt(venc(a))}</div></div>`).join(''):`<div style="text-align:center;padding:16px;font-size:12px;color:var(--green);">✓ Nenhum vencimento próximo</div>`;
+  $('dashVenc').innerHTML=proxV.length?proxV.map(a=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);"><div class="cl-av">${initials(a.nome)}</div><div style="flex:1;"><div style="font-weight:500;">${a.nome}</div><div style="font-size:10px;color:var(--t3);">${a.plano}</div></div><div style="text-align:right;font-size:10px;color:var(--t3);">${fmt(venc(a))}</div></div>`).join(''):`<div style="text-align:center;padding:16px;font-size:12px;color:var(--green);">â Nenhum vencimento prÃ³ximo</div>`;
   const hj=today(),agHj=agendamentos.filter(ag=>ag.data===hj).sort((a,b)=>(a.hora||'').localeCompare(b.hora||''));
-  $('dashAg').innerHTML=agHj.length?agHj.map(ag=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);"><div style="font-family:monospace;font-weight:700;color:var(--purple);min-width:44px;">${ag.hora||'—'}</div><div><div style="font-weight:500;">${ag.alunoNome||'—'}</div><div style="font-size:10px;color:var(--t3);">${ag.tipo}</div></div></div>`).join(''):`<div style="text-align:center;padding:16px;font-size:12px;color:var(--t3);">Nenhum agendamento hoje</div>`;
+  $('dashAg').innerHTML=agHj.length?agHj.map(ag=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);"><div style="font-family:monospace;font-weight:700;color:var(--purple);min-width:44px;">${ag.hora||'â'}</div><div><div style="font-weight:500;">${ag.alunoNome||'â'}</div><div style="font-size:10px;color:var(--t3);">${ag.tipo}</div></div></div>`).join(''):`<div style="text-align:center;padding:16px;font-size:12px;color:var(--t3);">Nenhum agendamento hoje</div>`;
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // FINANCEIRO
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function renderFinanceiro(){
   const todos=[];alunos.forEach(a=>(a.pagamentos||[]).forEach(p=>todos.push({...p,aN:a.nome,aId:a.id})));
   todos.sort((a,b)=>(b.data||'').localeCompare(a.data||''));
   const rec=todos.reduce((s,p)=>s+parseFloat(p.valor||0),0);
   const mes=today().slice(0,7),recM=todos.filter(p=>p.data?.startsWith(mes)).reduce((s,p)=>s+parseFloat(p.valor||0),0);
-  $('finStats').innerHTML=`<div class="stat"><div class="stat-l">Receita total</div><div class="stat-v" style="color:var(--purple)">${fmtM(rec)}</div></div><div class="stat"><div class="stat-l">Mês atual</div><div class="stat-v" style="color:var(--green)">${fmtM(recM)}</div></div><div class="stat"><div class="stat-l">Pagamentos</div><div class="stat-v">${todos.length}</div></div><div class="stat"><div class="stat-l">Alunos pagantes</div><div class="stat-v">${new Set(todos.map(p=>p.aId)).size}</div></div>`;
+  $('finStats').innerHTML=`<div class="stat"><div class="stat-l">Receita total</div><div class="stat-v" style="color:var(--purple)">${fmtM(rec)}</div></div><div class="stat"><div class="stat-l">MÃªs atual</div><div class="stat-v" style="color:var(--green)">${fmtM(recM)}</div></div><div class="stat"><div class="stat-l">Pagamentos</div><div class="stat-v">${todos.length}</div></div><div class="stat"><div class="stat-l">Alunos pagantes</div><div class="stat-v">${new Set(todos.map(p=>p.aId)).size}</div></div>`;
   const byM={};todos.forEach(p=>{const m=p.data?.slice(0,7)||'?';byM[m]=(byM[m]||0)+parseFloat(p.valor||0);});
   const lbs=Object.keys(byM).sort().slice(-8);
   if(charts.finM){charts.finM.destroy();}
@@ -1209,34 +1778,34 @@ function renderFinanceiro(){
   const byF={};todos.forEach(p=>{byF[p.forma||'?']=(byF[p.forma||'?']||0)+parseFloat(p.valor||0);});
   if(charts.finF){charts.finF.destroy();}
   if($('cFinF')&&Object.keys(byF).length)charts.finF=new Chart($('cFinF'),{type:'doughnut',data:{labels:Object.keys(byF),datasets:[{data:Object.values(byF),backgroundColor:['#7c3aed','#059669','#2563eb','#dc2626'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}}}});
-  $('finLista').innerHTML=todos.length?todos.map(p=>`<div style="display:grid;grid-template-columns:1fr 100px 110px 90px;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="openFicha('${p.aId}')"><div style="font-weight:500;">${p.aN}${p.ref?`<span style="font-size:10px;color:var(--t3);"> · ${p.ref}</span>`:''}</div><div style="color:var(--t2);">${fmt(p.data)}</div><div style="color:var(--green);font-weight:700;">${fmtM(p.valor)}</div><div><span class="pf">${p.forma||'—'}</span></div></div>`).join(''):`<div class="empty"><div class="empty-ico">💰</div><h3>Nenhum pagamento</h3></div>`;
+  $('finLista').innerHTML=todos.length?todos.map(p=>`<div style="display:grid;grid-template-columns:1fr 100px 110px 90px;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="openFicha('${p.aId}')"><div style="font-weight:500;">${p.aN}${p.ref?`<span style="font-size:10px;color:var(--t3);"> Â· ${p.ref}</span>`:''}</div><div style="color:var(--t2);">${fmt(p.data)}</div><div style="color:var(--green);font-weight:700;">${fmtM(p.valor)}</div><div><span class="pf">${p.forma||'â'}</span></div></div>`).join(''):`<div class="empty"><div class="empty-ico">ð°</div><h3>Nenhum pagamento</h3></div>`;
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // AGENDA
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function renderAgenda(){
   const hj=today();
   const agHj=agendamentos.filter(ag=>ag.data===hj).sort((a,b)=>(a.hora||'').localeCompare(b.hora||''));
   const agProx=agendamentos.filter(ag=>ag.data>hj).sort((a,b)=>a.data===b.data?(a.hora||'').localeCompare(b.hora||''):a.data.localeCompare(b.data)).slice(0,10);
   const agTodos=agendamentos.slice().sort((a,b)=>a.data===b.data?(a.hora||'').localeCompare(b.hora||''):a.data.localeCompare(b.data));
-  const renderAg=(list,el)=>{if(!list.length){$(el).innerHTML=`<div style="text-align:center;padding:14px;font-size:12px;color:var(--t3);">Nenhum agendamento</div>`;return;}$(el).innerHTML=list.map((ag,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);"><div style="font-family:monospace;font-size:13px;font-weight:700;color:var(--purple);min-width:44px;">${ag.hora||'—'}</div><div style="flex:1;"><div style="font-weight:500;">${ag.alunoNome||'—'}</div><div style="font-size:10px;color:var(--t3);">${fmt(ag.data)} · ${ag.tipo}</div></div><button class="btn btn-red btn-xs" onclick="delAg(${agendamentos.indexOf(ag)})">✕</button></div>`).join('');};
+  const renderAg=(list,el)=>{if(!list.length){$(el).innerHTML=`<div style="text-align:center;padding:14px;font-size:12px;color:var(--t3);">Nenhum agendamento</div>`;return;}$(el).innerHTML=list.map((ag,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);"><div style="font-family:monospace;font-size:13px;font-weight:700;color:var(--purple);min-width:44px;">${ag.hora||'â'}</div><div style="flex:1;"><div style="font-weight:500;">${ag.alunoNome||'â'}</div><div style="font-size:10px;color:var(--t3);">${fmt(ag.data)} Â· ${ag.tipo}</div></div><button class="btn btn-red btn-xs" onclick="delAg(${agendamentos.indexOf(ag)})">â</button></div>`).join('');};
   renderAg(agHj,'agHoje');renderAg(agProx,'agProx');renderAg(agTodos,'agTodos');
 }
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // FASES EDITOR
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 const CORES=['#22c55e','#f59e0b','#3b82f6','#a855f7','#06b6d4','#ef4444','#f97316','#ec4899','#94a3b8','#64748b'];
 function renderFasesEditor(){
-  $('fasesEditor').innerHTML=fases.map((f,i)=>`<div class="fase-row"><input type="text" class="fi" style="flex:1;" value="${f.nome}" onchange="fases[${i}].nome=this.value;save();"><div style="display:flex;gap:4px;flex-wrap:wrap;">${CORES.map(c=>`<div style="width:14px;height:14px;border-radius:50%;background:${c};cursor:pointer;border:2px solid ${f.cor===c?'var(--text)':'transparent'};" onclick="fases[${i}].cor='${c}';save();renderFasesEditor();"></div>`).join('')}</div><button class="btn btn-red btn-xs" onclick="delFase(${i})">✕</button></div>`).join('');
+  $('fasesEditor').innerHTML=fases.map((f,i)=>`<div class="fase-row"><input type="text" class="fi" style="flex:1;" value="${f.nome}" onchange="fases[${i}].nome=this.value;save();"><div style="display:flex;gap:4px;flex-wrap:wrap;">${CORES.map(c=>`<div style="width:14px;height:14px;border-radius:50%;background:${c};cursor:pointer;border:2px solid ${f.cor===c?'var(--text)':'transparent'};" onclick="fases[${i}].cor='${c}';save();renderFasesEditor();"></div>`).join('')}</div><button class="btn btn-red btn-xs" onclick="delFase(${i})">â</button></div>`).join('');
 }
 function addFase(){fases.push({id:uid(),nome:'Nova fase',cor:'#94a3b8'});save();renderFasesEditor();}
 function delFase(i){if(fases.length<=1){toast('Precisa ter ao menos uma fase.','err');return;}if(!confirm(`Excluir "${fases[i].nome}"?`))return;const old=fases[i].id;fases.splice(i,1);alunos.forEach(a=>{if(a.faseId===old)a.faseId=fases[0].id;});save();renderFasesEditor();}
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // MODAIS
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 const cm=id=>$(id).classList.add('hidden');
 const om=id=>$(id).classList.remove('hidden');
 
@@ -1276,7 +1845,7 @@ function saveAluno(){
   save();cm('m-aluno');renderLista();updateBadge();toast(editId?'Aluno atualizado!':'Aluno cadastrado!','ok');
 }
 
-function delAluno(){if(!confirm(`Excluir "${currentA.nome}"?`))return;alunos=alunos.filter(a=>a.id!==currentA.id);save();gp('pipeline');toast('Excluído.','ok');}
+function delAluno(){if(!confirm(`Excluir "${currentA.nome}"?`))return;alunos=alunos.filter(a=>a.id!==currentA.id);save();gp('pipeline');toast('ExcluÃ­do.','ok');}
 
 function openMoverFase(id){
   currentA=alunos.find(a=>a.id===id)||currentA;
@@ -1288,15 +1857,15 @@ function saveMoverFase(){
   const id=$('m-fase').dataset.alunoId, a=alunos.find(x=>x.id===id);
   const nf=$('mf-fase').value, old=getFase(a.faseId).nome, nov=getFase(nf).nome;
   a.faseId=nf; logAtividade(a,`Movido de "${old}" para "${nov}"`);
-  // ═══ AUTOMAÇÕES DO CICLO ═══
+  // âââ AUTOMAÃÃES DO CICLO âââ
   aplicarCicloAutomatico(a, nf);
   save();cm('m-fase');if(currentA?.id===id){currentA=a;renderFicha();}
   renderLista();updateBadge();toast(`Movido para: ${nov}`,'ok');
 }
 
-// ═══════════════════════════════════
-// CICLO AUTOMÁTICO 8 SEMANAS
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
+// CICLO AUTOMÃTICO 8 SEMANAS
+// âââââââââââââââââââââââââââââââââââ
 function addSemanas(ds, sem){
   const d=new Date(ds+'T12:00:00');
   d.setDate(d.getDate()+(sem*7));
@@ -1311,47 +1880,47 @@ function aplicarCicloAutomatico(a, novaFaseId){
   const fase = getFase(novaFaseId);
   const nomeF = fase.nome.toLowerCase();
 
-  // 1) TREINO ENTREGUE → agendar reavaliação em 8 semanas
+  // 1) TREINO ENTREGUE â agendar reavaliaÃ§Ã£o em 8 semanas
   if(nomeF.includes('treino entregue') || nomeF.includes('entregue')){
     const dtReavaliacao = addSemanas(today(), 8);
     a.dtReavaliacao = dtReavaliacao;
     // Remover etiquetas anteriores de ciclo
-    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['🔄 Reavaliação','💪 Montar treino','✅ Ativo'].includes(e));
-    logAtividade(a, `Treino entregue — Reavaliação agendada para ${fmt(dtReavaliacao)} (8 semanas)`);
+    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['ð ReavaliaÃ§Ã£o','ðª Montar treino','â Ativo'].includes(e));
+    logAtividade(a, `Treino entregue â ReavaliaÃ§Ã£o agendada para ${fmt(dtReavaliacao)} (8 semanas)`);
     // Agendar no sistema de agendamentos
-    agendamentos = agendamentos.filter(ag=>!(ag.aluno===a.id && ag.tipo==='Reavaliação'));
-    agendamentos.push({id:uid(), aluno:a.id, alunoNome:a.nome, data:dtReavaliacao, hora:'', tipo:'Reavaliação', obs:'Automático — 8 semanas após treino entregue'});
-    toast(`✅ Treino entregue! Reavaliação agendada para ${fmt(dtReavaliacao)}`, 'ok');
+    agendamentos = agendamentos.filter(ag=>!(ag.aluno===a.id && ag.tipo==='ReavaliaÃ§Ã£o'));
+    agendamentos.push({id:uid(), aluno:a.id, alunoNome:a.nome, data:dtReavaliacao, hora:'', tipo:'ReavaliaÃ§Ã£o', obs:'AutomÃ¡tico â 8 semanas apÃ³s treino entregue'});
+    toast(`â Treino entregue! ReavaliaÃ§Ã£o agendada para ${fmt(dtReavaliacao)}`, 'ok');
   }
 
-  // 2) ATIVO → limpar etiquetas de ciclo, status ativo
+  // 2) ATIVO â limpar etiquetas de ciclo, status ativo
   if(nomeF === 'ativo'){
-    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['🔄 Reavaliação','💪 Montar treino'].includes(e));
+    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['ð ReavaliaÃ§Ã£o','ðª Montar treino'].includes(e));
     a.statusAluno = 'ativo';
     logAtividade(a, 'Aluno marcado como Ativo');
   }
 
-  // 3) MONTAR TREINO → etiqueta visual
+  // 3) MONTAR TREINO â etiqueta visual
   if(nomeF.includes('montar treino')){
-    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['🔄 Reavaliação','💪 Montar treino'].includes(e));
-    a.etiquetasExtras.push('💪 Montar treino');
+    a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>!['ð ReavaliaÃ§Ã£o','ðª Montar treino'].includes(e));
+    a.etiquetasExtras.push('ðª Montar treino');
     logAtividade(a, 'Aguardando montagem de novo treino');
   }
 }
 
-// Verificar diariamente se algum aluno tem reavaliação vencida
+// Verificar diariamente se algum aluno tem reavaliaÃ§Ã£o vencida
 function verificarReavaliacoes(){
   const hoje = today();
   let mudou = false;
   alunos.forEach(a => {
     if(a.dtReavaliacao && a.dtReavaliacao <= hoje){
       const faseAtual = getFase(a.faseId).nome.toLowerCase();
-      // Só aplica se ainda estiver em treino entregue ou ativo (não se já foi movido)
+      // SÃ³ aplica se ainda estiver em treino entregue ou ativo (nÃ£o se jÃ¡ foi movido)
       if(faseAtual.includes('entregue') || faseAtual === 'ativo'){
-        if(!( a.etiquetasExtras||[]).includes('🔄 Reavaliação')){
-          a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>e!=='💪 Montar treino');
-          a.etiquetasExtras.push('🔄 Reavaliação');
-          logAtividade(a, `⚠️ Reavaliação vencida! (${fmt(a.dtReavaliacao)})`);
+        if(!( a.etiquetasExtras||[]).includes('ð ReavaliaÃ§Ã£o')){
+          a.etiquetasExtras = (a.etiquetasExtras||[]).filter(e=>e!=='ðª Montar treino');
+          a.etiquetasExtras.push('ð ReavaliaÃ§Ã£o');
+          logAtividade(a, `â ï¸ ReavaliaÃ§Ã£o vencida! (${fmt(a.dtReavaliacao)})`);
           mudou = true;
         }
       }
@@ -1360,31 +1929,31 @@ function verificarReavaliacoes(){
   if(mudou){ save(); renderLista(); }
 }
 
-// Botões rápidos de ciclo na ficha do aluno
+// BotÃµes rÃ¡pidos de ciclo na ficha do aluno
 function cicloReceberFotos(){
   if(!currentA) return;
   const faseMontar = getFaseByNome('montar treino');
-  if(!faseMontar){ toast('Fase "Montar treino" não encontrada.','err'); return; }
+  if(!faseMontar){ toast('Fase "Montar treino" nÃ£o encontrada.','err'); return; }
   const old = getFase(currentA.faseId).nome;
   currentA.faseId = faseMontar.id;
-  currentA.etiquetasExtras = (currentA.etiquetasExtras||[]).filter(e=>e!=='🔄 Reavaliação');
-  currentA.etiquetasExtras.push('💪 Montar treino');
+  currentA.etiquetasExtras = (currentA.etiquetasExtras||[]).filter(e=>e!=='ð ReavaliaÃ§Ã£o');
+  currentA.etiquetasExtras.push('ðª Montar treino');
   currentA.dtReavaliacao = null;
-  logAtividade(currentA, `Fotos recebidas — movido de "${old}" para "Montar treino"`);
+  logAtividade(currentA, `Fotos recebidas â movido de "${old}" para "Montar treino"`);
   save(); renderFicha(); renderLista();
-  toast('📸 Fotos recebidas! Aluno em fila para novo treino.','ok');
+  toast('ð¸ Fotos recebidas! Aluno em fila para novo treino.','ok');
 }
 
 function cicloTreinoNovoPronto(){
   if(!currentA) return;
   const faseEntregue = getFaseByNome('treino entregue') || getFaseByNome('entregue');
-  if(!faseEntregue){ toast('Fase "Treino entregue" não encontrada.','err'); return; }
+  if(!faseEntregue){ toast('Fase "Treino entregue" nÃ£o encontrada.','err'); return; }
   const old = getFase(currentA.faseId).nome;
   currentA.faseId = faseEntregue.id;
   aplicarCicloAutomatico(currentA, faseEntregue.id);
-  logAtividade(currentA, `Novo treino entregue — ciclo reiniciado`);
+  logAtividade(currentA, `Novo treino entregue â ciclo reiniciado`);
   save(); renderFicha(); renderLista();
-  toast('💪 Novo treino entregue! Próxima reavaliação em 8 semanas.','ok');
+  toast('ðª Novo treino entregue! PrÃ³xima reavaliaÃ§Ã£o em 8 semanas.','ok');
 }
 
 function openMPag(){$('p-data').value=today();$('p-val').value='';$('p-forma').value=currentA.forma||'PIX';$('p-ref').value='';om('m-pag');}
@@ -1395,17 +1964,17 @@ function openMRen(){$('rn-p').value=currentA.plano||'Mensal';$('rn-i').value=tod
 function saveRen(){currentA.plano=$('rn-p').value;currentA.inicio=$('rn-i').value;logAtividade(currentA,`Plano renovado: ${currentA.plano}`);save();cm('m-ren');renderFicha();toast('Plano renovado!','ok');}
 
 function openMTreino(){$('tr-n').value='';$('tr-d').value='';$('tr-o').value='';exCount=0;$('exForm').innerHTML='';addEx();om('m-treino');}
-function addEx(){const i=exCount++;const d=document.createElement('div');d.style.cssText='display:grid;grid-template-columns:1fr 50px 60px 60px 1fr auto;gap:5px;margin-bottom:5px;align-items:center;';d.innerHTML=`<input type="text" class="fi" id="en-${i}" placeholder="Exercício"><input type="number" class="fi" id="es-${i}" placeholder="Séries"><input type="text" class="fi" id="er-${i}" placeholder="Reps"><input type="number" class="fi" id="ec-${i}" placeholder="kg" step="0.5"><input type="text" class="fi" id="ed-${i}" placeholder="Obs..."><button class="btn btn-red btn-xs" onclick="this.parentElement.remove()">✕</button>`;$('exForm').appendChild(d);}
+function addEx(){const i=exCount++;const d=document.createElement('div');d.style.cssText='display:grid;grid-template-columns:1fr 50px 60px 60px 1fr auto;gap:5px;margin-bottom:5px;align-items:center;';d.innerHTML=`<input type="text" class="fi" id="en-${i}" placeholder="ExercÃ­cio"><input type="number" class="fi" id="es-${i}" placeholder="SÃ©ries"><input type="text" class="fi" id="er-${i}" placeholder="Reps"><input type="number" class="fi" id="ec-${i}" placeholder="kg" step="0.5"><input type="text" class="fi" id="ed-${i}" placeholder="Obs..."><button class="btn btn-red btn-xs" onclick="this.parentElement.remove()">â</button>`;$('exForm').appendChild(d);}
 function saveTreino(){const nome=$('tr-n').value.trim();if(!nome){toast('Informe o nome.','err');return;}const exercicios=[];$('exForm').querySelectorAll('div').forEach(row=>{const n=row.querySelectorAll('input')[0]?.value?.trim();if(n)exercicios.push({nome:n,series:row.querySelectorAll('input')[1]?.value,reps:row.querySelectorAll('input')[2]?.value,carga:row.querySelectorAll('input')[3]?.value,desc:row.querySelectorAll('input')[4]?.value});});currentA.treinos.push({id:uid(),nome,dias:$('tr-d').value.trim(),objetivo:$('tr-o').value.trim(),exercicios});logAtividade(currentA,`Treino "${nome}" adicionado`);save();cm('m-treino');renderFTTreinos();renderFicha();toast('Treino salvo!','ok');}
 function delTreino(idx){if(!confirm('Excluir?'))return;currentA.treinos.splice(idx,1);save();renderFTTreinos();renderFicha();}
 
-function calcIMC(){const p=parseFloat($('av-p').value),h=parseFloat($('av-a').value);if(p&&h){const imc=p/Math.pow(h/100,2);$('imcV').textContent=imc.toFixed(1);$('imcC').textContent=imc<18.5?'Abaixo':imc<25?'Normal':imc<30?'Sobrepeso':'Obesidade';$('imcV').style.color=imc<18.5?'var(--yellow)':imc<25?'var(--green)':imc<30?'var(--yellow)':'var(--red)';}else{$('imcV').textContent='—';$('imcC').textContent='IMC';}}
-function openMAv(){['av-dt','av-p','av-a','av-g','av-m','av-ci','av-qu','av-bd','av-be','av-cd','av-ce','av-pd','av-pe','av-ob'].forEach(id=>{const el=$(id);if(el)el.value=id==='av-dt'?today():'';});$('imcV').textContent='—';$('imcC').textContent='IMC';om('m-av');}
-function saveAv(){const av={id:uid(),data:$('av-dt').value,peso:parseFloat($('av-p').value)||null,altura:parseFloat($('av-a').value)||null,gordura:parseFloat($('av-g').value)||null,muscular:parseFloat($('av-m').value)||null,circunferencias:{cintura:parseFloat($('av-ci').value)||null,quadril:parseFloat($('av-qu').value)||null,braco_d:parseFloat($('av-bd').value)||null,braco_e:parseFloat($('av-be').value)||null,coxa_d:parseFloat($('av-cd').value)||null,coxa_e:parseFloat($('av-ce').value)||null,pant_d:parseFloat($('av-pd').value)||null,pant_e:parseFloat($('av-pe').value)||null},obs:$('av-ob').value.trim()};currentA.avaliacoes.push(av);currentA.avaliacoes.sort((a,b)=>a.data.localeCompare(b.data));logAtividade(currentA,`Avaliação física: ${av.peso?av.peso+'kg':''}`);save();cm('m-av');renderFTAv();renderFicha();toast('Avaliação salva!','ok');}
+function calcIMC(){const p=parseFloat($('av-p').value),h=parseFloat($('av-a').value);if(p&&h){const imc=p/Math.pow(h/100,2);$('imcV').textContent=imc.toFixed(1);$('imcC').textContent=imc<18.5?'Abaixo':imc<25?'Normal':imc<30?'Sobrepeso':'Obesidade';$('imcV').style.color=imc<18.5?'var(--yellow)':imc<25?'var(--green)':imc<30?'var(--yellow)':'var(--red)';}else{$('imcV').textContent='â';$('imcC').textContent='IMC';}}
+function openMAv(){['av-dt','av-p','av-a','av-g','av-m','av-ci','av-qu','av-bd','av-be','av-cd','av-ce','av-pd','av-pe','av-ob'].forEach(id=>{const el=$(id);if(el)el.value=id==='av-dt'?today():'';});$('imcV').textContent='â';$('imcC').textContent='IMC';om('m-av');}
+function saveAv(){const av={id:uid(),data:$('av-dt').value,peso:parseFloat($('av-p').value)||null,altura:parseFloat($('av-a').value)||null,gordura:parseFloat($('av-g').value)||null,muscular:parseFloat($('av-m').value)||null,circunferencias:{cintura:parseFloat($('av-ci').value)||null,quadril:parseFloat($('av-qu').value)||null,braco_d:parseFloat($('av-bd').value)||null,braco_e:parseFloat($('av-be').value)||null,coxa_d:parseFloat($('av-cd').value)||null,coxa_e:parseFloat($('av-ce').value)||null,pant_d:parseFloat($('av-pd').value)||null,pant_e:parseFloat($('av-pe').value)||null},obs:$('av-ob').value.trim()};currentA.avaliacoes.push(av);currentA.avaliacoes.sort((a,b)=>a.data.localeCompare(b.data));logAtividade(currentA,`AvaliaÃ§Ã£o fÃ­sica: ${av.peso?av.peso+'kg':''}`);save();cm('m-av');renderFTAv();renderFicha();toast('AvaliaÃ§Ã£o salva!','ok');}
 function delAv(idx,e){e.stopPropagation();if(!confirm('Excluir?'))return;currentA.avaliacoes.splice(idx,1);save();renderFTAv();renderFicha();}
 
 function openMNut(){$('nu-n').value='';$('nu-h').value='';$('nu-a').value='';$('nu-k').value='';$('nu-o').value='';om('m-nut');}
-function saveNut(){const n=$('nu-n').value.trim();if(!n){toast('Informe o nome.','err');return;}currentA.nutricao.push({nome:n,hora:$('nu-h').value,alimentos:$('nu-a').value.trim(),kcal:parseInt($('nu-k').value)||null,obs:$('nu-o').value.trim()});save();cm('m-nut');renderFTNut();renderFicha();toast('Refeição salva!','ok');}
+function saveNut(){const n=$('nu-n').value.trim();if(!n){toast('Informe o nome.','err');return;}currentA.nutricao.push({nome:n,hora:$('nu-h').value,alimentos:$('nu-a').value.trim(),kcal:parseInt($('nu-k').value)||null,obs:$('nu-o').value.trim()});save();cm('m-nut');renderFTNut();renderFicha();toast('RefeiÃ§Ã£o salva!','ok');}
 function delNut(idx){if(!confirm('Excluir?'))return;currentA.nutricao.splice(idx,1);save();renderFTNut();renderFicha();}
 
 function openMMeta(){$('mt-n').value='';$('mt-c').value='Peso';$('mt-pr').value='';$('mt-pc').value='0';$('mt-st').value='Em andamento';$('mt-ob').value='';om('m-meta');}
@@ -1417,7 +1986,7 @@ function saveNota(){const t=$('nt-t').value.trim();if(!t){toast('Escreva.','err'
 function delNota(idx){if(!confirm('Excluir?'))return;currentA.notas.splice(idx,1);save();renderFTNotas();}
 
 function openMFoto(){fotoB64=null;$('fotoInput').value='';$('ft-dt').value=today();$('ft-ob').value='';$('fotoPreview').innerHTML='';om('m-foto');}
-function onFoto(e){const f=e.target.files[0];if(!f)return;if(f.size>5*1024*1024){toast('Máx 5MB.','err');return;}const r=new FileReader();r.onload=ev=>{fotoB64=ev.target.result;$('fotoPreview').innerHTML=`<img src="${fotoB64}" style="width:100%;max-height:180px;object-fit:contain;border-radius:5px;margin-bottom:10px;">`};r.readAsDataURL(f);}
+function onFoto(e){const f=e.target.files[0];if(!f)return;if(f.size>5*1024*1024){toast('MÃ¡x 5MB.','err');return;}const r=new FileReader();r.onload=ev=>{fotoB64=ev.target.result;$('fotoPreview').innerHTML=`<img src="${fotoB64}" style="width:100%;max-height:180px;object-fit:contain;border-radius:5px;margin-bottom:10px;">`};r.readAsDataURL(f);}
 function saveFoto(){if(!fotoB64){toast('Selecione uma foto.','err');return;}currentA.fotos.push({id:uid(),data:$('ft-dt').value,dados:fotoB64,obs:$('ft-ob').value.trim()});logAtividade(currentA,'Foto adicionada');save();cm('m-foto');renderFTFotos();renderFicha();toast('Foto salva!','ok');}
 function viewFoto(idx){viewFotoIdx=idx;const f=currentA.fotos[idx];$('fvTit').textContent=fmt(f.data);$('fvImg').src=f.dados;$('fvObs').textContent=f.obs||'';om('m-foto-v');}
 function delFoto(){if(!confirm('Excluir?'))return;currentA.fotos.splice(viewFotoIdx,1);save();cm('m-foto-v');renderFTFotos();renderFicha();}
@@ -1426,11 +1995,11 @@ function openModalAg(){$('ag-al').innerHTML=alunos.sort((a,b)=>a.nome.localeComp
 function saveAg(){const aId=$('ag-al').value,a=alunos.find(x=>x.id===aId);agendamentos.push({id:uid(),aluno:aId,alunoNome:a?.nome||'',data:$('ag-dt').value,hora:$('ag-hr').value,tipo:$('ag-tp').value,obs:$('ag-ob').value.trim()});save();cm('m-ag');renderAgenda();toast('Agendado!','ok');}
 function delAg(idx){if(!confirm('Excluir?'))return;agendamentos.splice(idx,1);save();renderAgenda();}
 
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 // EXPORT / IMPORT
-// ═══════════════════════════════════
+// âââââââââââââââââââââââââââââââââââ
 function exp(){const b=new Blob([JSON.stringify({alunos,agendamentos,fases,v:4,exportado:new Date().toISOString()},null,2)],{type:'application/json'});const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='yanke_gestao.json';a.click();URL.revokeObjectURL(u);toast('Exportado!','ok');}
-function imp(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);const lista=d.alunos||d;if(!Array.isArray(lista))throw 0;if(!confirm(`Importar ${lista.length} aluno(s)?`))return;alunos=lista;agendamentos=d.agendamentos||[];if(d.fases)fases=d.fases;alunos.forEach(a=>{if(!a.pagamentos)a.pagamentos=[];if(!a.anamnese)a.anamnese={};if(!a.avaliacoes)a.avaliacoes=[];if(!a.fotos)a.fotos=[];if(!a.treinos)a.treinos=[];if(!a.metas)a.metas=[];if(!a.notas)a.notas=[];if(!a.nutricao)a.nutricao=[];if(!a.atividade)a.atividade=[];if(!a.faseId)a.faseId=fases[0]?.id;if(!a.statusAluno)a.statusAluno='ativo';});save();renderLista();updateBadge();toast(`${lista.length} alunos importados!`,'ok');}catch{toast('Arquivo inválido.','err');}};r.readAsText(f);}
+function imp(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);const lista=d.alunos||d;if(!Array.isArray(lista))throw 0;if(!confirm(`Importar ${lista.length} aluno(s)?`))return;alunos=lista;agendamentos=d.agendamentos||[];if(d.fases)fases=d.fases;alunos.forEach(a=>{if(!a.pagamentos)a.pagamentos=[];if(!a.anamnese)a.anamnese={};if(!a.avaliacoes)a.avaliacoes=[];if(!a.fotos)a.fotos=[];if(!a.treinos)a.treinos=[];if(!a.metas)a.metas=[];if(!a.notas)a.notas=[];if(!a.nutricao)a.nutricao=[];if(!a.atividade)a.atividade=[];if(!a.faseId)a.faseId=fases[0]?.id;if(!a.statusAluno)a.statusAluno='ativo';});save();renderLista();updateBadge();toast(`${lista.length} alunos importados!`,'ok');}catch{toast('Arquivo invÃ¡lido.','err');}};r.readAsText(f);}
 
 // TOAST
 let toastT;
@@ -1446,7 +2015,7 @@ load();
 $('cfg-cid').value=localStorage.getItem('yk_clientid')||'';
 $('cfg-ak').value=localStorage.getItem('yk_apikey')||'';
 verificarReavaliacoes(); // Verificar automaticamente ao abrir
-renderLista();
+gp('home', document.querySelector('.ni'));
 updateBadge();
 document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.add('hidden');}));
 </script>
