@@ -295,7 +295,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="sb-sub">Consultoria</div>
   </div>
   <nav class="sb-nav">
-    <div class="ni on" onclick="gp('home',this)" style="margin-bottom:2px;"><span class="ni-ic">⚡</span>Início</div>
+    <div class="ni on" onclick="gp('home',this)" style="margin-bottom:2px;background:var(--purple-bg);"><span class="ni-ic">⚡</span>Dashboard</div>
     <div class="sb-sec">Visões</div>
     <div class="ni" onclick="gp('pipeline',this)"><span class="ni-ic">≡</span>Lista</div>
     <div class="ni" onclick="gp('lista',this)"><span class="ni-ic">📋</span>Tabela<span class="ni-badge" id="nb-venc" style="display:none"></span></div>
@@ -320,6 +320,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <div class="main">
 <div class="topbar">
   <div class="tb-bread">
+    <span onclick="gp('home')" style="color:var(--purple);font-weight:600;">⚡ Dashboard</span>
+    <span class="sep">/</span>
     <span onclick="gp('pipeline')">Alunos</span>
     <span class="sep">/</span>
     <span class="current" id="bread-current">Lista</span>
@@ -450,6 +452,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .sk-badge.paid{background:#3a2000;color:#f2e4c8;}
 .sk-badge.pend{background:rgba(0,0,0,.08);color:#8a6030;border:1px solid #d4b888;}
 .sk-badge.pix{background:#d1fae5;color:#065f46;}
+
+/* CRONOGRAMA — badges e timeline */
+.crono-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;}
+.crono-ok{background:#d1fae5;color:#065f46;}
+.crono-warn{background:#fef3c7;color:#92400e;}
+.crono-danger{background:#fee2e2;color:#991b1b;}
+.crono-shape{background:#ede9fe;color:#5b21b6;}
+.crono-timeline{display:flex;align-items:center;gap:0;margin:16px 0;overflow-x:auto;padding-bottom:8px;}
+.crono-step{display:flex;flex-direction:column;align-items:center;min-width:80px;}
+.crono-step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2.5px solid;flex-shrink:0;margin-bottom:6px;}
+.crono-step-line{height:2.5px;flex:1;min-width:20px;}
+.crono-step-lbl{font-size:9.5px;color:var(--t2);text-align:center;line-height:1.3;max-width:80px;}
+.crono-step-sub{font-size:8.5px;color:var(--t3);text-align:center;margin-top:1px;}
+.crono-row{display:flex;align-items:center;}
+.crono-progbar{height:10px;background:var(--bg4);border-radius:5px;overflow:hidden;margin:8px 0;}
+.crono-progfill{height:100%;border-radius:5px;background:linear-gradient(90deg,#d4af37,#8a5a00);transition:.3s;}
 </style>
 
 <div class="sk-wrap">
@@ -457,7 +475,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   <div class="sk-sb">
     <div class="sk-logo">A<span>&H</span></div>
     <nav class="sk-nav">
-      <div class="sk-ni on">
+      <div class="sk-ni on" onclick="gp('home')">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Dashboard
       </div>
@@ -635,14 +653,26 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div id="sk-venc-list"></div>
     </div>
 
+    <!-- ── SHAPE CHECKS MAIS PRÓXIMOS ── -->
+    <div class="sk-table-card" style="margin-top:14px;">
+      <div class="sk-table-head">
+        <div class="sk-table-title">📸 Shape Checks — próximos 30 dias</div>
+        <div style="font-size:12px;color:#aaa;">a cada 8 semanas automaticamente</div>
+      </div>
+      <div class="sk-thead" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;">
+        <div>Aluno</div><div>Plano</div><div>Semana atual</div><div>Data do shape</div><div>Dias</div>
+      </div>
+      <div id="sk-shape-list"></div>
+    </div>
+
     <!-- ── REAVALIAÇÕES MAIS PRÓXIMAS ── -->
     <div class="sk-table-card" style="margin-top:14px;">
       <div class="sk-table-head">
-        <div class="sk-table-title">🔄 Reavaliações mais próximas</div>
-        <div style="font-size:12px;color:#aaa;">do mais urgente ao mais distante</div>
+        <div class="sk-table-title">📸 Shape Checks mais próximos</div>
+        <div style="font-size:12px;color:#aaa;">calculado automaticamente · a cada 8 semanas</div>
       </div>
       <div class="sk-thead" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;">
-        <div>Aluno</div><div>Plano</div><div>Treino entregue</div><div>Próx. reavaliação</div><div>Dias</div>
+        <div>Aluno</div><div>Plano</div><div>Shape #</div><div>Data do shape</div><div>Prazo</div>
       </div>
       <div id="sk-reav-list"></div>
     </div>
@@ -728,6 +758,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div style="margin-top:24px;">
       <div class="ficha-tabs">
         <button class="ftab on" onclick="sFTab('pagamentos',this)">💰 Pagamentos</button>
+        <button class="ftab" onclick="sFTab('cronograma',this)">📅 Cronograma</button>
         <button class="ftab" onclick="sFTab('treinos',this)">💪 Treinos</button>
         <button class="ftab" onclick="sFTab('avaliacao',this)">📏 Avaliação</button>
         <button class="ftab" onclick="sFTab('nutricao',this)">🥗 Nutrição</button>
@@ -737,6 +768,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <button class="ftab" onclick="sFTab('atividade',this)">🕐 Atividade</button>
       </div>
       <div class="ftabp on" id="ftp-pagamentos"></div>
+      <div class="ftabp" id="ftp-cronograma"></div>
       <div class="ftabp" id="ftp-treinos"></div>
       <div class="ftabp" id="ftp-avaliacao"></div>
       <div class="ftabp" id="ftp-nutricao"></div>
@@ -1075,564 +1107,203 @@ const addM=(ds,m)=>{const d=new Date(ds+'T12:00:00');d.setMonth(d.getMonth()+m);
 const venc=(a)=>(!a.inicio||a.plano==='Pendente')?null:addM(a.inicio,PLANO_MESES[a.plano]||0);
 const $=id=>document.getElementById(id);
 
-function statusPag(a){
-  if(a.plano==='Pendente') return 'pendente';
-  const v=venc(a); if(!v) return 'pendente';
-  const hoje=new Date(); hoje.setHours(0,0,0,0);
-  const vd=new Date(v+'T12:00:00');
-  if(vd<hoje) return 'vencido';
-  if((vd-hoje)/86400000<=7) return 'vencendo';
-  return 'ativo';
-}
-
-function initials(n){
-  if(!n) return '?';
-  const p=n.trim().split(' ');
-  return p.length===1?p[0][0].toUpperCase():(p[0][0]+p[p.length-1][0]).toUpperCase();
-}
-
-function getFase(id){return fases.find(f=>f.id===id)||fases[0]||{id:'?',nome:'Sem fase',cor:'#888'};}
-
-function logAtividade(a,texto){
-  if(!a.atividade)a.atividade=[];
-  a.atividade.unshift({texto,data:new Date().toISOString()});
-  if(a.atividade.length>50)a.atividade=a.atividade.slice(0,50);
-}
-
 // ═══════════════════════════════════
-// STORAGE
+// CRONOGRAMA AUTOMÁTICO — 8 SEMANAS
 // ═══════════════════════════════════
-function save(){
-  localStorage.setItem('yk4_alunos',JSON.stringify(alunos));
-  localStorage.setItem('yk4_ag',JSON.stringify(agendamentos));
-  localStorage.setItem('yk4_fases',JSON.stringify(fases));
-}
-function load(){
-  try{const d=localStorage.getItem('yk4_alunos');alunos=d?JSON.parse(d):[];}catch{alunos=[];}
-  try{const d=localStorage.getItem('yk4_ag');agendamentos=d?JSON.parse(d):[];}catch{agendamentos=[];}
-  try{const d=localStorage.getItem('yk4_fases');fases=d?JSON.parse(d):FASES_DEFAULT;}catch{fases=[...FASES_DEFAULT];}
-  alunos.forEach(a=>{
-    if(!a.pagamentos)a.pagamentos=[];if(!a.anamnese)a.anamnese={};if(!a.avaliacoes)a.avaliacoes=[];
-    if(!a.fotos)a.fotos=[];if(!a.treinos)a.treinos=[];if(!a.metas)a.metas=[];
-    if(!a.notas)a.notas=[];if(!a.nutricao)a.nutricao=[];if(!a.atividade)a.atividade=[];
-    if(!a.faseId)a.faseId=fases[0]?.id;
-    if(!a.statusAluno)a.statusAluno='ativo';
-  });
-}
-
-// ═══════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════
-function gp(page,navEl){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
-  const titles={home:'Início',pipeline:'Lista',lista:'Tabela',ficha:currentA?.nome||'Aluno',dashboard:'Dashboard',financeiro:'Financeiro',agenda:'Agenda',fases:'Fases',config:'Config'};
-  $('bread-current').textContent=titles[page]||page;
-  $('page-'+page)?.classList.add('on');
-  if(navEl) navEl.classList.add('on');
-
-  if(page==='home') renderHome();
-  if(page==='pipeline') renderLista();
-  if(page==='lista') renderTabela();
-  if(page==='dashboard') renderDashboard();
-  if(page==='financeiro') renderFinanceiro();
-  if(page==='agenda') renderAgenda();
-  if(page==='fases') renderFasesEditor();
-  updateBadge();
-}
-
-// ═══════════════════════════════════
-// HOME DASHBOARD PREMIUM
-// ═══════════════════════════════════
-function renderHome(){
-  const meses=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  const mesesFull=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-  const now=new Date();
-
-  // KPIs
-  const total=alunos.length;
-  const rec=alunos.reduce((s,a)=>(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),s),0);
-  const porPlano={};
-  alunos.forEach(a=>{const p=a.plano||'Mensal';porPlano[p]=(porPlano[p]||0)+1;});
-  const topPlano=Object.entries(porPlano).sort((a,b)=>b[1]-a[1])[0]||['—',0];
-  const reav=alunos.filter(a=>(a.etiquetasExtras||[]).includes('🔄 Reavaliação')).length;
-  const montar=alunos.filter(a=>(a.etiquetasExtras||[]).includes('💪 Montar treino')).length;
-
-  const el=id=>document.getElementById(id);
-  if(el('sk-kpi-rec')) el('sk-kpi-rec').textContent=fmtM(Math.round(rec));
-  if(el('sk-kpi-total')) el('sk-kpi-total').textContent=total;
-  if(el('sk-kpi-reav')) el('sk-kpi-reav').textContent=reav;
-  if(el('sk-kpi-plano')) el('sk-kpi-plano').textContent=topPlano[0];
-  if(el('sk-plano-cnt')) el('sk-plano-cnt').textContent=topPlano[1];
-  if(el('sk-kpi-trend-reav')){
-    el('sk-kpi-trend-reav').className='sk-kpi-trend'+(reav>0?' down':'');
-    el('sk-kpi-trend-reav').innerHTML=(reav>0?'<span>↗</span> pendentes':'<span>—</span> nenhuma pendente');
+function calcCronograma(a) {
+  // Retorna objeto com todas as datas do ciclo do aluno
+  if (!a.inicio || a.plano === 'Pendente') return null;
+  
+  const inicio = new Date(a.inicio + 'T12:00:00');
+  const vencimento = venc(a);
+  const vencDt = vencimento ? new Date(vencimento + 'T12:00:00') : null;
+  const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+  
+  // Calcular todos os shape checks a cada 8 semanas
+  const SEMANAS = 8;
+  const DIAS = SEMANAS * 7; // 56 dias
+  const shapeChecks = [];
+  let dt = new Date(inicio);
+  dt.setDate(dt.getDate() + DIAS); // primeiro shape check após 8 semanas
+  
+  while (!vencDt || dt <= vencDt) {
+    shapeChecks.push(dt.toISOString().slice(0, 10));
+    dt = new Date(dt);
+    dt.setDate(dt.getDate() + DIAS);
+    if (!vencDt && shapeChecks.length >= 12) break; // limitar sem vencimento
   }
-
-  // Data label
-  const m=now.getMonth(),y=now.getFullYear();
-  if(el('sk-date-lbl')) el('sk-date-lbl').textContent=`1 ${mesesFull[m].slice(0,3)} ${y} – ${now.getDate()} ${mesesFull[m].slice(0,3)} ${y}`;
-
-  // GRÁFICO BARRAS
-  const recMeses={};
-  alunos.forEach(a=>(a.pagamentos||[]).forEach(p=>{const m=p.data?.slice(0,7);if(m)recMeses[m]=(recMeses[m]||0)+parseFloat(p.valor||0);}));
-  const sortedM=Object.keys(recMeses).sort().slice(-8);
-  const vals=sortedM.map(m=>Math.round(recMeses[m]));
-  const lbls=sortedM.map(m=>{const[y,mo]=m.split('-');return meses[parseInt(mo)-1].charAt(0).toUpperCase()+meses[parseInt(mo)-1].slice(1);});
-  const mesAtual=today().slice(0,7);
-  const canvas=el('sk-chart');
-  if(canvas){
-    if(window._skChart) window._skChart.destroy();
-    window._skChart=new Chart(canvas,{
-      type:'bar',
-      data:{labels:lbls,datasets:[{data:vals,backgroundColor:sortedM.map(m=>m===mesAtual?'#8a6030':'#3a2000'),borderRadius:8,borderSkipped:false,barPercentage:.6}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'R$ '+c.parsed.y.toLocaleString('pt-BR')}}},scales:{x:{grid:{display:false},ticks:{color:'#a08050',font:{size:11}}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{color:'#a08050',font:{size:11},callback:v=>v>=1000?'R$'+Math.round(v/1000)+'K':'R$'+v}}}}
-    });
+  
+  // Encontrar próximo shape check
+  const proxSC = shapeChecks.find(d => d >= today());
+  const ultimoSC = shapeChecks.filter(d => d < today()).pop() || null;
+  
+  // Dias até próximo shape check
+  const diasProxSC = proxSC
+    ? Math.round((new Date(proxSC + 'T12:00:00') - hoje) / 86400000)
+    : null;
+  
+  // Dias até vencimento
+  const diasVenc = vencDt
+    ? Math.round((vencDt - hoje) / 86400000)
+    : null;
+  
+  // Status do ciclo
+  let statusCiclo = 'ativo';
+  if (diasVenc !== null && diasVenc < 0) statusCiclo = 'vencido';
+  else if (diasVenc !== null && diasVenc <= 14) statusCiclo = 'vencendo';
+  else if (diasProxSC !== null && diasProxSC <= 7) statusCiclo = 'shape_iminente';
+  else if (diasProxSC !== null && diasProxSC <= 14) statusCiclo = 'shape_proximo';
+  
+  // Progresso no ciclo atual (% entre último e próximo shape check)
+  let progresso = 0;
+  if (proxSC && ultimoSC) {
+    const ultDt = new Date(ultimoSC + 'T12:00:00');
+    const proxDt = new Date(proxSC + 'T12:00:00');
+    const total = proxDt - ultDt;
+    const passado = hoje - ultDt;
+    progresso = Math.min(100, Math.max(0, Math.round((passado / total) * 100)));
+  } else if (proxSC) {
+    const proxDt = new Date(proxSC + 'T12:00:00');
+    const total = proxDt - inicio;
+    const passado = hoje - inicio;
+    progresso = Math.min(100, Math.max(0, Math.round((passado / total) * 100)));
   }
-
-  // DONUT
-  const donutCanvas=el('sk-donut');
-  if(donutCanvas){
-    if(window._skDonut) window._skDonut.destroy();
-    const pct=Math.round(topPlano[1]/Math.max(total,1)*100);
-    donutCanvas.parentElement.querySelector('.sk-donut-val').textContent=pct+'%';
-    window._skDonut=new Chart(donutCanvas,{
-      type:'doughnut',
-      data:{datasets:[{data:[pct,100-pct],backgroundColor:['#3a2000','#e8d5b0'],borderWidth:0,borderRadius:4}]},
-      options:{responsive:false,cutout:'75%',plugins:{legend:{display:false},tooltip:{enabled:false}}}
-    });
-  }
-
-  // CALENDÁRIO
-  const calEl=el('sk-cal');
-  if(calEl){
-    const mo=now.getMonth(),yr=now.getFullYear(),today_d=now.getDate();
-    if(el('sk-cal-month')) el('sk-cal-month').textContent=mesesFull[mo]+' '+yr;
-    const firstDay=new Date(yr,mo,1).getDay()||7;
-    const daysInMonth=new Date(yr,mo+1,0).getDate();
-    const dows=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
-    let html=dows.map(d=>`<div class="sk-cal-dow">${d}</div>`).join('');
-    for(let i=1;i<firstDay;i++) html+=`<div class="sk-cal-d other"></div>`;
-    for(let d=1;d<=daysInMonth;d++) html+=`<div class="sk-cal-d${d===today_d?' today':''}">${d}</div>`;
-    calEl.innerHTML=html;
-  }
-
-  // TABELA
-  const tbl=el('sk-table');
-  if(tbl){
-    const pags=alunos.flatMap(a=>(a.pagamentos||[]).map(p=>({...p,nome:a.nome,plano:a.plano||'—'}))).sort((a,b)=>(b.data||'').localeCompare(a.data||'')).slice(0,8);
-    if(!pags.length){tbl.innerHTML='<div style="padding:20px;text-align:center;color:#aaa;font-size:13px;">Nenhum pagamento registrado</div>';return;}
-    tbl.innerHTML=pags.map(p=>{
-      const ini=(p.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-      const dt=p.data?new Date(p.data+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}):'—';
-      const badge=p.forma==='PIX'?'pix':'paid';
-      const badgeTxt=p.forma==='PIX'?'Pix':'Cartão';
-      return `<div class="sk-trow">
-        <div class="sk-trow-name"><div class="sk-trow-av">${ini}</div><div class="sk-trow-nm">${p.nome}</div></div>
-        <div class="sk-trow-cell">${p.plano}</div>
-        <div class="sk-trow-id">${dt}</div>
-        <div class="sk-trow-cell" style="font-weight:600;color:#111;">${fmtM(parseFloat(p.valor||0))}</div>
-        <div><span class="sk-badge ${badge}">${badgeTxt}</span></div>
-      </div>`;
-    }).join('');
-  }
-
-  // BUSCA
-  const si=el('sk-search-in');
-  if(si) si.oninput=function(){
-    const q=this.value.toLowerCase();
-    if(!q){renderHome();return;}
-    const f=alunos.filter(a=>(a.nome||'').toLowerCase().includes(q));
-    const tbl=el('sk-table');
-    if(tbl) tbl.innerHTML=f.slice(0,8).map(a=>{
-      const ini=(a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-      const rec=(a.pagamentos||[]).reduce((s,p)=>s+parseFloat(p.valor||0),0);
-      return `<div class="sk-trow" onclick="openFicha('${a.id}')">
-        <div class="sk-trow-name"><div class="sk-trow-av">${ini}</div><div class="sk-trow-nm">${a.nome}</div></div>
-        <div class="sk-trow-cell">${a.plano||'—'}</div>
-        <div class="sk-trow-id">${a.inicio?new Date(a.inicio+'T12:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}):'—'}</div>
-        <div class="sk-trow-cell" style="font-weight:600;color:#111;">${fmtM(rec)}</div>
-        <div><span class="sk-badge paid">Ativo</span></div>
-      </div>`;
-    }).join('');
+  
+  return {
+    inicio: a.inicio,
+    vencimento,
+    shapeChecks,
+    proxSC,
+    ultimoSC,
+    diasProxSC,
+    diasVenc,
+    statusCiclo,
+    progresso,
+    semanaAtual: ultimoSC
+      ? Math.round((hoje - new Date(ultimoSC + 'T12:00:00')) / 86400000 / 7) + (SEMANAS * shapeChecks.filter(d=>d<today()).length)
+      : Math.round((hoje - inicio) / 86400000 / 7),
   };
-
-  // ── GRÁFICO 1: VENCIMENTOS MAIS PRÓXIMOS ──
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const comVenc = alunos
-    .filter(a=>a.inicio && a.plano && a.plano!=='Pendente')
-    .map(a=>{
-      const vc = venc(a);
-      const dt = vc ? new Date(vc+'T12:00:00') : null;
-      const dias = dt ? Math.round((dt - hoje) / 86400000) : 9999;
-      return {...a, _vc:vc, _dias:dias};
-    })
-    .sort((a,b)=>a._dias - b._dias)
-    .slice(0,10);
-
-  const vencEl = el('sk-venc-list');
-  if(vencEl){
-    if(!comVenc.length){
-      vencEl.innerHTML='<div style="padding:20px;text-align:center;color:#aaa;font-size:13px;">Nenhum aluno com plano ativo</div>';
-    } else {
-      vencEl.innerHTML = comVenc.map(a=>{
-        const ini = a.inicio ? new Date(a.inicio+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : '—';
-        const vcFmt = a._vc ? new Date(a._vc+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : '—';
-        const dias = a._dias;
-        let badge, cor;
-        if(dias < 0){ badge='Vencido'; cor='#ef4444'; }
-        else if(dias <= 7){ badge=dias+'d'; cor='#f97316'; }
-        else if(dias <= 30){ badge=dias+'d'; cor='#eab308'; }
-        else { badge=dias+'d'; cor='#22c55e'; }
-        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;" onclick="openFicha('${a.id}')">
-          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
-          <div class="sk-trow-cell">${a.plano||'—'}</div>
-          <div class="sk-trow-id">${ini}</div>
-          <div class="sk-trow-cell" style="font-weight:600;">${vcFmt}</div>
-          <div><span class="sk-badge" style="background:${cor}20;color:${cor};border:1px solid ${cor}40;">${badge}</span></div>
-        </div>`;
-      }).join('');
-    }
-  }
-
-  // ── GRÁFICO 2: REAVALIAÇÕES MAIS PRÓXIMAS ──
-  // Busca em agendamentos (tipo Reavaliação) OU etiqueta '🔄 Reavaliação'
-  const agend = JSON.parse(localStorage.getItem('yk4_agendamentos')||'[]');
-  const comReav = alunos.map(a=>{
-    // Procurar agendamento de reavaliação para esse aluno
-    const ag = agend.filter(g=>g.aluno===a.id && g.tipo==='Reavaliação' && g.data)
-      .sort((x,y)=>x.data.localeCompare(y.data))[0];
-    const temEtiq = (a.etiquetasExtras||[]).includes('🔄 Reavaliação');
-    if(!ag && !temEtiq) return null;
-    const dtReav = ag ? new Date(ag.data+'T12:00:00') : null;
-    const dias = dtReav ? Math.round((dtReav - hoje) / 86400000) : (temEtiq ? 0 : 9999);
-    return {...a, _dtReav: ag?.data||null, _diasReav: dias};
-  }).filter(Boolean).sort((a,b)=>a._diasReav - b._diasReav).slice(0,10);
-
-  const reavEl = el('sk-reav-list');
-  if(reavEl){
-    if(!comReav.length){
-      reavEl.innerHTML='<div style="padding:20px;text-align:center;color:#22c55e;font-size:13px;">✓ Nenhuma reavaliação pendente</div>';
-    } else {
-      reavEl.innerHTML = comReav.map(a=>{
-        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-        const dtFmt = a._dtReav ? new Date(a._dtReav+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'2-digit'}) : 'Pendente';
-        const dias = a._diasReav;
-        let badge, cor;
-        if(dias <= 0){ badge='Hoje/Atrasada'; cor='#ef4444'; }
-        else if(dias <= 7){ badge=dias+'d'; cor='#f97316'; }
-        else if(dias <= 30){ badge=dias+'d'; cor='#eab308'; }
-        else { badge=dias+'d'; cor='#22c55e'; }
-        const ult = a.atividades?.filter(v=>v.msg?.includes('Treino entregue')).slice(-1)[0];
-        const ultDt = ult?.data ? new Date(ult.data).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}) : '—';
-        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1fr 1fr 0.8fr;" onclick="openFicha('${a.id}')">
-          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
-          <div class="sk-trow-cell">${a.plano||'—'}</div>
-          <div class="sk-trow-id">${ultDt}</div>
-          <div class="sk-trow-cell" style="font-weight:600;">${dtFmt}</div>
-          <div><span class="sk-badge" style="background:${cor}20;color:${cor};border:1px solid ${cor}40;">${badge}</span></div>
-        </div>`;
-      }).join('');
-    }
-  }
-
-  // ── GRÁFICO 3: TREINOS PENDENTES PARA MONTAR ──
-  // Alunos com etiqueta '💪 Montar treino' OU em fase "Montar Treino"
-  const fasesMontar = fases.filter(f=>f.nome.toLowerCase().includes('montar')).map(f=>f.id);
-  const pendMontar = alunos.filter(a=>
-    (a.etiquetasExtras||[]).includes('💪 Montar treino') ||
-    fasesMontar.includes(a.faseId)
-  );
-  // Também: alunos que já passaram por TODAS as fases de anamnese/fotos
-  // Identificar fases de anamnese e foto/shapeback
-  const fasesAnamnese = fases.filter(f=>f.nome.toLowerCase().includes('anamnese')).map(f=>f.id);
-  const fasesShapeback = fases.filter(f=>f.nome.toLowerCase().includes('shapeback')||f.nome.toLowerCase().includes('foto')).map(f=>f.id);
-
-  const montarEl = el('sk-montar-list');
-  if(montarEl){
-    if(!pendMontar.length){
-      montarEl.innerHTML='<div style="padding:20px;text-align:center;color:#22c55e;font-size:13px;">✓ Nenhum treino pendente</div>';
-    } else {
-      montarEl.innerHTML = pendMontar.map(a=>{
-        const ini2 = (a.nome||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-        const fase = getFase(a.faseId);
-        const situacao = (a.etiquetasExtras||[]).includes('🔄 Reavaliação')
-          ? '📸 Aguardando fotos'
-          : '💪 Montar treino';
-        const sitCor = situacao.includes('Aguardando') ? '#f97316' : '#8b5cf6';
-        return `<div class="sk-trow" style="grid-template-columns:2fr 1fr 1.5fr 1.5fr 0.8fr;" onclick="openFicha('${a.id}')">
-          <div class="sk-trow-name"><div class="sk-trow-av">${ini2}</div><div class="sk-trow-nm">${a.nome}</div></div>
-          <div class="sk-trow-cell">${a.plano||'—'}</div>
-          <div class="sk-trow-cell"><span style="background:${fase.cor}20;color:${fase.cor};padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;">${fase.nome}</span></div>
-          <div class="sk-trow-cell"><span style="background:${sitCor}15;color:${sitCor};padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;">${situacao}</span></div>
-          <div><button class="sk-badge paid" onclick="event.stopPropagation();openFicha('${a.id}')" style="cursor:pointer;border:none;">Ver</button></div>
-        </div>`;
-      }).join('');
-    }
-  }
 }
 
-function skPeriod(btn,p){
-  document.querySelectorAll('.sk-pbtn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-}
+function renderCronograma(a) {
+  const cr = calcCronograma(a);
+  if (!cr) return '<div style="padding:24px;text-align:center;color:var(--t3);"><div style="font-size:24px;margin-bottom:8px;">📅</div><div style="font-size:13px;">Configure a <strong>data de início</strong> e o <strong>plano</strong> para ver o cronograma automático de 8 semanas.</div></div>';
 
-function updateBadge(){
-  const n=alunos.filter(a=>statusPag(a)==='vencido').length;
-  $('nb-venc').textContent=n||''; $('nb-venc').style.display=n?'':'none';
-}
+  const hoje = today();
 
-// ═══════════════════════════════════
-// LISTA CLICKUP
-// ═══════════════════════════════════
-function setView(v){
-  currentView=v;
-  $('btn-lista').classList.toggle('on',v==='lista');
-  $('btn-quadro').classList.toggle('on',v==='quadro');
-  if(v==='lista'){$('listaView').style.display='block';$('quadroView').style.display='none';renderLista();}
-  else{$('listaView').style.display='none';$('quadroView').style.display='flex';renderQuadro();}
-}
+  // ─── STATUS CARD ───
+  const statusIcon = { ativo:'✅', vencendo:'⏳', vencido:'❌', shape_iminente:'🔴', shape_proximo:'🟡' };
+  const statusLabel = { ativo:'Ativo', vencendo:'Vencendo em breve', vencido:'Plano vencido', shape_iminente:'Shape check urgente', shape_proximo:'Shape check próximo' };
+  const statusColor = { ativo:'#22c55e', vencendo:'#f59e0b', vencido:'#ef4444', shape_iminente:'#ef4444', shape_proximo:'#f59e0b' };
+  const cor = statusColor[cr.statusCiclo] || '#22c55e';
 
-function renderLista(){
-  const thead=`<div class="cl-thead">
-    <div class="cl-th">Nome</div>
-    <div class="cl-th">Responsável</div>
-    <div class="cl-th">Prioridade</div>
-    <div class="cl-th">Data de vencimento</div>
-    <div class="cl-th">Status pag.</div>
-  </div>`;
+  // ─── SEMANA ATUAL ───
+  const semStr = `Semana ${cr.semanaAtual} do plano`;
 
-  $('listaView').innerHTML=fases.map(f=>{
-    const lista=alunos.filter(a=>a.faseId===f.id).sort((a,b)=>a.nome.localeCompare(b.nome));
+  // ─── BARRA DE PROGRESSO DO CICLO ───
+  const refInicio = cr.ultimoSC || cr.inicio;
+  const labelEsq = cr.ultimoSC ? '📸 Shape ' + cr.shapeChecks.filter(d=>d<hoje).length : '🚀 Início';
+  const labelDir  = cr.proxSC ? '📸 Shape ' + (cr.shapeChecks.filter(d=>d<hoje).length+1) : '✅ Fim do plano';
 
-    const rows=lista.map(a=>{
-      const s=statusPag(a), vc=venc(a);
-      const PRIO={'urgente':['#dc2626','🔴 Urgente'],'alta':['#ea580c','🟠 Alta'],'normal':['#94a3b8','Normal'],'baixa':['#cbd5e1','Baixa']}[a.prioridade||'normal'];
-
-      // Date chip
-      let dateChip='<span style="color:var(--t4);font-size:11px;">Vazio</span>';
-      if(vc){
-        const diff=(new Date(vc+'T12:00:00')-new Date())/86400000;
-        if(diff<-1) dateChip=`<span class="cl-date atrasado">⚠ ${fmt(vc)}</span>`;
-        else if(Math.abs(diff)<1) dateChip=`<span class="cl-date hoje">Hoje</span>`;
-        else if(diff<2) dateChip=`<span class="cl-date amanha">Amanhã</span>`;
-        else if(diff<7) dateChip=`<span class="cl-date amanha">${fmt(vc)}</span>`;
-        else dateChip=`<span class="cl-date ok">${fmt(vc)}</span>`;
-      }
-
-      const pagChip={'ativo':'<span class="tag tag-green" style="font-size:10px;">✓ Em dia</span>','vencido':'<span class="tag tag-red" style="font-size:10px;">✗ Vencido</span>','vencendo':'<span class="tag tag-yellow" style="font-size:10px;">⏳ Vencendo</span>','pendente':'<span class="tag tag-gray" style="font-size:10px;">Pendente</span>'}[s];
-
-      const temReav=(a.etiquetasExtras||[]).includes('🔄 Reavaliação');
-      const temMontar=(a.etiquetasExtras||[]).includes('💪 Montar treino');
-      const isNovoAluno=(!a.pagamentos?.length&&!a.avaliacoes?.length)||a.etiquetasExtras?.includes('aluno novo');
-
-      return `<div class="cl-row" onclick="openFicha('${a.id}')">
-        <div class="cl-row-name">
-          <div class="cl-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:10px;':''}">${s==='ativo'?'✓':''}</div>
-          <div class="cl-av">${initials(a.nome)}</div>
-          <div class="cl-name-txt">${a.nome}</div>
-          <div class="cl-etq">
-            ${temReav?'<span class="tag tag-yellow" style="font-size:9.5px;padding:1px 6px;animation:pulse 2s infinite;">🔄 Reavaliação</span>':''}
-            ${temMontar?'<span class="tag tag-purple" style="font-size:9.5px;padding:1px 6px;">💪 Montar treino</span>':''}
-            ${isNovoAluno&&!temReav&&!temMontar?'<span class="tag tag-purple" style="font-size:9.5px;padding:1px 6px;">aluno novo</span>':''}
-            ${(a.etiquetasExtras||[]).filter(e=>!['aluno novo','🔄 Reavaliação','💪 Montar treino'].includes(e)).slice(0,2).map(e=>`<span class="tag tag-gray" style="font-size:9.5px;">${e}</span>`).join('')}
-          </div>
-          <div class="cl-acts">
-            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openMoverFase('${a.id}')">Mover →</button>
-            <button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openModalAluno('${a.id}')">✏️</button>
-          </div>
-        </div>
-        <div class="cl-cell">
-          <div class="cl-resp">
-            <div class="cl-resp-av">${(a.responsavel||'Pr').slice(0,2)}</div>
-            <span style="font-size:11px;">${a.responsavel||'Vazio'}</span>
-          </div>
-        </div>
-        <div class="cl-cell">
-          <div style="display:flex;align-items:center;gap:5px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:${PRIO[0]};flex-shrink:0;"></div>
-            <span style="font-size:11px;">${PRIO[1]}</span>
-          </div>
-        </div>
-        <div class="cl-cell">${dateChip}</div>
-        <div class="cl-cell">${pagChip}</div>
-      </div>`;
-    }).join('');
-
-    return `<div class="cl-group">
-      <div class="cl-group-head" onclick="toggleGrp('${f.id}')">
-        <span class="cl-arrow open" id="arr-${f.id}">▶</span>
-        <span class="cl-phase-pill" style="background:${f.cor}22;color:${f.cor};">${f.nome}</span>
-        <span class="cl-phase-count">${lista.length}</span>
-        <span style="flex:1"></span>
-        <button class="cl-vbtn" style="font-size:10px;" onclick="event.stopPropagation();openModalAluno()">+ Adicionar Tarefa</button>
+  const barraHTML = `
+    <div style="background:var(--bg3);border-radius:10px;padding:14px 16px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:11px;font-weight:600;color:var(--t2);">${labelEsq}</span>
+        <span style="font-size:11px;color:var(--t3);">${semStr}</span>
+        <span style="font-size:11px;font-weight:600;color:${cor};">${labelDir}</span>
       </div>
-      <div class="cl-group-body open" id="clgb-${f.id}">
-        ${thead}
-        ${rows||'<div style="padding:12px 38px;font-size:12px;color:var(--t3);">Nenhum aluno nesta fase</div>'}
-        <div class="cl-add" onclick="openModalAluno()">+ Adicionar Tarefa</div>
+      <div class="crono-progbar"><div class="crono-progfill" style="width:${cr.progresso}%;background:${cor}20;background:linear-gradient(90deg,${cor},${cor}99);"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--t3);">
+        <span>${fmt(refInicio)}</span>
+        <span style="font-weight:700;color:${cor};">${cr.progresso}%</span>
+        <span>${cr.proxSC ? fmt(cr.proxSC) : (cr.vencimento ? fmt(cr.vencimento) : '—')}</span>
       </div>
     </div>`;
-  }).join('');
-}
 
-function toggleGrp(id){
-  const b=$('clgb-'+id), a=$('arr-'+id);
-  if(!b) return;
-  b.classList.toggle('open');
-  a.classList.toggle('open');
-}
-
-function renderQuadro(){
-  $('quadroView').innerHTML=fases.map(f=>{
-    const lista=alunos.filter(a=>a.faseId===f.id);
-    return `<div style="flex-shrink:0;width:240px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);">
-      <div style="padding:10px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:${f.cor};"></div>
-        <div style="font-size:11.5px;font-weight:700;flex:1;color:${f.cor};">${f.nome}</div>
-        <div style="font-size:10px;color:var(--t3);background:var(--bg3);padding:1px 6px;border-radius:5px;">${lista.length}</div>
+  // ─── INFO CARDS ───
+  const infoHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div style="background:var(--bg3);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Início</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">${fmt(cr.inicio)}</div>
+        <div style="font-size:10px;color:var(--t3);">${a.plano}</div>
       </div>
-      <div style="padding:8px;">
-        ${lista.map(a=>`<div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:10px;margin-bottom:6px;cursor:pointer;transition:.1s;" onclick="openFicha('${a.id}')" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
-          <div style="font-weight:600;font-size:12px;margin-bottom:5px;">${a.nome}</div>
-          <div style="font-size:10.5px;color:var(--t2);">${a.plano||'Pendente'}</div>
-          ${venc(a)?`<div style="font-size:10px;color:var(--t3);margin-top:3px;">Vence: ${fmt(venc(a))}</div>`:''}
-        </div>`).join('')}
+      <div style="background:${cr.diasProxSC !== null && cr.diasProxSC <= 7 ? '#fee2e2' : cr.diasProxSC !== null && cr.diasProxSC <= 14 ? '#fef3c7' : 'var(--bg3)'};border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">📸 Próximo Shape</div>
+        <div style="font-size:13px;font-weight:700;color:${cr.diasProxSC !== null && cr.diasProxSC <= 7 ? '#dc2626' : cr.diasProxSC !== null && cr.diasProxSC <= 14 ? '#d97706' : 'var(--text)'};">${cr.proxSC ? fmt(cr.proxSC) : '—'}</div>
+        <div style="font-size:10px;font-weight:600;color:${cor};">${cr.diasProxSC !== null ? (cr.diasProxSC === 0 ? '⚡ Hoje!' : cr.diasProxSC < 0 ? '⚠️ Atrasado '+Math.abs(cr.diasProxSC)+'d' : 'Em '+cr.diasProxSC+' dias') : '—'}</div>
+      </div>
+      <div style="background:${cr.diasVenc !== null && cr.diasVenc < 0 ? '#fee2e2' : cr.diasVenc !== null && cr.diasVenc <= 14 ? '#fef3c7' : 'var(--bg3)'};border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Vencimento</div>
+        <div style="font-size:13px;font-weight:700;color:${cr.diasVenc !== null && cr.diasVenc < 0 ? '#dc2626' : 'var(--text)'};">${cr.vencimento ? fmt(cr.vencimento) : '—'}</div>
+        <div style="font-size:10px;font-weight:600;color:${cr.diasVenc !== null && cr.diasVenc < 0 ? '#dc2626' : cr.diasVenc !== null && cr.diasVenc <= 14 ? '#d97706' : '#22c55e'};">${cr.diasVenc !== null ? (cr.diasVenc < 0 ? 'Vencido há '+Math.abs(cr.diasVenc)+'d' : cr.diasVenc === 0 ? 'Vence hoje!' : cr.diasVenc+' dias') : '—'}</div>
       </div>
     </div>`;
-  }).join('');
-}
 
-// ═══════════════════════════════════
-// FICHA ESTILO CLICKUP
-// ═══════════════════════════════════
-function openFicha(id){
-  currentA=alunos.find(a=>a.id===id);
-  if(!currentA) return;
-  gp('ficha');
-  $('bread-current').textContent=currentA.nome;
-  renderFicha();
-}
+  // ─── LINHA DO TEMPO VISUAL ───
+  const SHAPES_SHOW = Math.min(cr.shapeChecks.length, 8);
+  const steps = [{tipo:'inicio', data:cr.inicio, label:'Início', sub: a.nome?.split(' ')[0]}, 
+    ...cr.shapeChecks.slice(0, SHAPES_SHOW).map((d,i)=>({tipo:'shape', data:d, label:`Shape ${i+1}`, sub: fmt(d)})),
+    ...(cr.vencimento ? [{tipo:'venc', data:cr.vencimento, label:'Vencimento', sub: fmt(cr.vencimento)}] : [])
+  ];
 
-function renderFicha(){
-  const a=currentA;
-  const st=STATUS_CFG[a.statusAluno||'ativo']||STATUS_CFG.ativo;
-  const f=getFase(a.faseId);
-  const s=statusPag(a), vc=venc(a);
-  const rec=(a.pagamentos||[]).reduce((x,p)=>x+parseFloat(p.valor||0),0);
+  const timelineHTML = `
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">Linha do Tempo</div>
+      <div style="overflow-x:auto;padding-bottom:8px;">
+        <div style="display:flex;align-items:flex-start;gap:0;min-width:max-content;">
+          ${steps.map((s, i) => {
+            const passado = s.data < hoje;
+            const isAtual = s.data === cr.proxSC;
+            const isHoje = s.data === hoje;
+            const dotColor = passado ? '#22c55e' : isAtual ? '#d4af37' : s.tipo==='venc' ? '#ef4444' : 'var(--border2)';
+            const dotBg = passado ? '#22c55e20' : isAtual ? '#d4af3720' : 'var(--bg3)';
+            const lineColor = passado && i < steps.length-1 ? '#22c55e' : 'var(--border)';
+            return `<div style="display:flex;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;align-items:center;min-width:70px;">
+                <div style="width:34px;height:34px;border-radius:50%;background:${dotBg};border:2.5px solid ${dotColor};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:${dotColor};">
+                  ${passado ? '✓' : s.tipo==='venc' ? '🏁' : s.tipo==='inicio' ? '🚀' : (i)}
+                </div>
+                <div style="font-size:9.5px;font-weight:${isAtual?'700':'500'};color:${isAtual?'var(--text)':passado?'var(--t3)':'var(--t2)'};text-align:center;margin-top:5px;line-height:1.3;">${s.label}</div>
+                <div style="font-size:8.5px;color:var(--t3);text-align:center;">${s.sub}</div>
+                ${isAtual ? '<div style="font-size:8px;background:#d4af3720;color:#8a5a00;border-radius:3px;padding:1px 5px;margin-top:2px;font-weight:700;">PRÓXIMO</div>' : ''}
+                ${isHoje ? '<div style="font-size:8px;background:#22c55e20;color:#059669;border-radius:3px;padding:1px 5px;margin-top:2px;font-weight:700;">HOJE</div>' : ''}
+              </div>
+              ${i < steps.length-1 ? `<div style="height:2px;background:${lineColor};min-width:24px;margin-top:16px;flex:1;"></div>` : ''}
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
 
-  // Botões de ciclo automático
-  const nomeF = f.nome.toLowerCase();
-  const temReav = (a.etiquetasExtras||[]).includes('🔄 Reavaliação');
-  const temMontar = (a.etiquetasExtras||[]).includes('💪 Montar treino');
-  let btnCiclo = '';
-  if(temReav){
-    btnCiclo = `<button class="btn btn-sm" style="background:#f59e0b;color:#fff;margin-left:8px;" onclick="cicloReceberFotos()">📸 Fotos recebidas → Montar treino</button>`;
-  } else if(temMontar){
-    btnCiclo = `<button class="btn btn-sm" style="background:#7c3aed;color:#fff;margin-left:8px;" onclick="cicloTreinoNovoPronto()">💪 Treino pronto → Entregar</button>`;
-  } else if(a.dtReavaliacao && a.dtReavaliacao > today()){
-    btnCiclo = `<span style="font-size:11px;color:var(--t3);background:var(--bg3);padding:3px 9px;border-radius:4px;margin-left:8px;">⏳ Reavaliação em ${fmt(a.dtReavaliacao)}</span>`;
-  }
-
-  // STATUS BAR
-  $('fichaStatusBar').innerHTML=`
-    <div class="status-pill" style="background:${st.bg};color:${st.txt};" onclick="openModalAluno('${a.id}')">
-      ${st.icon} ${st.label}
-      <span style="font-size:10px;opacity:.8;">✓</span>
-    </div>
-    <span style="font-size:10px;color:var(--t3);padding:0 4px;">▶</span>
-    <button class="btn btn-ghost btn-sm" onclick="openMoverFase('${a.id}')">
-      <span style="width:8px;height:8px;border-radius:50%;background:${f.cor};display:inline-block;"></span>
-      ${f.nome}
-    </button>
-    ${btnCiclo}`;
-
-  // TÍTULO
-  $('fichaTitulo').innerHTML=`
-    <div class="ficha-check ${s==='ativo'?'done':''}" style="${s==='ativo'?'color:#fff;font-size:13px;':''}">${s==='ativo'?'✓':''}</div>
-    ${a.nome}`;
-
-  // CAMPOS PRINCIPAIS — 2 colunas
-  $('fichaFieldsTop').innerHTML=`
+  // ─── LISTA COMPLETA DE SHAPES ───
+  const listaHTML = `
     <div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⊙</span>Status</div>
-        <div class="ff-val">
-          <span class="status-pill" style="background:${st.bg};color:${st.txt};font-size:11px;padding:3px 10px;cursor:pointer;" onclick="openModalAluno('${a.id}')">${st.icon} ${st.label}</span>
-          <span style="font-size:12px;color:var(--t3);">▶</span>
-        </div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">📅</span>Datas</div>
-        <div class="ff-val">Data Inicial – <span style="color:var(--purple);font-weight:600;">${a.inicio?fmt(a.inicio):'—'}</span></div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⏱</span>Tempo estimado</div>
-        <div class="ff-val"><span style="color:var(--t3);">Vazio</span></div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🏷</span>Etiquetas</div>
-        <div class="ff-val">
-          ${(a.etiquetasExtras||[]).map(e=>`<span class="tag tag-gray">${e}</span>`).join('')}
-          ${!(a.etiquetasExtras||[]).length?'<span style="color:var(--t3);">Vazio</span>':''}
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">👤</span>Responsáveis</div>
-        <div class="ff-val">${a.responsavel?`<div class="cl-resp-av" style="width:22px;height:22px;font-size:9px;">${initials(a.responsavel)}</div> ${a.responsavel}`:'<span style="color:var(--t3);">Vazio</span>'}</div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🚩</span>Prioridade</div>
-        <div class="ff-val">
-          ${{urgente:`<span style="color:var(--red);">🔴 Urgente</span>`,alta:`<span style="color:var(--orange);">🟠 Alta</span>`,normal:`<span style="color:var(--t3);">Vazio</span>`,baixa:`<span style="color:var(--t3);">🔵 Baixa</span>`}[a.prioridade||'normal']}
-        </div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">⏳</span>Tempo rastreado</div>
-        <div class="ff-val"><span style="color:var(--purple);cursor:pointer;">▶ Adicionar hora</span></div>
-      </div>
-      <div class="ff-row">
-        <div class="ff-key"><span class="ff-key-icon">🔗</span>Relacionamentos</div>
-        <div class="ff-val">
-          ${(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<span class="rel-badge"><span class="rel-icon">🔗</span>1 Anamnese</span>':''}
-          ${(a.nutricao||[]).length?`<span class="rel-badge"><span class="rel-icon">🔗</span>1 Dieta</span>`:''}
-          <span class="rel-badge" onclick="sFTab('notas',document.querySelectorAll('.ftab')[5])"><span class="rel-icon">🔗</span>1 Suporte</span>
-          ${(a.treinos||[]).length?`<span class="rel-badge" onclick="sFTab('treinos',document.querySelectorAll('.ftab')[1])"><span class="rel-icon">🔗</span>${(a.treinos||[]).length} Treino</span>`:''}
-        </div>
-      </div>
+      <div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;">Todos os Shape Checks (a cada 8 semanas)</div>
+      ${cr.shapeChecks.map((d, i) => {
+        const passado = d < hoje;
+        const isProx = d === cr.proxSC;
+        const dias = Math.round((new Date(d+'T12:00:00') - new Date(hoje+'T12:00:00')) / 86400000);
+        const semana = (i+1) * 8;
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;background:${isProx ? 'var(--purple-bg)' : 'transparent'};border-bottom:1px solid var(--border);">
+          <div style="width:26px;height:26px;border-radius:50%;background:${passado ? '#22c55e20' : isProx ? 'var(--purple-bg)' : 'var(--bg3)'};border:2px solid ${passado ? '#22c55e' : isProx ? 'var(--purple)' : 'var(--border2)'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:${passado ? '#22c55e' : isProx ? 'var(--purple)' : 'var(--t3)'};flex-shrink:0;">
+            ${passado ? '✓' : i+1}
+          </div>
+          <div style="flex:1;">
+            <span style="font-size:12px;font-weight:${isProx?'700':'500'};color:${isProx?'var(--text)':passado?'var(--t3)':'var(--t2)'};">
+              Shape Check ${i+1} — Semana ${semana} — ${fmt(d)}
+            </span>
+            ${isProx ? '<span style="background:var(--purple-bg);color:var(--purple);font-size:9px;padding:1px 6px;border-radius:4px;margin-left:6px;font-weight:700;">PRÓXIMO</span>' : ''}
+            ${passado ? '<span style="background:#d1fae5;color:#059669;font-size:9px;padding:1px 6px;border-radius:4px;margin-left:6px;">concluído</span>' : ''}
+          </div>
+          <div style="font-size:11px;color:${passado ? 'var(--t3)' : isProx ? (dias<=0 ? '#dc2626' : dias<=7 ? '#d97706' : 'var(--purple)') : 'var(--t3)'};font-weight:${isProx?'600':'400'};">
+            ${passado ? 'Realizado' : dias === 0 ? '⚡ Hoje!' : dias < 0 ? '⚠️ Atrasado '+Math.abs(dias)+'d' : 'em '+dias+'d'}
+          </div>
+        </div>`;
+      }).join('')}
     </div>`;
 
-  // CAMPOS PERSONALIZADOS
-  $('camposPersonalizados').innerHTML=[
-    {icon:'☑',key:'Ação',val:`<span class="campo-select">Selecione uma ação! 👋</span>`},
-    {icon:'☑',key:'Anamnese',val:(a.anamnese&&Object.values(a.anamnese).some(x=>x))?'<div class="campo-check on">✓</div>':'<div class="campo-check off"></div>'},
-    {icon:'#',key:'Cobrar shapecheck',val:`<span style="font-size:12.5px;">0</span>`},
-    {icon:'📅',key:'Data da compra',val:`<span>${a.inicio?fmt(a.inicio):'—'}</span>`},
-    {icon:'☑',key:'Dia de suporte',val:a.diaSuporteAluno?`<span class="campo-select">${a.diaSuporteAluno}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'✉',key:'E-mail',val:`<span>${a.email||'—'}</span>`},
-    {icon:'🌐',key:'Link WhatsApp',val:a.wlink?`<a href="${a.wlink}" target="_blank" style="color:var(--green);display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">🟢</span> wa.me</a>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'☑',key:'Tem dieta?',val:(a.nutricao||[]).length?'<div class="campo-check on">✓</div>':'<div class="campo-check off"></div>'},
-    {icon:'☑',key:'Tipo de plano',val:a.plano?`<span class="campo-select">${a.plano}</span>`:'<span style="color:var(--t3);">Vazio</span>'},
-    {icon:'🔗',key:'WhatsApp',val:`<span>${a.tel||'—'}</span>`},
-    {icon:'🎯',key:'Objetivo',val:`<span>${a.objetivo||'—'}</span>`},
-    {icon:'🕐',key:'Horário de treino',val:`<span>${a.horario||'—'}</span>`},
-    {icon:'👥',key:'Indicado por',val:`<span>${a.indicado||'—'}</span>`},
-    {icon:'💰',key:'Valor mensal',val:`<span>${a.valorMensal?fmtM(a.valorMensal):'—'}</span>`},
-    {icon:'💵',key:'Total pago',val:`<span style="color:var(--green);font-weight:600;">${fmtM(rec)}</span>`},
-  ].map(c=>`<div class="campo-row">
-    <div class="campo-key"><span class="campo-key-icon">${c.icon}</span>${c.key}</div>
-    <div class="campo-val edit">${c.val}</div>
-  </div>`).join('');
-
-  // ABAS
-  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.ftabp').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.ftab')[0]?.classList.add('on');
-  $('ftp-pagamentos').classList.add('on');
-  renderFTPag();
+  return barraHTML + infoHTML + timelineHTML + listaHTML;
 }
 
 function sFTab(name,btn){
@@ -1640,8 +1311,104 @@ function sFTab(name,btn){
   document.querySelectorAll('.ftabp').forEach(t=>t.classList.remove('on'));
   if(btn) btn.classList.add('on');
   $('ftp-'+name)?.classList.add('on');
-  const r={pagamentos:renderFTPag,treinos:renderFTTreinos,avaliacao:renderFTAv,nutricao:renderFTNut,metas:renderFTMetas,fotos:renderFTFotos,notas:renderFTNotas,atividade:renderFTAtividade};
+  const r={pagamentos:renderFTPag,treinos:renderFTTreinos,avaliacao:renderFTAv,nutricao:renderFTNut,metas:renderFTMetas,fotos:renderFTFotos,notas:renderFTNotas,atividade:renderFTAtividade,cronograma:renderFTCronograma};
   if(r[name]) r[name]();
+}
+
+// TAB CRONOGRAMA
+function renderFTCronograma(){
+  if(!currentA) return;
+  const el = $('ftp-cronograma');
+  if(!el) return;
+  const cr = calcCronograma(currentA);
+  if(!cr){
+    el.innerHTML = '<div style="text-align:center;padding:32px;color:var(--t3);">Configure a data de início e plano para ver o cronograma.</div>';
+    return;
+  }
+  const hoje = today();
+  let html = '';
+
+  // KPIs
+  const diasVencStr = cr.diasVenc === null ? '—' : cr.diasVenc <= 0 ? 'Vencido há '+Math.abs(cr.diasVenc)+'d' : cr.diasVenc+'d restantes';
+  const diasSCStr = cr.diasProxSC === null ? '—' : cr.diasProxSC <= 0 ? 'Atrasado '+Math.abs(cr.diasProxSC)+'d' : 'em '+cr.diasProxSC+'d';
+  const corVenc = cr.diasVenc !== null && cr.diasVenc <= 0 ? '#dc2626' : cr.diasVenc !== null && cr.diasVenc <= 14 ? '#d97706' : 'var(--text)';
+  const corSC = cr.diasProxSC !== null && cr.diasProxSC <= 7 ? '#dc2626' : cr.diasProxSC !== null && cr.diasProxSC <= 14 ? '#d97706' : 'var(--text)';
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">';
+  html += '<div style="background:var(--bg3);border-radius:8px;padding:12px;text-align:center;">';
+  html += '<div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Semana atual</div>';
+  html += '<div style="font-size:22px;font-weight:700;color:var(--purple);">'+cr.semanaAtual+'</div>';
+  html += '</div>';
+  html += '<div style="background:var(--bg3);border-radius:8px;padding:12px;text-align:center;">';
+  html += '<div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Próx. Shape Check</div>';
+  html += '<div style="font-size:13px;font-weight:700;color:'+corSC+';">'+(cr.proxSC ? fmt(cr.proxSC) : '—')+'</div>';
+  html += '<div style="font-size:10px;color:var(--t3);">'+diasSCStr+'</div>';
+  html += '</div>';
+  html += '<div style="background:var(--bg3);border-radius:8px;padding:12px;text-align:center;">';
+  html += '<div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Vencimento</div>';
+  html += '<div style="font-size:13px;font-weight:700;color:'+corVenc+';">'+(cr.vencimento ? fmt(cr.vencimento) : '—')+'</div>';
+  html += '<div style="font-size:10px;color:var(--t3);">'+diasVencStr+'</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Barra de progresso
+  const barCor = cr.diasProxSC !== null && cr.diasProxSC <= 7 ? '#dc2626' : '#d4af37';
+  html += '<div style="margin-bottom:16px;">';
+  html += '<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--t3);margin-bottom:4px;">';
+  html += '<span>'+(cr.ultimoSC ? '📸 Último: '+fmt(cr.ultimoSC) : '🚀 Início: '+fmt(currentA.inicio))+'</span>';
+  html += '<span>'+cr.progresso+'% do ciclo atual</span>';
+  html += '<span>'+(cr.proxSC ? '📸 Próx: '+fmt(cr.proxSC) : '—')+'</span>';
+  html += '</div>';
+  html += '<div style="background:var(--bg4);border-radius:4px;height:10px;overflow:hidden;">';
+  html += '<div style="height:100%;border-radius:4px;background:'+barCor+';width:'+cr.progresso+'%;transition:.3s;"></div>';
+  html += '</div></div>';
+
+  // Linha do tempo
+  html += '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">📅 Cronograma — Shape Checks a cada 8 semanas</div>';
+
+  // Início
+  html += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">';
+  html += '<div style="width:32px;height:32px;border-radius:50%;background:var(--purple-bg);border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;font-size:14px;">🚀</div>';
+  html += '<div style="flex:1;"><div style="font-size:13px;font-weight:600;">Início do Plano · '+fmt(currentA.inicio)+'</div>';
+  html += '<div style="font-size:11px;color:var(--t3);">Plano '+currentA.plano+'</div></div>';
+  html += '<span style="font-size:10px;background:var(--purple-bg);color:var(--purple);padding:2px 8px;border-radius:4px;font-weight:700;">INÍCIO</span>';
+  html += '</div>';
+
+  // Shape checks
+  cr.shapeChecks.forEach(function(d, i){
+    const passado = d < hoje;
+    const isProx = d === cr.proxSC;
+    const dias = Math.round((new Date(d+'T12:00:00') - new Date(hoje+'T12:00:00')) / 86400000);
+    const cor = passado ? '#22c55e' : isProx ? '#d4af37' : 'var(--border2)';
+    const bg = passado ? 'rgba(5,150,105,.08)' : isProx ? 'rgba(212,175,55,.12)' : 'var(--bg3)';
+    const numTxt = passado ? '✓' : String(i+1);
+    const corNum = passado ? '#22c55e' : isProx ? '#8a5a00' : 'var(--t3)';
+    let statusTxt = passado ? '✅ Realizado' : isProx ? (dias<=0 ? '⚠️ Atrasado '+Math.abs(dias)+'d!' : '⏳ Em '+dias+' dias') : 'Em '+dias+' dias';
+
+    html += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);background:'+(isProx?'rgba(212,175,55,.05)':'transparent')+'">';
+    html += '<div style="width:32px;height:32px;border-radius:50%;background:'+bg+';border:2px solid '+cor+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:'+corNum+';flex-shrink:0;">'+numTxt+'</div>';
+    html += '<div style="flex:1;">';
+    html += '<div style="font-size:12.5px;font-weight:'+(isProx?'700':'500')+';color:'+(passado?'var(--t2)':'var(--text)')+';">📸 Shape Check '+(i+1)+' · '+fmt(d)+'</div>';
+    html += '<div style="font-size:10px;color:var(--t3);">'+statusTxt+' — semana '+((i+1)*8)+'</div>';
+    html += '</div>';
+    if(isProx) html += '<span style="font-size:10px;background:#d4af3720;color:#8a5a00;padding:3px 8px;border-radius:4px;font-weight:700;">PRÓXIMO</span>';
+    if(passado) html += '<span style="font-size:10px;background:#d1fae5;color:#059669;padding:3px 8px;border-radius:4px;font-weight:700;">FEITO</span>';
+    html += '</div>';
+  });
+
+  // Vencimento
+  if(cr.vencimento){
+    const corV = cr.diasVenc !== null && cr.diasVenc <= 0 ? '#dc2626' : cr.diasVenc !== null && cr.diasVenc <= 14 ? '#d97706' : 'var(--border)';
+    const bgV = cr.diasVenc !== null && cr.diasVenc <= 0 ? '#fee2e2' : cr.diasVenc !== null && cr.diasVenc <= 14 ? '#fef3c7' : 'var(--bg3)';
+    html += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;">';
+    html += '<div style="width:32px;height:32px;border-radius:50%;background:'+bgV+';border:2px solid '+corV+';display:flex;align-items:center;justify-content:center;font-size:14px;">🏁</div>';
+    html += '<div style="flex:1;"><div style="font-size:13px;font-weight:600;">Vencimento · '+fmt(cr.vencimento)+'</div>';
+    html += '<div style="font-size:11px;color:var(--t3);">'+(cr.diasVenc <= 0 ? '⚠️ Vencido há '+Math.abs(cr.diasVenc)+'d' : cr.diasVenc+'d restantes')+'</div></div>';
+    html += '<button class="btn btn-ghost btn-sm" onclick="openMRen()">↻ Renovar</button>';
+    html += '</div>';
+  }
+
+  el.innerHTML = html;
 }
 
 // TAB PAGAMENTOS
